@@ -22,4 +22,7 @@ TV Remote using LIRC
 http://alexba.in/blog/2013/01/06/setting-up-lirc-on-the-raspberrypi/
 3. Install and Configure lirc_web
 https://github.com/amatelin/lirc_web/
-4. Download and Run TV-Remote
+
+# After you have set up the Lirc Server
+1. Download this
+2. Configure and enjoy!!
