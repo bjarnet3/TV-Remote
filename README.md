@@ -10,6 +10,6 @@ TV Remote using LIRC
 1. Install Raspian on Raspberry Pi
 2. Install and Configure Lirc
 http://alexba.in/blog/2013/01/06/setting-up-lirc-on-the-raspberrypi/
-3. Install and Configure Lirc_web
+3. Install and Configure lirc_web
 https://github.com/amatelin/lirc_web/
 4. Download and Run TV-Remote
