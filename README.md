@@ -13,7 +13,6 @@ TV Remote using LIRC
 ![Single IR-Transmitter](/_resources/ir-transmitter.jpg) 
 
 3. Very good time ;-)
-- To set it up...
 
 # What you need to do
 1. Install Raspian on Raspberry Pi
