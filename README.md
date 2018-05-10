@@ -1,6 +1,8 @@
 #  ![Logo  ](  https://github.com/bjarnet3/TV-Remote/blob/master/TV%20Remote/Assets.xcassets/AppIcon.appiconset/macOS_32pt_%401x.png  )             TV-Remote
+
 TV Remote using LIRC
 ![Screenshot of TV-Remote](https://github.com/bjarnet3/TV-Remote/blob/master/_resources/Screenshot_of_TV-Remote.png) 
+
 # What you need
 1. Raspberry Pi (i use **Raspberry Pi Model B**)
 ![Raspberry Pi Model B](https://github.com/bjarnet3/TV-Remote/blob/master/_resources/raspberry-pi-rev_b.jpg)
