@@ -7,7 +7,7 @@ TV Remote using LIRC
 1. Raspberry Pi (i use **Raspberry Pi Model B**)
 ![Raspberry Pi Model B](/_resources/raspberry-pi-rev_b.jpg)
 
-<img src="/_resources/raspberry-pi-rev_b.jpg" width="200" height="200" />
+<img src="/_resources/raspberry-pi-rev_b.jpg" width="50%" height="50%" />
 
 2. IR - Transmitter (**IR-Transmitter**) 1$ on ebay.com
 - ![Single IR-Transmitter](/_resources/ir-transmitter.jpg) 
