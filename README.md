@@ -11,6 +11,7 @@ TV Remote using LIRC
 2. IR - Transmitter (**IR-Transmitter**)
 
 ![Single IR-Transmitter](/_resources/ir-transmitter.jpg) 
+
 *1$ on ebay.com*
 
 3. Very good time ;-)
