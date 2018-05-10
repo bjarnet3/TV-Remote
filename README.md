@@ -8,13 +8,12 @@ TV Remote using LIRC
 
 <img src="/_resources/raspberry-pi-rev_b.jpg" width="40%" height="40%" />
 
-2. IR - Transmitter (**IR-Transmitter**)
+2. IR - Transmitter (**1$ from ebay.com**)
 
 ![Single IR-Transmitter](/_resources/ir-transmitter.jpg) 
 
-*1$ on ebay.com*
-
 3. Very good time ;-)
+- To set it up...
 
 # What you need to do
 1. Install Raspian on Raspberry Pi
