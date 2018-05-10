@@ -226,6 +226,9 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         let secureUrl = URL(string: "https://\(self.ipAddress):3001/remotes/\(remote)/\(keyName)")!
         let unsecureUrl = URL(string: "http://\(self.ipAddress):\(self.portNumber)/remotes/\(remote)/\(keyName)")!
         
+        // You can test with Curl in Terminal
+        // curl -d POST http://192.168.10.120:3000/remotes/Samsung_AH59/KEY_MUTE (or raspberrypi.local:3000)
+        
         let url = self.SSL ? secureUrl : unsecureUrl
         let session = URLSession.shared
         
@@ -286,7 +289,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         getIPAddress(from: hostname)
         
         // SET BUTTON (TEST)
-        setButtons()
+        // setButtons()
         
         // REMOTE TESTING
         remoteList.removeAllItems()
