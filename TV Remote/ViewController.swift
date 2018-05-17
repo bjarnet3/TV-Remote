@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CoreWLAN
 
 class ViewController: NSViewController, URLSessionDelegate {
     
@@ -104,9 +105,39 @@ class ViewController: NSViewController, URLSessionDelegate {
         }
     }
     
+    // https://forums.developer.apple.com/thread/50302
+    /* Probably iOS
+    func currentSSID() -> [String] {
+        guard let interfaceNames = CNCopySupportedInterfaces() as? [String] else {
+            return []
+        }
+        return interfaceNames.flatMap { name in
+            guard let info = CNCopyCurrentNetworkInfo(name as CFString) as? [String:AnyObject] else {
+                return nil
+            }
+            guard let ssid = info[kCNNetworkInfoKeySSID as String] as? String else {
+                return nil
+            }
+            return ssid
+        }
+    }
+    */
+    
+    // https://forums.developer.apple.com/thread/50302
+    func currentSSIDs() -> [String] {
+        let client = CWWiFiClient.shared()
+        return client.interfaces()?.compactMap{ interface in
+            return interface.ssid()
+            } ?? []
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let SSIDs = currentSSIDs()
+        for SSID in SSIDs {
+            print(SSID)
+        }
     }
 
     override var representedObject: Any? {
