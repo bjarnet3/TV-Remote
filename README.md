@@ -1,4 +1,4 @@
-# ![Logo](/TV%20Remote/Assets.xcassets/AppIcon.appiconset/macOS_32pt_%401x.png) TV-Remote
+# ![Logo](/macOS/TV%20Remote/Assets.xcassets/AppIcon.appiconset/macOS_32pt_%401x.png) TV-Remote
 TV Remote using LIRC
 
 ![Screenshot of TV-Remote](https://github.com/bjarnet3/TV-Remote/blob/master/_resources/main_.png) 
