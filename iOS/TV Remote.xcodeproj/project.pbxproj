@@ -12,6 +12,7 @@
 		5C7E40FE20B3445F006DF2E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E40FC20B3445F006DF2E4 /* Main.storyboard */; };
 		5C7E410020B34460006DF2E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E40FF20B34460006DF2E4 /* Assets.xcassets */; };
 		5C7E410320B34460006DF2E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E410120B34460006DF2E4 /* LaunchScreen.storyboard */; };
+		5CBE61B220B3646B0057ED02 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBE61B120B3646B0057ED02 /* Functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		5C7E40FF20B34460006DF2E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C7E410220B34460006DF2E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C7E410420B34460006DF2E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CBE61B120B3646B0057ED02 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,47 @@
 		5C7E40F720B3445F006DF2E4 /* TV Remote */ = {
 			isa = PBXGroup;
 			children = (
+				5CBE61B020B364490057ED02 /* Library */,
+				5CBE61AF20B3642E0057ED02 /* Model */,
+				5CBE61AE20B364220057ED02 /* View */,
+				5CBE61AD20B364150057ED02 /* Controller */,
 				5C7E40F820B3445F006DF2E4 /* AppDelegate.swift */,
-				5C7E40FA20B3445F006DF2E4 /* ViewController.swift */,
-				5C7E40FC20B3445F006DF2E4 /* Main.storyboard */,
-				5C7E40FF20B34460006DF2E4 /* Assets.xcassets */,
-				5C7E410120B34460006DF2E4 /* LaunchScreen.storyboard */,
 				5C7E410420B34460006DF2E4 /* Info.plist */,
 			);
 			path = "TV Remote";
+			sourceTree = "<group>";
+		};
+		5CBE61AD20B364150057ED02 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5C7E40FA20B3445F006DF2E4 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5CBE61AE20B364220057ED02 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5C7E40FC20B3445F006DF2E4 /* Main.storyboard */,
+				5C7E410120B34460006DF2E4 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5CBE61AF20B3642E0057ED02 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5CBE61B120B3646B0057ED02 /* Functions.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5CBE61B020B364490057ED02 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				5C7E40FF20B34460006DF2E4 /* Assets.xcassets */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +172,7 @@
 			files = (
 				5C7E40FB20B3445F006DF2E4 /* ViewController.swift in Sources */,
 				5C7E40F920B3445F006DF2E4 /* AppDelegate.swift in Sources */,
+				5CBE61B220B3646B0057ED02 /* Functions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
