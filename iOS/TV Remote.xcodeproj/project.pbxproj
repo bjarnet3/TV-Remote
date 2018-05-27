@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C39991920BA2C5400B03CCE /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39991820BA2C5400B03CCE /* Channel.swift */; };
+		5C39991B20BA2F4200B03CCE /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39991A20BA2F4200B03CCE /* ChannelsViewController.swift */; };
+		5C39991D20BA427200B03CCE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39991C20BA427200B03CCE /* CustomButton.swift */; };
+		5C39991F20BA42BE00B03CCE /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39991E20BA42BE00B03CCE /* TVViewController.swift */; };
+		5C39992120BA42C100B03CCE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39992020BA42C100B03CCE /* SettingsViewController.swift */; };
+		5C39992320BA433A00B03CCE /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39992220BA433A00B03CCE /* CustomImageView.swift */; };
 		5C7E40F920B3445F006DF2E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E40F820B3445F006DF2E4 /* AppDelegate.swift */; };
-		5C7E40FB20B3445F006DF2E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E40FA20B3445F006DF2E4 /* ViewController.swift */; };
+		5C7E40FB20B3445F006DF2E4 /* RemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E40FA20B3445F006DF2E4 /* RemoteViewController.swift */; };
 		5C7E40FE20B3445F006DF2E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E40FC20B3445F006DF2E4 /* Main.storyboard */; };
 		5C7E410020B34460006DF2E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E40FF20B34460006DF2E4 /* Assets.xcassets */; };
 		5C7E410320B34460006DF2E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E410120B34460006DF2E4 /* LaunchScreen.storyboard */; };
@@ -16,9 +22,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C39991820BA2C5400B03CCE /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		5C39991A20BA2F4200B03CCE /* ChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
+		5C39991C20BA427200B03CCE /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		5C39991E20BA42BE00B03CCE /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
+		5C39992020BA42C100B03CCE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		5C39992220BA433A00B03CCE /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		5C7E40F520B3445F006DF2E4 /* TV Remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Remote.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C7E40F820B3445F006DF2E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5C7E40FA20B3445F006DF2E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5C7E40FA20B3445F006DF2E4 /* RemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteViewController.swift; sourceTree = "<group>"; };
 		5C7E40FD20B3445F006DF2E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5C7E40FF20B34460006DF2E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C7E410220B34460006DF2E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -69,7 +81,10 @@
 		5CBE61AD20B364150057ED02 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5C7E40FA20B3445F006DF2E4 /* ViewController.swift */,
+				5C7E40FA20B3445F006DF2E4 /* RemoteViewController.swift */,
+				5C39991A20BA2F4200B03CCE /* ChannelsViewController.swift */,
+				5C39991E20BA42BE00B03CCE /* TVViewController.swift */,
+				5C39992020BA42C100B03CCE /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -86,7 +101,10 @@
 		5CBE61AF20B3642E0057ED02 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5C39992220BA433A00B03CCE /* CustomImageView.swift */,
+				5C39991C20BA427200B03CCE /* CustomButton.swift */,
 				5CBE61B120B3646B0057ED02 /* Functions.swift */,
+				5C39991820BA2C5400B03CCE /* Channel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,8 +188,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C7E40FB20B3445F006DF2E4 /* ViewController.swift in Sources */,
+				5C39991B20BA2F4200B03CCE /* ChannelsViewController.swift in Sources */,
+				5C39992320BA433A00B03CCE /* CustomImageView.swift in Sources */,
+				5C7E40FB20B3445F006DF2E4 /* RemoteViewController.swift in Sources */,
+				5C39991D20BA427200B03CCE /* CustomButton.swift in Sources */,
+				5C39991920BA2C5400B03CCE /* Channel.swift in Sources */,
+				5C39991F20BA42BE00B03CCE /* TVViewController.swift in Sources */,
 				5C7E40F920B3445F006DF2E4 /* AppDelegate.swift in Sources */,
+				5C39992120BA42C100B03CCE /* SettingsViewController.swift in Sources */,
 				5CBE61B220B3646B0057ED02 /* Functions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
