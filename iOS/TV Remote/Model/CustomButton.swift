@@ -20,4 +20,6 @@ class CustomButton: UIButton {
         self.clipsToBounds = true
         self.layer.cornerRadius = self.frame.height / 2
     }
+    
+    
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0F0F8A20BB7A5800544B28 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F0F8920BB7A5800544B28 /* Remote.swift */; };
+		5C0F0F8C20BB886200544B28 /* ChannelTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F0F8B20BB886200544B28 /* ChannelTableCell.swift */; };
 		5C39991920BA2C5400B03CCE /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39991820BA2C5400B03CCE /* Channel.swift */; };
 		5C39991B20BA2F4200B03CCE /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39991A20BA2F4200B03CCE /* ChannelsViewController.swift */; };
 		5C39991D20BA427200B03CCE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39991C20BA427200B03CCE /* CustomButton.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C0F0F8920BB7A5800544B28 /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
+		5C0F0F8B20BB886200544B28 /* ChannelTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableCell.swift; sourceTree = "<group>"; };
 		5C39991820BA2C5400B03CCE /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		5C39991A20BA2F4200B03CCE /* ChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
 		5C39991C20BA427200B03CCE /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -101,10 +105,12 @@
 		5CBE61AF20B3642E0057ED02 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5CBE61B120B3646B0057ED02 /* Functions.swift */,
 				5C39992220BA433A00B03CCE /* CustomImageView.swift */,
 				5C39991C20BA427200B03CCE /* CustomButton.swift */,
-				5CBE61B120B3646B0057ED02 /* Functions.swift */,
+				5C0F0F8B20BB886200544B28 /* ChannelTableCell.swift */,
 				5C39991820BA2C5400B03CCE /* Channel.swift */,
+				5C0F0F8920BB7A5800544B28 /* Remote.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C39991B20BA2F4200B03CCE /* ChannelsViewController.swift in Sources */,
+				5C0F0F8A20BB7A5800544B28 /* Remote.swift in Sources */,
 				5C39992320BA433A00B03CCE /* CustomImageView.swift in Sources */,
 				5C7E40FB20B3445F006DF2E4 /* RemoteViewController.swift in Sources */,
 				5C39991D20BA427200B03CCE /* CustomButton.swift in Sources */,
@@ -196,6 +203,7 @@
 				5C39991F20BA42BE00B03CCE /* TVViewController.swift in Sources */,
 				5C7E40F920B3445F006DF2E4 /* AppDelegate.swift in Sources */,
 				5C39992120BA42C100B03CCE /* SettingsViewController.swift in Sources */,
+				5C0F0F8C20BB886200544B28 /* ChannelTableCell.swift in Sources */,
 				5CBE61B220B3646B0057ED02 /* Functions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

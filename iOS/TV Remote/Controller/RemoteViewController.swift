@@ -12,7 +12,8 @@ class RemoteViewController: UIViewController {
     
     // MARK: - IBOutlet: Connection to View "xib"
     // ----------------------------------------
-    @IBOutlet weak var channelsPicker: UIPickerView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var remotePicker: UIPickerView!
     
     /// **Hostname** followed by **.local** ie ( **family-iMac.local** )
     var hostname = "TV-Remote.local"
@@ -20,32 +21,33 @@ class RemoteViewController: UIViewController {
     var portNumber = "3000"
     var SSL: Bool = false
     
-    var remotes = ["Samsung" : "Samsung_AH59"]
-    var channels = [
-        "NRK":1,
-        "NRK2":2,
-        "TV2":3,
-        "TVNorge": 4,
-        "TV3":5,
-        
-        "TV2 Zebra":7,
-        
-        "Viasat 4": 9,
-        "Fem": 10,
-        "BBC Brit": 11,
-        "Nyhetskanalen":12,
-        
-        "MAX":14,
-        "VOX":15,
-        "Discovery": 16,
-        "TLC Norge": 17,
-        "Fox": 18,
-        
-        "National Geographics": 20,
-        "History": 21,
-        
-        "TV6": 37,
-        "BBC World": 38
+    var remote = Remote(remoteName: "Samsung", remoteCommand: "Samsung_AH59")
+    var remotes: [Remote] = [
+        Remote(remoteName: "Samsung", remoteCommand: "Samsung_AH59"),
+        Remote(remoteName: "Samsung 2", remoteCommand: "Samsung_AH59"),
+        Remote(remoteName: "Sony", remoteCommand: "Sony AE3"),
+    ]
+    
+    var channels: [Channel] = [
+        Channel(channelName: "TV2", channelNumber: 3, channelImageName: "tv2-norge.png", channelCategory: "Tabloid", channelURL: "www.tv2.no"),
+        Channel(channelName: "Nyhetskanalen", channelNumber: 12, channelImageName: "tv2-nyhetskanalen.png", channelCategory: "Nyheter", channelURL: "www.tv2.no"),
+        Channel(channelName: "TV2 Zebra", channelNumber: 7, channelImageName: "zebra.png", channelCategory: "Blogging", channelURL: "www.tv2.no"),
+        Channel(channelName: "NRK", channelNumber: 1, channelImageName: "nrk.png", channelCategory: "Propaganda", channelURL: "www.nrk.no"),
+        Channel(channelName: "NRK2", channelNumber: 2, channelImageName: "nrk2.png", channelCategory: "Propaganda", channelURL: "www.nrk.no"),
+        Channel(channelName: "TVNorge", channelNumber: 4, channelImageName: "tvnorge.png", channelCategory: "Tabloid", channelURL: "www.tvnorge.no"),
+        Channel(channelName: "TV3", channelNumber: 5, channelImageName: "tv3.png", channelCategory: "Tabloid", channelURL: "www.tv3.no"),
+        Channel(channelName: "Viasat 4", channelNumber: 9, channelImageName: "viasat4", channelCategory: "Tabloid", channelURL: "www.viasat.no"),
+        Channel(channelName: "Fem", channelNumber: 10, channelImageName: "fem.png", channelCategory: "Tabloid", channelURL: "www.tvnorge.no"),
+        Channel(channelName: "BBC Brit", channelNumber: 11, channelImageName: "bbcbrit.png", channelCategory: "Propaganda", channelURL: "www.bbc.com"),
+        Channel(channelName: "MAX", channelNumber: 14, channelImageName: "max.png", channelCategory: "Tabloid", channelURL: "www.tvnorge.no"),
+        Channel(channelName: "VOX", channelNumber: 15, channelImageName: "vox.png", channelCategory: "Tabloid", channelURL: "www.tvnorge.no"),
+        Channel(channelName: "Discovery", channelNumber: 16, channelImageName: "discovery.png", channelCategory: "Science", channelURL: "www.discovery.com"),
+        Channel(channelName: "TLC Norge", channelNumber: 17, channelImageName: "tlc.png", channelCategory: "Tabloid", channelURL: "www.tvnorge.no"),
+        Channel(channelName: "Fox", channelNumber: 18, channelImageName: "fox.png", channelCategory: "Tabloid", channelURL: "www.fox.com"),
+        Channel(channelName: "National Geographics", channelNumber: 20, channelImageName: "nationalgeo.png", channelCategory: "Nature", channelURL: "www.nationalgeographics.com"),
+        Channel(channelName: "History", channelNumber: 21, channelImageName: "history.png", channelCategory: "History", channelURL: "www.historychannel.com"),
+        Channel(channelName: "TV6", channelNumber: 37, channelImageName: "tv6.png", channelCategory: "Tabloid", channelURL: "www.tvnorge.no"),
+        Channel(channelName: "BBC World", channelNumber: 38, channelImageName: "bbcworld.png", channelCategory: "News", channelURL: "www.bbc.com"),
     ]
     
     // MARK: - IBAction:
@@ -54,10 +56,21 @@ class RemoteViewController: UIViewController {
         if let keyName = sender.accessibilityIdentifier {
             sendHTTP(keyName: keyName)
         }
+        dismissKeyboard()
     }
     
     @IBAction func buttonDownAction(_ sender: UIButton) {
         hapticButton(.medium)
+    }
+    
+    // KEYBOARD
+    @IBAction func touchedBackground(_ sender: Any) {
+        // Dissmiss
+        dismissKeyboard()
+    }
+    
+    private func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     // MARK: - FUNCTIONS:
@@ -66,7 +79,7 @@ class RemoteViewController: UIViewController {
     // Send IR signal to Server
     func sendHTTP(keyName: String) {
         // get remoteType from remoteList
-        let remote = "Samsung_AH59" // remotes[remoteList.title] else { return }
+        let remote = self.remote.remoteCommand // remotes[remoteList.title] else { return }
         
         // URL and HTTP POST Request
         // http://raspberrypi.local:3000/remotes/Samsung_AH59/KEY_POWER
@@ -92,8 +105,10 @@ class RemoteViewController: UIViewController {
     
     // Remote Send Action
     func returnChannelNumber(from: String) {
-        if let channel = channels[from] {
-            self.returnChannelString(from: channel)
+        for channel in channels {
+            if channel._channelName == from {
+                self.returnChannelString(from: channel._channelNumber)
+            }
         }
     }
     
@@ -142,17 +157,47 @@ extension RemoteViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return channels.keys.count
+        return remotes.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Array(channels.keys)[row]
+        return remotes[row].remoteName
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let channelNumber = Array(channels.values)[row]
+        self.remote = remotes[row]
+    }
+}
+
+extension RemoteViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return channels.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "channelTableCell", for: indexPath) as? ChannelTableCell {
+            cell.setupView(channel: self.channels[indexPath.row])
+            return cell
+        } else {
+            return ChannelTableCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let channelNumber = channels[indexPath.row]._channelNumber
         returnChannelString(from: channelNumber)
     }
+    
 }
 
 // MARK: - View Controller Lifecycle / View Did Load / Xib Implementations
@@ -165,9 +210,11 @@ extension RemoteViewController {
         // NETWORK TESTING
         getIPAddress(from: hostname)
         
-        channelsPicker.delegate = self
-        channelsPicker.dataSource = self
-        // Do any additional setup after loading the view, typically from a nib.
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        remotePicker.delegate = self
+        remotePicker.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {
