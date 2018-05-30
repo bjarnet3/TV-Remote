@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "tv2-nyhetskanalen.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "volume_mute_grey_small.png",
       "scale" : "2x"
     },
     {

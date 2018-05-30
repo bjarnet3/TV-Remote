@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "tv2-norge.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "channel_list_grey_medium.png",
       "scale" : "2x"
     },
     {

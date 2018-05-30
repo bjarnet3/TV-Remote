@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -116,9 +116,9 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="38" id="oeh-bF-Eu5"/>
                     </constraints>
-                    <buttonCell key="cell" type="smallSquare" title="❖" alternateTitle="KEY_CHANNELLIST" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dgd-bs-1Cn">
+                    <buttonCell key="cell" type="smallSquare" alternateTitle="KEY_CHANNELLIST" bezelStyle="smallSquare" image="channel_list_grey_medium" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dgd-bs-1Cn">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system" size="15"/>
+                        <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
                         <action selector="keyAction:" target="-2" id="bXM-BU-TPq"/>
@@ -143,7 +143,7 @@
                         <constraint firstAttribute="height" constant="38" id="oGz-L3-g8T"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="vos-ru-xR7"/>
                     </constraints>
-                    <buttonCell key="cell" type="smallSquare" title="◎" alternateTitle="KEY_MUTE" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qAE-OL-Uuu">
+                    <buttonCell key="cell" type="smallSquare" alternateTitle="KEY_MUTE" bezelStyle="smallSquare" image="volume_mute_grey_medium" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qAE-OL-Uuu">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system" size="15"/>
                     </buttonCell>
@@ -323,9 +323,9 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="2qz-Ft-qSw"/>
                     </constraints>
-                    <buttonCell key="cell" type="smallSquare" title="⊝" alternateTitle="KEY_POWER" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" allowsMixedState="YES" imageScaling="proportionallyDown" inset="2" id="8QO-Q1-9EY">
+                    <buttonCell key="cell" type="smallSquare" title="POWER" alternateTitle="KEY_POWER" bezelStyle="smallSquare" image="power_red_white5_small" imagePosition="trailing" alignment="right" lineBreakMode="truncatingTail" state="on" borderStyle="border" allowsMixedState="YES" imageScaling="proportionallyDown" inset="2" id="8QO-Q1-9EY">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system" size="16"/>
+                        <font key="font" metaFont="system" size="10"/>
                     </buttonCell>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="buttonDown" value="NO"/>
@@ -417,9 +417,9 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="gdv-he-mfe"/>
                     </constraints>
-                    <buttonCell key="cell" type="smallSquare" title="⏍" alternateTitle="KEY_SOURCE" bezelStyle="smallSquare" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WwA-Ee-ZZc">
+                    <buttonCell key="cell" type="smallSquare" title="SOURCE" alternateTitle="KEY_SOURCE" bezelStyle="smallSquare" image="source_grey_medium" imagePosition="leading" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WwA-Ee-ZZc">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system" size="16"/>
+                        <font key="font" metaFont="system" size="10"/>
                     </buttonCell>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
@@ -1229,4 +1229,10 @@
             <point key="canvasLocation" x="-270" y="1479.5"/>
         </customView>
     </objects>
+    <resources>
+        <image name="channel_list_grey_medium" width="34" height="34"/>
+        <image name="power_red_white5_small" width="32" height="32"/>
+        <image name="source_grey_medium" width="34" height="34"/>
+        <image name="volume_mute_grey_medium" width="34" height="34"/>
+    </resources>
 </document>
