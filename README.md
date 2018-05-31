@@ -1,10 +1,10 @@
-# ![Logo](/macOS/TV%20Remote/Assets.xcassets/AppIcon.appiconset/macOS_32pt_%401x.png) TV-Remote
-[![Nanny Now Version](https://img.shields.io/badge/Version-1.28%20Beta-ff69b4.svg)](https://github.com/bjarnet3/Nanny-Now/releases)
+# ![Logo](/macOS/TV%20Remote/Assets.xcassets/AppIcon.appiconset/macOS_32pt_%401x.png) TV-Remote (macOS - TodayWidget)
+[![TV-Remote Version](https://img.shields.io/badge/Version-1.05%20Beta-ff69b4.svg)]()
 [![iOS 11](https://img.shields.io/badge/Platform-iOS%2011-lightgrey.svg)](https://developer.apple.com/ios/)
 [![Swift 4.1](https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat)](https://swift.org)
-[![Firebase Database](https://img.shields.io/badge/Database-Firebase-yellow.svg)](https://firebase.google.com/)
-[![Facebook Login API](https://img.shields.io/badge/Login%20API-Facebook-blue.svg)](https://developers.facebook.com/)
-[![Project Progress](https://img.shields.io/badge/Progress-53%25-red.svg)](PROGRESS.md)
+# [![Firebase Database](https://img.shields.io/badge/Database-Firebase-yellow.svg)](https://firebase.google.com/)
+# [![Facebook Login API](https://img.shields.io/badge/Login%20API-Facebook-blue.svg)](https://developers.facebook.com/)
+[![Project Progress](https://img.shields.io/badge/Progress-20%25-red.svg)](PROGRESS.md)
 [![MIT licensed](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.md)
 
 TV Remote using LIRC
