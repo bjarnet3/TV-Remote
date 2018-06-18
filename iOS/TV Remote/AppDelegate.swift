@@ -42,5 +42,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    func handleShortcut(shortcutItem: UIApplicationShortcutItem ) -> Bool {
+        var succeeded = false
+        
+        func shortCutCase(_ to: Int) -> Bool {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateInitialViewController()
+            window?.rootViewController = vc
+            guard let tabBarController = window?.rootViewController as? UITabBarController else { return false }
+            // Do not set "from" same as "to", because then "to" will not be selected.
+            
+            // tabBarController.setSelectIndex(from: 0, to: to)
+            return true
+            
+        }
+        
+        switch shortcutItem.type {
+        case "no.digitalmood.TV-Remote.iOS.power" :
+            // succeeded = shortCutCase(0)
+            let vc = RemoteViewController()
+            vc.sendHTTP(keyName: BasicCommands.power.rawValue)
+        // case "no.digitalmood.TV-Remote.iOS.mute" :
+        default :
+            let vc = RemoteViewController()
+            vc.sendHTTP(keyName: BasicCommands.mute.rawValue)
+        }
+        return succeeded
+    }
+    
+    
 }
 

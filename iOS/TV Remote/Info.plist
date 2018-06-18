@@ -2,6 +2,35 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>power_medium</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Power / On / Off</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>no.digitalmood.TV-Remote.iOS.power</string>
+			<key>UIApplicationShortcutItemUserInfo</key>
+			<dict>
+				<key>key0</key>
+				<string>value0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>volume_mute</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Mute / On / Off</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>no.digitalmood.TV-Remote.iOS.mute</string>
+			<key>UIApplicationShortcutItemUserInfo</key>
+			<dict>
+				<key>key1</key>
+				<string>value1</string>
+			</dict>
+		</dict>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

@@ -8,6 +8,11 @@
 
 import UIKit
 
+public enum BasicCommands: String {
+    case mute = "KEY_MUTE"
+    case power = "KEY_POWER"
+}
+
 class RemoteViewController: UIViewController {
     
     // MARK: - IBOutlet: Connection to View "xib"
