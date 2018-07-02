@@ -22,15 +22,14 @@ class RemoteViewController: UIViewController {
     
     /// **Hostname** followed by **.local** ie ( **family-iMac.local** )
     var hostname = "TV-Remote.local"
-    var ipAddress = "192.168.10.120"
+    var ipAddress = "192.168.10.121"
     var portNumber = "3000"
     var SSL: Bool = false
     
-    var remote = Remote(remoteName: "Samsung", remoteCommand: "Samsung_AH59")
+    var lastRemote: Remote?
     var remotes: [Remote] = [
-        Remote(remoteName: "Samsung", remoteCommand: "Samsung_AH59"),
-        Remote(remoteName: "Samsung 2", remoteCommand: "Samsung_AH59"),
-        Remote(remoteName: "Sony", remoteCommand: "Sony AE3"),
+        Remote(remoteName: "Samsung", remoteType: "Samsung_AH59"),
+        Remote(remoteName: "Sony", remoteType: "Sony")
     ]
     
     var channels: [Channel] = [
@@ -77,37 +76,9 @@ class RemoteViewController: UIViewController {
     private func dismissKeyboard() {
         self.view.endEditing(true)
     }
-    
+
     // MARK: - FUNCTIONS:
     // ----------------------------------------
-    
-    // Send IR signal to Server
-    func sendHTTP(keyName: String) {
-        // get remoteType from remoteList
-        let remote = self.remote.remoteCommand // remotes[remoteList.title] else { return }
-        
-        // URL and HTTP POST Request
-        // http://raspberrypi.local:3000/remotes/Samsung_AH59/KEY_POWER
-        let secureUrl = URL(string: "https://\(self.ipAddress):3001/remotes/\(remote)/\(keyName)")!
-        let unsecureUrl = URL(string: "http://\(self.ipAddress):\(self.portNumber)/remotes/\(remote)/\(keyName)")!
-        
-        // You can test with Curl in Terminal
-        // curl -d POST http://192.168.10.120:3000/remotes/Samsung_AH59/KEY_MUTE (or raspberrypi.local:3000)
-        
-        let url = self.SSL ? secureUrl : unsecureUrl
-        let session = URLSession.shared
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-        })
-        task.resume()
-    }
-    
     // Remote Send Action
     func returnChannelNumber(from: String) {
         for channel in channels {
@@ -131,6 +102,33 @@ class RemoteViewController: UIViewController {
         }
     }
     
+    // Send IR signal to Server
+    func sendHTTP(keyName: String) {
+        // get remoteType from remoteList
+        let remote = self.remotes[0].remoteType // remotes[remoteList.title] else { return }
+        
+        // URL and HTTP POST Request
+        // http://raspberrypi.local:3000/remotes/Samsung_AH59/KEY_POWER
+        let secureUrl = URL(string: "https://\(self.ipAddress):3001/remotes/\(remote)/\(keyName)")!
+        let unsecureUrl = URL(string: "http://\(self.ipAddress):\(self.portNumber)/remotes/\(remote)/\(keyName)")!
+        
+        // You can test with Curl in Terminal
+        // curl -d POST http://192.168.10.120:3000/remotes/Samsung_AH59/KEY_MUTE (or raspberrypi.local:3000)
+        
+        let url = self.SSL ? secureUrl : unsecureUrl
+        let session = URLSession.shared
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        })
+        task.resume()
+    }
+    
     // Settings & Setup
     func getIPAddress(from: String) {
         let host = CFHostCreateWithName(nil,from as CFString).takeRetainedValue()
@@ -146,13 +144,13 @@ class RemoteViewController: UIViewController {
                     let numAddress = String(cString: hostname)
                     // Filter out IPV4
                     if numAddress.count == 14 {
-                        self.ipAddress = numAddress
-                        print(numAddress)
+                        ipAddress = numAddress
                     }
                 }
             }
         }
     }
+    
 }
 
 extension RemoteViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -170,7 +168,7 @@ extension RemoteViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.remote = remotes[row]
+        self.lastRemote = remotes[row]
     }
 }
 
