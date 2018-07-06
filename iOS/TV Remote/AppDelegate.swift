@@ -40,32 +40,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    // Shortcut Action (1)
+    // ---------------------
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(handleShortcut(shortcutItem: shortcutItem))
+    }
 
-
+    // Shortcut Action (2)
+    // ---------------------
     func handleShortcut(shortcutItem: UIApplicationShortcutItem ) -> Bool {
         var succeeded = false
         
-        func shortCutCase(_ to: Int) -> Bool {
+        func shortCutCase() -> Bool {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateInitialViewController()
             window?.rootViewController = vc
-            guard let tabBarController = window?.rootViewController as? UITabBarController else { return false }
-            // Do not set "from" same as "to", because then "to" will not be selected.
-            
-            // tabBarController.setSelectIndex(from: 0, to: to)
             return true
-            
         }
         
         switch shortcutItem.type {
         case "no.digitalmood.TV-Remote.iOS.power" :
-            // succeeded = shortCutCase(0)
             let vc = RemoteViewController()
             vc.sendHTTP(keyName: BasicCommands.power.rawValue)
-        // case "no.digitalmood.TV-Remote.iOS.mute" :
+            // succeeded = shortCutCase()
         default :
             let vc = RemoteViewController()
             vc.sendHTTP(keyName: BasicCommands.mute.rawValue)
+            succeeded = shortCutCase()
         }
         return succeeded
     }

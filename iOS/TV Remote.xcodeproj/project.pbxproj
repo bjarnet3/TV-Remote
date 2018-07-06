@@ -32,6 +32,7 @@
 		5C39991E20BA42BE00B03CCE /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
 		5C39992020BA42C100B03CCE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5C39992220BA433A00B03CCE /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		5C48D7DD20EFF9320032F2D5 /* TV Remote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TV Remote.entitlements"; sourceTree = "<group>"; };
 		5C7E40F520B3445F006DF2E4 /* TV Remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Remote.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C7E40F820B3445F006DF2E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C7E40FA20B3445F006DF2E4 /* RemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 		5C7E40F720B3445F006DF2E4 /* TV Remote */ = {
 			isa = PBXGroup;
 			children = (
+				5C48D7DD20EFF9320032F2D5 /* TV Remote.entitlements */,
 				5CBE61B020B364490057ED02 /* Library */,
 				5CBE61AF20B3642E0057ED02 /* Model */,
 				5CBE61AE20B364220057ED02 /* View */,
@@ -155,6 +157,11 @@
 				TargetAttributes = {
 					5C7E40F420B3445F006DF2E4 = {
 						CreatedOnToolsVersion = 9.3.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -348,6 +355,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "TV Remote/TV Remote.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GCRJ652248;
 				INFOPLIST_FILE = "TV Remote/Info.plist";
@@ -366,6 +374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "TV Remote/TV Remote.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GCRJ652248;
 				INFOPLIST_FILE = "TV Remote/Info.plist";

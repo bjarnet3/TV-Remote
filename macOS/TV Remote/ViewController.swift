@@ -11,6 +11,99 @@ import CoreWLAN
 
 class ViewController: NSViewController, URLSessionDelegate {
     
+    @IBOutlet weak var channelNumber: NSTextField!
+    @IBOutlet weak var channelName: NSTextField!
+    
+    // Channel & Remote list
+    @IBOutlet weak var channelList: NSComboBox!
+    @IBOutlet weak var remoteList: NSPopUpButton!
+    
+    @IBAction func addChannel(_ sender: NSButton) {
+        
+        let channelNumberTitle = channelNumber.stringValue
+        let channelNameTitle = channelName.stringValue
+        
+        if let channelNumberInt = Int(channelNumberTitle) {
+            // channels = [channelNameTitle:channelNumberInt]
+            channels.updateValue(channelNumberInt, forKey: channelNameTitle)
+            setChannels()
+        }
+    }
+    
+    @IBAction func resetChannel(_ sender: NSButton) {
+        channels = [
+            "NRK":1,
+            "NRK2":2,
+            "TV2":3,
+            "TVNorge": 4,
+            "TV3":5,
+            
+            "TV2 Zebra":7,
+            
+            "Viasat 4": 9,
+            "Fem": 10,
+            "BBC Brit": 11,
+            "Nyhetskanalen":12,
+            
+            "MAX":14,
+            "VOX":15,
+            "Discovery": 16,
+            "TLC Norge": 17,
+            "Fox": 18,
+            
+            "National Geographics": 20,
+            "History": 21,
+            
+            "TV6": 37,
+            "BBC World": 38
+        ]
+    }
+    
+    var channels: [String: Int] = [:]
+    
+    func setChannels() {
+        UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.set(self.channels, forKey: "channels")
+        UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.synchronize()
+        clearChannels()
+    }
+    
+    func getChannels() {
+        if let channels = UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.dictionary(forKey: "channels") as? [String: Int] {
+            self.channels = channels
+        }
+    }
+    
+    func clearChannels() {
+        channelNumber.stringValue = ""
+        channelName.stringValue = ""
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        let SSIDs = currentSSIDs()
+        for SSID in SSIDs {
+            print(SSID)
+        }
+        
+        // self.channelList.addItems(withObjectValues: channels)
+        channelList.delegate = self
+        channelList.dataSource = self
+        
+        getChannels()
+    }
+
+    override var representedObject: Any? {
+        didSet {
+        // Update the view, if already loaded.
+        }
+    }
+}
+
+// NETWORK
+// -------
+extension ViewController {
+    
     // LIST OF DEVICES / INTERFACES
     // https://stackoverflow.com/questions/25626117/how-to-get-ip-address-in-swift
     // Thank You
@@ -106,7 +199,8 @@ class ViewController: NSViewController, URLSessionDelegate {
     }
     
     // https://forums.developer.apple.com/thread/50302
-    /* Probably iOS
+    // Probably iOS
+    /*
     func currentSSID() -> [String] {
         guard let interfaceNames = CNCopySupportedInterfaces() as? [String] else {
             return []
@@ -123,6 +217,7 @@ class ViewController: NSViewController, URLSessionDelegate {
     }
     */
     
+    
     // https://forums.developer.apple.com/thread/50302
     func currentSSIDs() -> [String] {
         let client = CWWiFiClient.shared()
@@ -130,19 +225,93 @@ class ViewController: NSViewController, URLSessionDelegate {
             return interface.ssid()
             } ?? []
     }
+}
+
+// MARK: - EXTENSIONS / COMBOBOX / DELEGATES / DATASOURCES
+// ---------------------------------------------------------------------------------------------------------
+// Thanx to https://github.com/creekpld/ComboBoxExample/blob/master/ComboBoxExample/ComboBoxDataSource.swift
+// ---------------------------------------------------------------------------------------------------------
+extension ViewController : NSComboBoxDelegate, NSComboBoxDataSource, NSComboBoxCellDataSource {
+    // Standard Table / List implementation
+    func numberOfItems(in comboBox: NSComboBox) -> Int {
+        return channels.count
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        let SSIDs = currentSSIDs()
-        for SSID in SSIDs {
-            print(SSID)
+    // Same as Cell For Row at indexPath
+    func comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
+        let keys = channels.keys
+        for (idx, key) in keys.enumerated() {
+            if idx == index {
+                print("objectValueForItemAt")
+                // let cell = comboBox.cell as! CustomComboCell
+                // cell.image = NSImage(imageLiteralResourceName: "tv2-norge")
+                // cell.title = key
+                return key as Any
+            }
+        }
+        print("objectValueForItemAt emtpty")
+        return "" as Any
+    }
+    
+    func comboBox(_ comboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int {
+        var row = comboBox.indexOfSelectedItem
+        let keys = channels.keys
+        for (idx, key) in keys.enumerated() {
+            if key == string {
+                row = idx
+                if let channel = channels[key] {
+                    print("indexOfItemWithStringValue \(channel)")
+                    return row
+                }
+            }
+        }
+        return -1
+    }
+    
+    /*
+    func comboBox(_ comboBox: NSComboBox, completedString string: String) -> String? {
+        for (key,_) in channels {
+            // substring must have less characters then stings to search
+            if string.count < key.count {
+                // only use first part of the strings in the list with length of the search string
+                let statePartialStr = key.lowercased()[key.lowercased().startIndex..<key.lowercased().index(key.lowercased().startIndex, offsetBy: string.count)]
+                
+                if statePartialStr.range(of: string.lowercased()) != nil {
+                    print("SubString Match=\(string).")
+                    return key
+                }
+            }
+        }
+        return ""
+    }
+    
+    func comboBoxSelectionIsChanging(_ notification: Notification) {
+        print("comboBoxSelectionIsChanging")
+    }
+    
+    func comboBoxSelectionDidChange(_ notification: Notification) {
+        print("comboBoxSelectionDidChange")
+    }
+    
+    func comboBoxWillDismiss(_ notification: Notification) {
+        print("comboBoxWillDismiss")
+        
+        let selectedIndex = channelList.indexOfSelectedItem
+        print("indexOfSelectedCell : \(selectedIndex)")
+        
+        if let comboValue = comboBox(self.channelList, objectValueForItemAt: selectedIndex) {
+            if let comboString = comboValue as? String {
+                if let channel = channels[comboString] {
+                    print("returnChannel in comboWillDismiss")
+                    self.returnChannel(from: channel)
+                    self.channelList.selectText(comboValue)
+                }
+            }
         }
     }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
+    */
+    
+    func comboBoxWillPopUp(_ notification: Notification) {
+        print("comboBoxWillPopUp")
     }
 }

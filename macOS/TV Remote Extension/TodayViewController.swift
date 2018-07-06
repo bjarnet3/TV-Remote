@@ -210,6 +210,9 @@ class TodayViewController: NSViewController, NCWidgetProviding {
             
             lastSelectedButton?.isEnabled = true
             lastSelectedButton?.isTransparent = buttonHidden.state == .on
+            
+            setChannels()
+            getChannels()
         }
     }
     
@@ -278,6 +281,17 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         }
     }
     
+    func setChannels() {
+        UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.set(self.channels, forKey: "channels")
+        UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.synchronize()
+    }
+    
+    func getChannels() {
+        if let channels = UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.dictionary(forKey: "channels") as? [String: Int] {
+            self.channels = channels
+        }
+    }
+    
     // MARK: - View Controller Lifecycle / View Did Load / Xib Implementations
     // ----------------------------------------
     override func viewDidLoad() {
@@ -290,6 +304,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         
         // SET BUTTON (TEST)
         // setButtons()
+        getChannels()
         
         // REMOTE TESTING
         remoteList.removeAllItems()

@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>UIApplicationShortcutItemIconFile</key>
-			<string>power_medium</string>
+			<string>off</string>
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Power / On / Off</string>
 			<key>UIApplicationShortcutItemType</key>

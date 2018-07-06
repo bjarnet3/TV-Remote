@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="9kf-Hi-rm8">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -693,18 +693,119 @@
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
                     </window>
-                    <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
-                    </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="DHf-Ze-hU6">
+            <objects>
+                <viewController title="Settings" id="9kf-Hi-rm8" customClass="ViewController" customModule="TV_Remote" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="hf4-YG-nN7">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="400"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <comboBox focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GGQ-WS-K1D">
+                                <rect key="frame" x="0.0" y="325" width="483" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="24y-qx-NCL"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Gbs-g0-xVJ"/>
+                                </constraints>
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" focusRingType="none" alignment="left" placeholderString="Select Channel" drawsBackground="YES" buttonBordered="NO" usesDataSource="YES" numberOfVisibleItems="6" id="Pvc-QO-mtB">
+                                    <font key="font" size="26" name="AvenirNext-UltraLight"/>
+                                    <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" red="0.98656708000000004" green="0.18414348359999999" blue="0.57283514739999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="subTitle" value="test"/>
+                                    </userDefinedRuntimeAttributes>
+                                </comboBoxCell>
+                            </comboBox>
+                            <textField toolTip="IR Code: e.g. [ KEY_CHANNELUP ] - Click On The Button You want to customize" verticalHuggingPriority="750" allowsExpansionToolTips="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c29-uf-iN5">
+                                <rect key="frame" x="0.0" y="281" width="80" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Cgl-26-CyI"/>
+                                    <constraint firstAttribute="width" constant="80" id="FPU-Kb-Isc"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="Channel" drawsBackground="YES" id="9f0-vG-NNT">
+                                    <font key="font" metaFont="system" size="15"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nfR-G6-UJx">
+                                <rect key="frame" x="400" y="280" width="80" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="5un-2O-Vcj"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="dRq-Xf-Lus"/>
+                                </constraints>
+                                <buttonCell key="cell" type="smallSquare" title="Add" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NuF-K6-Q1t">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="15"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addChannel:" target="9kf-Hi-rm8" id="LY6-xv-TBq"/>
+                                </connections>
+                            </button>
+                            <textField toolTip="IR Code: e.g. [ KEY_CHANNELUP ] - Click On The Button You want to customize" verticalHuggingPriority="750" allowsExpansionToolTips="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXl-Zr-fah">
+                                <rect key="frame" x="85" y="281" width="307" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="4oH-dA-HsK"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="   Name:" drawsBackground="YES" id="ifj-0B-E5b">
+                                    <font key="font" metaFont="system" size="15"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wCk-CH-rY2">
+                                <rect key="frame" x="400" y="232" width="80" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Pat-kF-h65"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="mYM-ve-BIL"/>
+                                </constraints>
+                                <buttonCell key="cell" type="smallSquare" title="Reset" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XzB-Jz-4x5">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="15"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addChannel:" target="9kf-Hi-rm8" id="MvS-TR-9Vg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="c29-uf-iN5" firstAttribute="leading" secondItem="hf4-YG-nN7" secondAttribute="leading" id="03D-hy-iem"/>
+                            <constraint firstItem="XXl-Zr-fah" firstAttribute="top" secondItem="hf4-YG-nN7" secondAttribute="top" constant="79" id="10K-Eg-Tvu"/>
+                            <constraint firstItem="XXl-Zr-fah" firstAttribute="leading" secondItem="hf4-YG-nN7" secondAttribute="leading" constant="85" id="6UJ-8D-ILr"/>
+                            <constraint firstItem="wCk-CH-rY2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hf4-YG-nN7" secondAttribute="leading" id="CDP-FU-Oer"/>
+                            <constraint firstItem="GGQ-WS-K1D" firstAttribute="top" secondItem="hf4-YG-nN7" secondAttribute="top" constant="31" id="CO8-Dy-vGa"/>
+                            <constraint firstItem="c29-uf-iN5" firstAttribute="top" secondItem="hf4-YG-nN7" secondAttribute="top" constant="79" id="GIh-zz-7so"/>
+                            <constraint firstItem="XXl-Zr-fah" firstAttribute="leading" secondItem="c29-uf-iN5" secondAttribute="trailing" constant="5" id="JF3-0m-5XX"/>
+                            <constraint firstAttribute="trailing" secondItem="nfR-G6-UJx" secondAttribute="trailing" id="Nca-1j-vq7"/>
+                            <constraint firstItem="nfR-G6-UJx" firstAttribute="leading" secondItem="XXl-Zr-fah" secondAttribute="trailing" constant="8" id="Ood-bu-smc"/>
+                            <constraint firstItem="wCk-CH-rY2" firstAttribute="top" secondItem="hf4-YG-nN7" secondAttribute="top" constant="127" id="SyU-70-wbL"/>
+                            <constraint firstItem="nfR-G6-UJx" firstAttribute="top" secondItem="hf4-YG-nN7" secondAttribute="top" constant="79" id="bF7-uK-ceK"/>
+                            <constraint firstAttribute="trailing" secondItem="XXl-Zr-fah" secondAttribute="trailing" constant="88" id="irz-Rn-Bm8"/>
+                            <constraint firstItem="GGQ-WS-K1D" firstAttribute="leading" secondItem="hf4-YG-nN7" secondAttribute="leading" id="oQy-m1-o6n"/>
+                            <constraint firstAttribute="trailing" secondItem="GGQ-WS-K1D" secondAttribute="trailing" id="tV4-Cn-J6i"/>
+                            <constraint firstAttribute="trailing" secondItem="wCk-CH-rY2" secondAttribute="trailing" id="x87-eP-FCq"/>
+                            <constraint firstItem="nfR-G6-UJx" firstAttribute="top" secondItem="GGQ-WS-K1D" secondAttribute="bottom" constant="8" id="zyh-Mp-RhY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="channelList" destination="GGQ-WS-K1D" id="9j5-Nw-pt8"/>
+                        <outlet property="channelName" destination="XXl-Zr-fah" id="ub5-GU-nfx"/>
+                        <outlet property="channelNumber" destination="c29-uf-iN5" id="DXT-hv-gck"/>
+                    </connections>
+                </viewController>
+                <customObject id="dYY-xf-r1i" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="670"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="TV_Remote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" sceneMemberID="viewController">
                     <customView key="view" wantsLayer="YES" appearanceType="aqua" simulatedAppContext="notificationCenter" id="Rxo-U4-9TH">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="261"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -744,7 +845,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </comboBoxCell>
                             </comboBox>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rNm-gc-sSh" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rNm-gc-sSh" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="48" width="88" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="Zes-Pb-EGh"/>
@@ -754,7 +855,7 @@
                                     <font key="font" metaFont="system" size="17"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PJT-YO-RbN" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PJT-YO-RbN" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="354" y="48" width="88" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="Hrw-rw-dtn"/>
@@ -765,7 +866,7 @@
                                     <font key="font" metaFont="system" size="18"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s2z-6s-vAF" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s2z-6s-vAF" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="177" y="49" width="88" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="nnf-mJ-iIB"/>
@@ -775,7 +876,7 @@
                                     <font key="font" metaFont="system" size="23"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GB1-hh-Ijk" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GB1-hh-Ijk" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="85" width="88" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="REl-33-9u8"/>
@@ -785,7 +886,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="idU-sJ-G8H" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="idU-sJ-G8H" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="88" y="86" width="89" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="MnY-Hf-2U9"/>
@@ -795,7 +896,7 @@
                                     <font key="font" metaFont="system" size="23"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dOg-pV-bhG" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dOg-pV-bhG" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="354" y="85" width="88" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="7vd-vW-jwn"/>
@@ -806,7 +907,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z2r-sz-S29" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="z2r-sz-S29" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="265" y="86" width="89" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="jh0-zl-pXP"/>
@@ -816,7 +917,7 @@
                                     <font key="font" metaFont="system" size="23"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XNO-Ea-OgD" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XNO-Ea-OgD" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="177" y="86" width="88" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="Iim-RH-bee"/>
@@ -826,7 +927,7 @@
                                     <font key="font" metaFont="system" size="14"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Q6h-oY-rjP" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Q6h-oY-rjP" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="122" width="88" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="Fpj-Sd-Fqb"/>
@@ -846,7 +947,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bHl-gk-8ep" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bHl-gk-8ep" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="354" y="122" width="88" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="fYK-wh-QjN"/>
@@ -867,7 +968,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SyE-de-agl" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SyE-de-agl" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="177" y="123" width="88" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="foI-nd-UiW"/>
@@ -949,7 +1050,7 @@
                                     <font key="font" metaFont="system" size="14"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3wz-y2-Bfh" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3wz-y2-Bfh" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="295" y="237" width="147" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="8BK-33-KXV"/>
@@ -975,7 +1076,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GMn-k3-nvq" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GMn-k3-nvq" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="265" y="49" width="45" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="owx-t4-oxN"/>
@@ -985,7 +1086,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rzG-Ot-lwT" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rzG-Ot-lwT" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="265" y="67" width="45" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="9s4-5m-fQ7"/>
@@ -995,7 +1096,7 @@
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y9k-l1-Rh9" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y9k-l1-Rh9" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="133" y="48" width="44" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="hXp-rF-KGL"/>
@@ -1005,7 +1106,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lQ2-hl-ruV" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lQ2-hl-ruV" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="133" y="67" width="44" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="okc-ig-tCc"/>
@@ -1015,7 +1116,7 @@
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nd5-Nv-dkT" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nd5-Nv-dkT" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="133" y="141" width="44" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="g2e-JY-EJn"/>
@@ -1025,7 +1126,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F6d-Al-8y7" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F6d-Al-8y7" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="237" width="147" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="pIO-Yf-mLb"/>
@@ -1040,7 +1141,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RvZ-9Z-5wK" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RvZ-9Z-5wK" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="265" y="141" width="45" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="EIv-K4-2OI"/>
@@ -1050,7 +1151,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W04-3D-Cr9" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W04-3D-Cr9" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="30" width="45" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="k43-1N-i55"/>
@@ -1060,7 +1161,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jpr-Uh-Fhk" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jpr-Uh-Fhk" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="45" y="30" width="43" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="qbl-4w-SPD"/>
@@ -1070,7 +1171,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XpZ-Zh-liA" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XpZ-Zh-liA" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="88" y="30" width="45" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="d5r-kF-tF9"/>
@@ -1080,7 +1181,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YEj-Br-Yts" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YEj-Br-Yts" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="133" y="30" width="44" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="cyM-iz-1Ax"/>
@@ -1090,7 +1191,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4tc-qz-scr" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4tc-qz-scr" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="177" y="30" width="45" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="wyn-bb-FFF"/>
@@ -1100,7 +1201,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a8R-qh-l6I" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a8R-qh-l6I" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="222" y="30" width="43" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="2mb-e9-eGw"/>
@@ -1110,7 +1211,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E2f-lE-gnQ" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="E2f-lE-gnQ" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="265" y="30" width="45" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="Ylk-Wa-t9i"/>
@@ -1120,7 +1221,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fVk-sg-QrP" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fVk-sg-QrP" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="310" y="30" width="44" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="OiH-gD-Yci"/>
@@ -1130,7 +1231,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TYD-nS-fpv" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TYD-nS-fpv" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="354" y="30" width="44" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="fY9-B9-HeN"/>
@@ -1140,7 +1241,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gdT-ut-9ni" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gdT-ut-9ni" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="398" y="30" width="44" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="19" id="lKp-2f-oUK"/>
@@ -1151,7 +1252,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zUG-7K-Bqj" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zUG-7K-Bqj" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="88" y="123" width="45" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="bPy-6d-UGB"/>
@@ -1161,7 +1262,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fs1-j6-2Af" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fs1-j6-2Af" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="133" y="123" width="44" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="PIM-4k-vO5"/>
@@ -1171,7 +1272,7 @@
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bKF-yP-xQ3" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bKF-yP-xQ3" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="310" y="48" width="44" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="8iK-hl-Hef"/>
@@ -1181,7 +1282,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RFN-9u-YyZ" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RFN-9u-YyZ" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="88" y="48" width="45" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="vB7-yJ-lWg"/>
@@ -1191,7 +1292,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pa7-ZA-CNQ" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pa7-ZA-CNQ" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="265" y="123" width="45" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="0EU-43-11d"/>
@@ -1201,7 +1302,7 @@
                                     <font key="font" metaFont="cellTitle"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7VI-iW-W3E" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7VI-iW-W3E" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="310" y="123" width="44" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="t3z-U6-JMi"/>
@@ -1211,7 +1312,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mah-qU-wnJ" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mah-qU-wnJ" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="11" width="45" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="a5S-2h-pM8"/>
@@ -1221,7 +1322,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U5c-2I-fwO" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U5c-2I-fwO" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="45" y="11" width="43" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="9ph-K5-X3c"/>
@@ -1231,7 +1332,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WVo-Jf-wkg" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WVo-Jf-wkg" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="88" y="11" width="45" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="OJW-nG-yhd"/>
@@ -1241,7 +1342,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ekf-hF-J0b" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ekf-hF-J0b" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="133" y="11" width="44" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="K9M-pg-o4X"/>
@@ -1256,7 +1357,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uwo-Bh-DTP" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uwo-Bh-DTP" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="177" y="11" width="45" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="xnQ-wS-v0Q"/>
@@ -1271,7 +1372,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TEX-hE-avS" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TEX-hE-avS" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="222" y="11" width="43" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="z3I-He-8Zp"/>
@@ -1286,7 +1387,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PEw-FR-aWo" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PEw-FR-aWo" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="265" y="11" width="45" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="i7h-Gy-NuK"/>
@@ -1301,7 +1402,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iNa-fi-3FD" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iNa-fi-3FD" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="310" y="11" width="44" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="avw-Y7-M4S"/>
@@ -1311,7 +1412,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BIF-jW-PB8" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BIF-jW-PB8" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="354" y="11" width="44" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="ONm-Sr-pfh"/>
@@ -1321,7 +1422,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2HA-HR-Goj" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2HA-HR-Goj" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="398" y="11" width="44" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="19" id="mHh-vL-ywc"/>
@@ -1332,7 +1433,7 @@
                                     <font key="font" metaFont="smallSystem"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sUO-HN-yIp" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sUO-HN-yIp" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="88" y="141" width="45" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="pjO-IC-LaQ"/>
@@ -1342,7 +1443,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xNf-zu-mv8" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xNf-zu-mv8" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="310" y="141" width="44" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="h80-q4-mDP"/>
@@ -1352,7 +1453,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5fJ-Pc-uxS" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5fJ-Pc-uxS" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="310" y="67" width="44" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="pQI-ce-ore"/>
@@ -1362,7 +1463,7 @@
                                     <font key="font" metaFont="system" size="15"/>
                                 </buttonCell>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JfF-3Y-DIR" customClass="CustomButton" customModule="TV_Remote_Extension" customModuleProvider="target">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JfF-3Y-DIR" customClass="CustomButton" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="88" y="67" width="45" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="FUB-Lr-SSs"/>
@@ -1509,10 +1610,6 @@
                                     <constraint firstItem="e3h-HW-efQ" firstAttribute="leading" secondItem="gfq-Ai-tRW" secondAttribute="trailing" id="xBE-fP-tB2"/>
                                     <constraint firstItem="pZM-Xw-fzx" firstAttribute="top" secondItem="4VH-oh-5mm" secondAttribute="bottom" constant="3" id="y8x-U5-Nu0"/>
                                 </constraints>
-                            </customView>
-                            <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g9d-ym-OdB">
-                                <rect key="frame" x="0.0" y="0.0" width="298" height="261"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </customView>
                         </subviews>
                         <constraints>
@@ -1730,7 +1827,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="700.5"/>
+            <point key="canvasLocation" x="60" y="1064"/>
         </scene>
     </scenes>
 </document>

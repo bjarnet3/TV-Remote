@@ -22,7 +22,7 @@ class RemoteViewController: UIViewController {
     
     /// **Hostname** followed by **.local** ie ( **family-iMac.local** )
     var hostname = "TV-Remote.local"
-    var ipAddress = "192.168.10.121"
+    var ipAddress = "192.168.10.120"
     var portNumber = "3000"
     var SSL: Bool = false
     
