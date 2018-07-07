@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomButton: UIButton {
+class CUButton: UIButton {
     
     override func awakeFromNib() {
         super.awakeFromNib()

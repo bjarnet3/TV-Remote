@@ -10,13 +10,13 @@ import UIKit
 
 // @IBDesignable
 
-class CustomImageView: UIImageView {
+class CUImageView: UIImageView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.layer.borderWidth = 0.5
-        self.layer.borderColor = UIColor.purple.cgColor
+        self.layer.borderWidth = 0.6
+        self.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     override func layoutSubviews() {

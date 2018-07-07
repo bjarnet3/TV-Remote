@@ -35,7 +35,7 @@ class ChannelTableCell: UITableViewCell {
         if direction == .enter {
             self.contentView.alpha = 0
             self.setNeedsDisplay(channelImageView.frame)
-            self.contentView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            self.contentView.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
             // self.layer.transform = CATransform3DMakeRotation(CGFloat.pi / 16, 0, 1, 0)
         } else {
             self.contentView.alpha = 1
@@ -49,8 +49,8 @@ class ChannelTableCell: UITableViewCell {
             if animated {
                 animateView(direction: .enter)
                 self.channelImageView.loadLocalImage(imageName: imageName, completion: {
-                    let random = Double(arc4random_uniform(UInt32(1000))) / 3000
-                    UIView.animate(withDuration: 0.6, delay: random, usingSpringWithDamping: 0.70, initialSpringVelocity: 0.3, options: .curveEaseOut, animations: {
+                    let random = Double(arc4random_uniform(UInt32(280))) / 1650
+                    UIView.animate(withDuration: 0.58, delay: random, usingSpringWithDamping: 0.44, initialSpringVelocity: 0.28, options: .curveEaseOut, animations: {
                         self.animateView(direction: .exit)
                         
                         self.channelName.text = channel._channelName

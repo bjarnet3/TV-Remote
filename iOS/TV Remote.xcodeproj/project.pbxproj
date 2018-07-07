@@ -11,10 +11,15 @@
 		5C0F0F8C20BB886200544B28 /* ChannelTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0F0F8B20BB886200544B28 /* ChannelTableCell.swift */; };
 		5C39991920BA2C5400B03CCE /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39991820BA2C5400B03CCE /* Channel.swift */; };
 		5C39991B20BA2F4200B03CCE /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39991A20BA2F4200B03CCE /* ChannelsViewController.swift */; };
-		5C39991D20BA427200B03CCE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39991C20BA427200B03CCE /* CustomButton.swift */; };
+		5C39991D20BA427200B03CCE /* CUButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39991C20BA427200B03CCE /* CUButton.swift */; };
 		5C39991F20BA42BE00B03CCE /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39991E20BA42BE00B03CCE /* TVViewController.swift */; };
 		5C39992120BA42C100B03CCE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39992020BA42C100B03CCE /* SettingsViewController.swift */; };
-		5C39992320BA433A00B03CCE /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39992220BA433A00B03CCE /* CustomImageView.swift */; };
+		5C39992320BA433A00B03CCE /* CUImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39992220BA433A00B03CCE /* CUImageView.swift */; };
+		5C46BB3920F0E0F700C927B9 /* CULabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46BB3820F0E0F700C927B9 /* CULabel.swift */; };
+		5C46BB3B20F0EFD700C927B9 /* UXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46BB3A20F0EFD700C927B9 /* UXView.swift */; };
+		5C46BB3D20F1393A00C927B9 /* UXButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46BB3C20F1393A00C927B9 /* UXButton.swift */; };
+		5C46BB3F20F14C3B00C927B9 /* ForceTouchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46BB3E20F14C3B00C927B9 /* ForceTouchView.swift */; };
+		5C46BB4120F14CCB00C927B9 /* ForceGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46BB4020F14CCB00C927B9 /* ForceGestureRecognizer.swift */; };
 		5C7E40F920B3445F006DF2E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E40F820B3445F006DF2E4 /* AppDelegate.swift */; };
 		5C7E40FB20B3445F006DF2E4 /* RemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E40FA20B3445F006DF2E4 /* RemoteViewController.swift */; };
 		5C7E40FE20B3445F006DF2E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E40FC20B3445F006DF2E4 /* Main.storyboard */; };
@@ -28,10 +33,15 @@
 		5C0F0F8B20BB886200544B28 /* ChannelTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableCell.swift; sourceTree = "<group>"; };
 		5C39991820BA2C5400B03CCE /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		5C39991A20BA2F4200B03CCE /* ChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
-		5C39991C20BA427200B03CCE /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		5C39991C20BA427200B03CCE /* CUButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUButton.swift; sourceTree = "<group>"; };
 		5C39991E20BA42BE00B03CCE /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
 		5C39992020BA42C100B03CCE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		5C39992220BA433A00B03CCE /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		5C39992220BA433A00B03CCE /* CUImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUImageView.swift; sourceTree = "<group>"; };
+		5C46BB3820F0E0F700C927B9 /* CULabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CULabel.swift; sourceTree = "<group>"; };
+		5C46BB3A20F0EFD700C927B9 /* UXView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXView.swift; sourceTree = "<group>"; };
+		5C46BB3C20F1393A00C927B9 /* UXButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXButton.swift; sourceTree = "<group>"; };
+		5C46BB3E20F14C3B00C927B9 /* ForceTouchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceTouchView.swift; sourceTree = "<group>"; };
+		5C46BB4020F14CCB00C927B9 /* ForceGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceGestureRecognizer.swift; sourceTree = "<group>"; };
 		5C48D7DD20EFF9320032F2D5 /* TV Remote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TV Remote.entitlements"; sourceTree = "<group>"; };
 		5C7E40F520B3445F006DF2E4 /* TV Remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Remote.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C7E40F820B3445F006DF2E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,11 +118,16 @@
 			isa = PBXGroup;
 			children = (
 				5CBE61B120B3646B0057ED02 /* Functions.swift */,
-				5C39992220BA433A00B03CCE /* CustomImageView.swift */,
-				5C39991C20BA427200B03CCE /* CustomButton.swift */,
-				5C0F0F8B20BB886200544B28 /* ChannelTableCell.swift */,
-				5C39991820BA2C5400B03CCE /* Channel.swift */,
+				5C39992220BA433A00B03CCE /* CUImageView.swift */,
+				5C46BB3820F0E0F700C927B9 /* CULabel.swift */,
+				5C39991C20BA427200B03CCE /* CUButton.swift */,
 				5C0F0F8920BB7A5800544B28 /* Remote.swift */,
+				5C39991820BA2C5400B03CCE /* Channel.swift */,
+				5C0F0F8B20BB886200544B28 /* ChannelTableCell.swift */,
+				5C46BB3A20F0EFD700C927B9 /* UXView.swift */,
+				5C46BB3C20F1393A00C927B9 /* UXButton.swift */,
+				5C46BB3E20F14C3B00C927B9 /* ForceTouchView.swift */,
+				5C46BB4020F14CCB00C927B9 /* ForceGestureRecognizer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,14 +217,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C39991B20BA2F4200B03CCE /* ChannelsViewController.swift in Sources */,
+				5C46BB3F20F14C3B00C927B9 /* ForceTouchView.swift in Sources */,
 				5C0F0F8A20BB7A5800544B28 /* Remote.swift in Sources */,
-				5C39992320BA433A00B03CCE /* CustomImageView.swift in Sources */,
+				5C39992320BA433A00B03CCE /* CUImageView.swift in Sources */,
 				5C7E40FB20B3445F006DF2E4 /* RemoteViewController.swift in Sources */,
-				5C39991D20BA427200B03CCE /* CustomButton.swift in Sources */,
+				5C39991D20BA427200B03CCE /* CUButton.swift in Sources */,
 				5C39991920BA2C5400B03CCE /* Channel.swift in Sources */,
 				5C39991F20BA42BE00B03CCE /* TVViewController.swift in Sources */,
 				5C7E40F920B3445F006DF2E4 /* AppDelegate.swift in Sources */,
+				5C46BB3D20F1393A00C927B9 /* UXButton.swift in Sources */,
+				5C46BB3920F0E0F700C927B9 /* CULabel.swift in Sources */,
 				5C39992120BA42C100B03CCE /* SettingsViewController.swift in Sources */,
+				5C46BB3B20F0EFD700C927B9 /* UXView.swift in Sources */,
+				5C46BB4120F14CCB00C927B9 /* ForceGestureRecognizer.swift in Sources */,
 				5C0F0F8C20BB886200544B28 /* ChannelTableCell.swift in Sources */,
 				5CBE61B220B3646B0057ED02 /* Functions.swift in Sources */,
 			);

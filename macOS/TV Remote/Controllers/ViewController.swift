@@ -48,10 +48,6 @@ class ViewController: NSViewController, URLSessionDelegate {
         }
     }
     
-
-    
-
-    
     @IBAction func remoteChanged(_ sender: NSPopUpButton) {
         let remote = remotes[remoteList.indexOfSelectedItem]
         setValue(for: remote)

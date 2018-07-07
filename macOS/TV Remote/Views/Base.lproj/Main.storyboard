@@ -774,7 +774,7 @@
                                     <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f7c-Mc-t9H">
                                         <rect key="frame" x="63" y="66" width="152" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="square" title="Living Room" bezelStyle="shadowlessSquare" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="yJJ-zO-OJ5" id="Mgc-hJ-pxV">
+                                        <popUpButtonCell key="cell" type="square" title="Living Room" bezelStyle="shadowlessSquare" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" preferredEdge="maxY" selectedItem="yJJ-zO-OJ5" id="Mgc-hJ-pxV">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
                                             <menu key="menu" id="h6o-BT-pgT">
@@ -794,7 +794,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="SSID" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iJB-uG-ujY">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="getSSID:" target="9kf-Hi-rm8" id="Mh6-Z9-zph"/>
@@ -805,7 +805,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="IP" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5EP-XJ-ePF">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="getIP:" target="9kf-Hi-rm8" id="Sbx-P3-wzM"/>
@@ -814,7 +814,7 @@
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pts-19-BUW">
                                         <rect key="frame" x="63" y="0.0" width="103" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="192.168.10.1" drawsBackground="YES" id="3V5-Wn-63B">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="192.168.10.1" drawsBackground="YES" id="3V5-Wn-63B">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -843,7 +843,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="ADD" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nPN-zi-x6K">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N1p-mT-01q">
@@ -869,7 +869,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="HOST" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HMP-ME-gLI">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                     </button>
                                     <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4cl-RK-qpF">
@@ -877,7 +877,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="TYPE" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CzV-z0-AuP">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                     </button>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hYA-e4-JRc">
@@ -894,7 +894,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="EDIT" bezelStyle="smallSquare" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J9z-7a-hm7">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="editRemote:" target="9kf-Hi-rm8" id="D3x-FH-5BL"/>
@@ -905,7 +905,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="SAVE" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="606-eI-vec">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="saveRemote:" target="9kf-Hi-rm8" id="fCu-cc-Job"/>
@@ -916,7 +916,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="LOAD" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4sx-vp-LZq">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="loadRemote:" target="9kf-Hi-rm8" id="aFE-G2-A7e"/>
@@ -927,7 +927,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="CLS" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pxT-yd-Rb9">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system" size="12"/>
+                                            <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="clearRemote:" target="9kf-Hi-rm8" id="8Od-pS-dR2"/>
@@ -936,8 +936,8 @@
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVh-BF-d7X">
                                         <rect key="frame" x="174" y="0.0" width="41" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="3000" drawsBackground="YES" id="xIG-IJ-caO">
-                                            <font key="font" metaFont="system" size="12"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="3000" drawsBackground="YES" id="xIG-IJ-caO">
+                                            <font key="font" metaFont="cellTitle"/>
                                             <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
