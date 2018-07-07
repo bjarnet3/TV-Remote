@@ -257,7 +257,7 @@
                                             <action selector="buttonDownAction:" destination="BYZ-38-t0r" eventType="touchDown" id="nAI-0B-4Ot"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6O-7G-dvR" customClass="UXButton" customModule="TV_Remote" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6O-7G-dvR">
                                         <rect key="frame" x="150" y="113" width="74" height="74"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -534,6 +534,11 @@
                                     <outletCollection property="gestureRecognizers" destination="YaW-f7-xDl" appends="YES" id="Yz2-b7-0nX"/>
                                 </connections>
                             </view>
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L2p-7t-9RG" customClass="TouchableView" customModule="TV_Remote" customModuleProvider="target">
+                                <rect key="frame" x="67" y="221" width="240" height="225"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -545,6 +550,7 @@
                     <connections>
                         <outlet property="remotePicker" destination="YRO-hq-3d0" id="TTs-15-bgD"/>
                         <outlet property="tableView" destination="hOH-tX-Kix" id="bcU-2Q-4dQ"/>
+                        <outlet property="touchableView" destination="L2p-7t-9RG" id="h1p-ex-WlE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1009,11 +1015,6 @@
                                 <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="54k-Ki-qfZ" customClass="ForceTouchView" customModule="TV_Remote" customModuleProvider="target">
-                                <rect key="frame" x="68" y="185" width="179" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="1" green="0.19215686269999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1031,7 +1032,6 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="backView" destination="BHr-N6-f4o" id="e9e-Ej-21G"/>
-                        <outlet property="forceTouchView" destination="54k-Ki-qfZ" id="McL-vb-JR0"/>
                         <outlet property="progressView" destination="HDx-oP-bIR" id="TtW-NA-nTq"/>
                         <outlet property="remoteView" destination="QLe-FB-vz7" id="Rxu-MU-9Oa"/>
                         <outlet property="tableView" destination="YIY-a5-Uet" id="O99-K2-Ju1"/>
