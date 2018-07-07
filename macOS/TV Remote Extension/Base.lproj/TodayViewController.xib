@@ -5,7 +5,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner">
+        <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController" customModule="TV_Remote_Extension" customModuleProvider="target">
             <connections>
                 <outlet property="buttonHidden" destination="u5f-6J-aym" id="JW4-U5-9Ca"/>
                 <outlet property="channelList" destination="Qf3-9M-eyN" id="QEJ-X7-6hb"/>

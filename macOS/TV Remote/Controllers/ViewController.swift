@@ -11,13 +11,31 @@ import CoreWLAN
 
 class ViewController: NSViewController, URLSessionDelegate {
     
+    // MARK: - IBOutlet: Connection to Storyboard
+    // ----------------------------------------
+    @IBOutlet weak var channelList: NSComboBox!
     @IBOutlet weak var channelNumber: NSTextField!
     @IBOutlet weak var channelName: NSTextField!
     
-    // Channel & Remote list
-    @IBOutlet weak var channelList: NSComboBox!
     @IBOutlet weak var remoteList: NSPopUpButton!
     
+    @IBOutlet weak var ipTextField: NSTextField!
+    @IBOutlet weak var portTextField: NSTextField!
+    
+    @IBOutlet weak var ssidTextField: NSTextField!
+    @IBOutlet weak var hostTextField: NSTextField!
+    
+    @IBOutlet weak var nameTextField: NSTextField!
+    @IBOutlet weak var typeTextField: NSTextField!
+    
+    // MARK: - Properties: Array and Varables
+    // ----------------------------------------
+    var channels: [String: Int] = [:]
+    var lastRemote: Remote?
+    var remotes = [Remote]()
+    
+    // MARK: - IBAction: Methods connected to UI
+    // ----------------------------------------
     @IBAction func addChannel(_ sender: NSButton) {
         
         let channelNumberTitle = channelNumber.stringValue
@@ -30,8 +48,164 @@ class ViewController: NSViewController, URLSessionDelegate {
         }
     }
     
-    @IBAction func resetChannel(_ sender: NSButton) {
-        channels = [
+
+    
+
+    
+    @IBAction func remoteChanged(_ sender: NSPopUpButton) {
+        let remote = remotes[remoteList.indexOfSelectedItem]
+        setValue(for: remote)
+        getChannels(from: remote)
+    }
+    
+    // Save and Load Remote
+    // --------------------
+    @IBAction func saveRemote(_ sender: NSButton) {
+        // saveRemoteValue(for: remotes[remoteList.indexOfSelectedItem])
+        encodeRemotes()
+        
+        self.remoteList.removeAllItems()
+        self.remotes.removeAll()
+    }
+    
+    @IBAction func loadRemote(_ sender: NSButton) {
+        decodeRemotes()
+        /*
+        if let ssid = self.returnCurrentSSID() {
+            loadAll(from: ssid)
+        }
+         
+        if let remoteType = self.typeTextField.stringValue != "" ? self.typeTextField.stringValue : nil {
+            loadRemoteValue(from: remoteType)
+        }
+        */
+    }
+    
+    @IBAction func editRemote(_ sender: NSButton) {
+        if remoteList.isTransparent {
+            remoteList.isTransparent = false
+            remoteList.isEnabled = true
+            
+        } else {
+            remoteList.isTransparent = true
+            remoteList.isEnabled = false
+        }
+    }
+    
+    @IBAction func getSSID(_ sender: NSButton) {
+        getSSID()
+    }
+    
+    @IBAction func getIP(_ sender: NSButton) {
+        getIP()
+    }
+    
+    @IBAction func clearRemote(_ sender: NSButton) {
+        removeAllValues()
+    }
+    
+    // MARK: - Functions, Database & Animation
+    // ----------------------------------------
+    func setValue(for remote: Remote) {
+        self.ipTextField.stringValue = remote._remoteIP ?? ""
+        self.portTextField.stringValue = remote._remotePort ?? "3000"
+        self.ssidTextField.stringValue = remote._remoteSSID ?? ""
+        self.nameTextField.stringValue = remote.remoteName
+        self.typeTextField.stringValue = remote.remoteType
+        self.hostTextField.stringValue = remote._remoteHost ?? ""
+        
+        getChannels(from: remote)
+    }
+    
+    func setChannels() {
+        UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.set(self.channels, forKey: "channels")
+        UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.synchronize()
+        clearChannels()
+    }
+    
+    func getChannels(from remote: Remote) {
+        if let channels = remote._remoteChannels {
+            self.channels = channels
+        }
+    }
+    
+    func clearChannels() {
+        channelNumber.stringValue = ""
+        channelName.stringValue = ""
+    }
+    
+    func saveRemoteValue(for remote: Remote) {
+        if let encoded = try? JSONEncoder().encode(remote) {
+            UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.set(encoded, forKey: remote.remoteType)
+            UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.synchronize()
+        }
+    }
+    
+    func loadRemoteValue(from remoteType: String) {
+        if let remoteData = UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.data(forKey: remoteType),
+            let remote = try? JSONDecoder().decode(Remote.self, from: remoteData) {
+            
+            setValue(for: remote)
+            dump(remote)
+        }
+    }
+    
+    func removeAllValues() {
+        self.ipTextField.stringValue = ""
+        self.portTextField.stringValue = ""
+        self.ssidTextField.stringValue = ""
+        self.nameTextField.stringValue = ""
+        self.typeTextField.stringValue = ""
+        self.hostTextField.stringValue = ""
+    }
+    
+    // EncodeRemotes and Save to UserDefaults
+    // https://stackoverflow.com/questions/44441223/encode-decode-array-of-types-conforming-to-protocol-with-jsonencoder
+    func encodeRemotes() {
+        // Get SSID from Router
+        guard let SSID = returnCurrentSSID() else { return }
+        // Get array (remotes)
+        // --------------------------
+        let remotes = self.remotes
+        
+        // Save array and encode
+        // --------------------------
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(remotes) {
+            // Save to UserDefaults
+            UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.set(encoded, forKey: SSID)
+        }
+    }
+    
+    // DecodeRemotes and Load in Remote View
+    // -------------------------------
+    func decodeRemotes() {
+        // Get SSID from Router
+        guard let SSID = returnCurrentSSID() else { return }
+        // Load data from UserDefaults
+        // ---------------------------
+        if let remoteData = UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.value(forKey: SSID) as? Data {
+            let decoder = JSONDecoder()
+            if let loadRemotes = try? decoder.decode(Array.self, from: remoteData) as [Remote] {
+                loadRemotes.forEach {
+                    self.remotes.append($0)
+                    self.remoteList.addItem(withTitle: $0.remoteName)
+                }
+            }
+        }
+    }
+
+    // Setup Test Remotes with channels connected
+    // ------------------------------------------
+    func setupTestRemotes() {
+        for remote in self.remotes {
+            self.remoteList.addItem(withTitle: remote.remoteName)
+        }
+    }
+    
+    func setupRemotes() {
+        self.remoteList.removeAllItems()
+        let allChannels = [
             "NRK":1,
             "NRK2":2,
             "TV2":3,
@@ -57,40 +231,56 @@ class ViewController: NSViewController, URLSessionDelegate {
             "TV6": 37,
             "BBC World": 38
         ]
-    }
-    
-    var channels: [String: Int] = [:]
-    
-    func setChannels() {
-        UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.set(self.channels, forKey: "channels")
-        UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.synchronize()
-        clearChannels()
-    }
-    
-    func getChannels() {
+        
         if let channels = UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.dictionary(forKey: "channels") as? [String: Int] {
-            self.channels = channels
+            
+            let remote1 = Remote(remoteName: "Nanny Now", remoteType: "Samsung_AH59", remoteCommands: nil, remoteChannels: channels, remoteSSID: "Skuteviken", remoteHost: "Nanny-Remote.local", remoteIP: "192.168.10.120", remotePort: "3000")
+            self.remotes.append(remote1)
+            self.remoteList.addItem(withTitle: remote1.remoteName)
+            
+            let remote2 = Remote(remoteName: "Basic", remoteType: "Samsung_AH59", remoteCommands: nil, remoteChannels: [
+                "NRK":1, "NRK2":2, "TV2":3, "TVNorge": 4, "TV3":5], remoteSSID: "Skuteviken", remoteHost: "Basic-Remote.local", remoteIP: "192.168.10.120", remotePort: "3000")
+            self.remotes.append(remote2)
+            self.remoteList.addItem(withTitle: remote2.remoteName)
+            
+            let remote3 = Remote(remoteName: "All", remoteType: "Samsung_AH59", remoteCommands: nil, remoteChannels: allChannels, remoteSSID: "Skuteviken", remoteHost: "TV-Remote.local", remoteIP: "192.168.10.120", remotePort: "3000")
+            self.remotes.append(remote3)
+            self.remoteList.addItem(withTitle: remote3.remoteName)
         }
     }
     
-    func clearChannels() {
-        channelNumber.stringValue = ""
-        channelName.stringValue = ""
+    func getSSID() {
+        if let ssid = self.currentSSIDs().first {
+            ssidTextField.stringValue = ssid
+        }
     }
     
+    func getIP() {
+        if let host = self.hostTextField.stringValue != "" ? self.hostTextField.stringValue : nil {
+            if let ip = returnIPAddress(from: host) {
+                self.ipTextField.stringValue = ip
+            }
+        }
+    }
+    
+    // MARK: - ViewDidLoad, ViewWillLoad etc...
+    // ----------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        let SSIDs = currentSSIDs()
-        for SSID in SSIDs {
-            print(SSID)
-        }
         
         // self.channelList.addItems(withObjectValues: channels)
         channelList.delegate = self
         channelList.dataSource = self
         
-        getChannels()
+        // New Setup
+        // setupRemotes()
+        self.remoteList.removeAllItems()
+        self.remotes.removeAll()
+        
+        self.decodeRemotes()
+        
+        let remoteAtIndex = self.remotes[self.remoteList.indexOfSelectedItem]
+        getChannels(from: remoteAtIndex)
     }
 
     override var representedObject: Any? {
@@ -98,6 +288,7 @@ class ViewController: NSViewController, URLSessionDelegate {
         // Update the view, if already loaded.
         }
     }
+    
 }
 
 // NETWORK
@@ -198,6 +389,31 @@ extension ViewController {
         }
     }
     
+    func returnIPAddress(from: String) -> String? {
+        // Instansiate host with "name"
+        let host = CFHostCreateWithName(nil,from as CFString).takeRetainedValue()
+        // Start resolution
+        CFHostStartInfoResolution(host, .addresses, nil)
+        // success is false
+        var success: DarwinBoolean = false
+        // get addresses from CFHostGetAddressing, and get the firstObject
+        if let addresses = CFHostGetAddressing(host, &success)?.takeUnretainedValue() as NSArray?,
+            // Get last object // firstObject
+            let theAddress = addresses.lastObject as? NSData {
+            // Instansiate hostname
+            var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+            // Get host brain / engine
+            if getnameinfo(theAddress.bytes.assumingMemoryBound(to: sockaddr.self), socklen_t(theAddress.length),
+                           &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
+                // Set Address as readable String from [CChar]
+                let numAddress = String(cString: hostname)
+                return numAddress
+                // print(numAddress)
+            }
+        }
+        return nil
+    }
+    
     // https://forums.developer.apple.com/thread/50302
     // Probably iOS
     /*
@@ -224,6 +440,10 @@ extension ViewController {
         return client.interfaces()?.compactMap{ interface in
             return interface.ssid()
             } ?? []
+    }
+    
+    func returnCurrentSSID() -> String? {
+        return currentSSIDs().first
     }
 }
 
@@ -313,5 +533,24 @@ extension ViewController : NSComboBoxDelegate, NSComboBoxDataSource, NSComboBoxC
     
     func comboBoxWillPopUp(_ notification: Notification) {
         print("comboBoxWillPopUp")
+    }
+}
+
+//: Decodable Extension
+
+extension Decodable {
+    static func decode(data: Data) throws -> Self {
+        let decoder = JSONDecoder()
+        return try decoder.decode(Self.self, from: data)
+    }
+}
+
+//: Encodable Extension
+
+extension Encodable {
+    func encode() throws -> Data {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        return try encoder.encode(self)
     }
 }
