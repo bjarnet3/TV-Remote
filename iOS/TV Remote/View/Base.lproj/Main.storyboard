@@ -534,11 +534,6 @@
                                     <outletCollection property="gestureRecognizers" destination="YaW-f7-xDl" appends="YES" id="Yz2-b7-0nX"/>
                                 </connections>
                             </view>
-                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L2p-7t-9RG" customClass="TouchableView" customModule="TV_Remote" customModuleProvider="target">
-                                <rect key="frame" x="67" y="221" width="240" height="225"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -550,7 +545,6 @@
                     <connections>
                         <outlet property="remotePicker" destination="YRO-hq-3d0" id="TTs-15-bgD"/>
                         <outlet property="tableView" destination="hOH-tX-Kix" id="bcU-2Q-4dQ"/>
-                        <outlet property="touchableView" destination="L2p-7t-9RG" id="h1p-ex-WlE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -654,7 +648,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLe-FB-vz7" customClass="UXView" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="575" width="375" height="92"/>
                                 <subviews>
-                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="dvT-c6-wnj">
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="dvT-c6-wnj">
                                         <rect key="frame" x="300" y="0.0" width="75" height="43"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -669,7 +663,7 @@
                                             <action selector="buttonAction:" destination="x0A-80-CI7" eventType="touchUpInside" id="Qak-qn-Jgb"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" alpha="0.84999999999999998" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4J-Pz-olE">
+                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4J-Pz-olE">
                                         <rect key="frame" x="0.0" y="0.0" width="74" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -677,7 +671,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <inset key="titleEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="-26"/>
                                         <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="10" maxY="9"/>
-                                        <state key="normal" title="  Source" image="source_grey_medium">
+                                        <state key="normal" title="  Source" image="source_grey_medium2">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -704,7 +698,7 @@
                                         <accessibility key="accessibilityConfiguration" identifier="KEY_CHANNELUP"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <state key="normal" title="▲">
-                                            <color key="titleColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="1" green="0.18431372549019609" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="buttonAction:" destination="x0A-80-CI7" eventType="touchUpInside" id="STv-xq-x9r"/>
@@ -754,8 +748,8 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="KEY_MUTE"/>
-                                        <state key="normal" image="volume_mute_grey">
-                                            <color key="titleColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="volume_mute_6">
+                                            <color key="titleColor" red="1" green="0.18431372549019609" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="buttonAction:" destination="x0A-80-CI7" eventType="touchUpInside" id="t9d-cQ-zKF"/>
@@ -766,7 +760,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="KEY_CHANNELLIST"/>
-                                        <state key="normal" image="channel_list_grey">
+                                        <state key="normal" image="channel_list_grey5">
                                             <color key="titleColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -903,7 +897,7 @@
                                         <accessibility key="accessibilityConfiguration" identifier="KEY_GUIDE"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Guide" image="tabbar_tvguide">
+                                        <state key="normal" title="Guide" image="tabbar_tvguide2">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -1033,7 +1027,19 @@
                     <connections>
                         <outlet property="backView" destination="BHr-N6-f4o" id="e9e-Ej-21G"/>
                         <outlet property="progressView" destination="HDx-oP-bIR" id="TtW-NA-nTq"/>
+                        <outlet property="remoteBlueButton" destination="zZP-WV-riq" id="uSx-W5-sXG"/>
+                        <outlet property="remoteDownButton" destination="Qm2-mG-4aP" id="EwW-YR-vn5"/>
+                        <outlet property="remoteGreenButton" destination="hOn-i7-K7p" id="pvp-2N-Cox"/>
+                        <outlet property="remoteLeftButton" destination="CH5-CW-IKK" id="fbi-fr-9Py"/>
+                        <outlet property="remoteOKButton" destination="dJG-Ie-3Ao" id="4xm-X5-BzQ"/>
+                        <outlet property="remotePowerButton" destination="dvT-c6-wnj" id="sFY-vr-Xah"/>
+                        <outlet property="remoteRedButton" destination="cjW-cK-ZmC" id="PeL-kX-lCO"/>
+                        <outlet property="remoteRightButton" destination="llO-Dh-5eF" id="t4O-5l-UPo"/>
+                        <outlet property="remoteSourceButton" destination="S4J-Pz-olE" id="5dZ-Iz-Fwk"/>
+                        <outlet property="remoteUpButton" destination="TLO-00-EQv" id="Xlm-SI-SgH"/>
                         <outlet property="remoteView" destination="QLe-FB-vz7" id="Rxu-MU-9Oa"/>
+                        <outlet property="remoteYellowButton" destination="cYg-k2-A6O" id="0Na-RL-hsr"/>
+                        <outlet property="searchView" destination="BCe-NH-9v2" id="lhu-gG-fle"/>
                         <outlet property="tableView" destination="YIY-a5-Uet" id="O99-K2-Ju1"/>
                     </connections>
                 </viewController>
@@ -1130,12 +1136,16 @@
     </scenes>
     <resources>
         <image name="channel_list_grey" width="25" height="25"/>
+        <image name="channel_list_grey5" width="25" height="25"/>
         <image name="power_medium" width="18" height="18"/>
         <image name="source_grey_medium" width="17" height="17"/>
+        <image name="source_grey_medium2" width="17" height="17"/>
         <image name="tabbar_account-22" width="21" height="32"/>
         <image name="tabbar_remote2" width="32" height="48"/>
         <image name="tabbar_tv" width="32" height="48"/>
         <image name="tabbar_tvguide" width="32" height="48"/>
+        <image name="tabbar_tvguide2" width="32" height="48"/>
+        <image name="volume_mute_6" width="25" height="25"/>
         <image name="volume_mute_grey" width="25" height="25"/>
     </resources>
 </document>

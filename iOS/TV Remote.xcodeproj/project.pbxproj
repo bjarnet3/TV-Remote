@@ -25,6 +25,7 @@
 		5C7E40FE20B3445F006DF2E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E40FC20B3445F006DF2E4 /* Main.storyboard */; };
 		5C7E410020B34460006DF2E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E40FF20B34460006DF2E4 /* Assets.xcassets */; };
 		5C7E410320B34460006DF2E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E410120B34460006DF2E4 /* LaunchScreen.storyboard */; };
+		5C8E937420F16B5C006365E6 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E937320F16B5C006365E6 /* UIDevice+Extension.swift */; };
 		5CBE61B220B3646B0057ED02 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBE61B120B3646B0057ED02 /* Functions.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		5C7E40FF20B34460006DF2E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C7E410220B34460006DF2E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C7E410420B34460006DF2E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C8E937320F16B5C006365E6 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		5CBE61B120B3646B0057ED02 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +130,7 @@
 				5C46BB3C20F1393A00C927B9 /* UXButton.swift */,
 				5C61012420F1676200609EE1 /* TouchableView.swift */,
 				5C61012620F167BC00609EE1 /* TouchSpotView.swift */,
+				5C8E937320F16B5C006365E6 /* UIDevice+Extension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				5C7E40FB20B3445F006DF2E4 /* RemoteViewController.swift in Sources */,
 				5C39991D20BA427200B03CCE /* CUButton.swift in Sources */,
 				5C39991920BA2C5400B03CCE /* Channel.swift in Sources */,
+				5C8E937420F16B5C006365E6 /* UIDevice+Extension.swift in Sources */,
 				5C39991F20BA42BE00B03CCE /* TVViewController.swift in Sources */,
 				5C7E40F920B3445F006DF2E4 /* AppDelegate.swift in Sources */,
 				5C46BB3D20F1393A00C927B9 /* UXButton.swift in Sources */,

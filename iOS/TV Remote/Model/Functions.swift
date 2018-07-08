@@ -133,6 +133,38 @@ public func animateCellsWithProgress(in tableView: UITableView,_ animated: Bool 
     }
 }
 
+/// animate imageView or View (parallax Effect)
+public func addParallaxEffectOnView<T>(_ view: T, _ relativeMotionValue: Int) {
+    let relativeMotionValue = relativeMotionValue
+    let verticalMotionEffect : UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.y",
+                                                                                         type: .tiltAlongVerticalAxis)
+    verticalMotionEffect.minimumRelativeValue = -relativeMotionValue
+    verticalMotionEffect.maximumRelativeValue = relativeMotionValue
+    
+    let horizontalMotionEffect : UIInterpolatingMotionEffect = UIInterpolatingMotionEffect(keyPath: "center.x",
+                                                                                           type: .tiltAlongHorizontalAxis)
+    horizontalMotionEffect.minimumRelativeValue = -relativeMotionValue
+    horizontalMotionEffect.maximumRelativeValue = relativeMotionValue
+    
+    let group : UIMotionEffectGroup = UIMotionEffectGroup()
+    group.motionEffects = [horizontalMotionEffect, verticalMotionEffect]
+    
+    if let view = view as? UIView {
+        view.addMotionEffect(group)
+    } else {
+        print("unable to add parallax Effect on View / ImageView")
+    }
+    
+}
+
+/// removes motionEffects (on view), if any
+public func removeParallaxEffectOnView(_ view: UIView) {
+    let motionEffects = view.motionEffects
+    for motion in motionEffects {
+        view.removeMotionEffect(motion)
+    }
+}
+
 /// argument **String** of **#HEX** returns **UIColor** value
 public func hexStringToUIColor (_ hex:String, _ alpha: Float? = 1.0) -> UIColor {
     var cString:String = hex.trimmingCharacters(in: (NSCharacterSet.whitespacesAndNewlines as NSCharacterSet) as CharacterSet).uppercased()
