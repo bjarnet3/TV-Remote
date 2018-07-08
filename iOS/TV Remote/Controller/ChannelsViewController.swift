@@ -41,8 +41,8 @@ class ChannelsViewController: UIViewController {
     private var remoteIsHidden = true
     
     private var scrollContentOffset : CGFloat = 0.0
-    private var downDistance: CGFloat = 0.0
-    private var upDistance : CGFloat = 0.0
+    // private var downDistance: CGFloat = 0.0
+    // private var upDistance : CGFloat = 0.0
     
     private var lastRemote: Remote?
     private var remotes: [Remote] = [
@@ -211,6 +211,7 @@ class ChannelsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset.top = 40.0
+        tableView.contentInset.bottom = 20.0
         
         setParallaxEffectOnView()
         

@@ -639,11 +639,32 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BHr-N6-f4o" customClass="UXView" customModule="TV_Remote" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHr-N6-f4o" customClass="UXView" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HDx-oP-bIR">
+                                        <rect key="frame" x="0.0" y="74" width="375" height="3"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="progressTintColor" red="1" green="0.19215686269999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </progressView>
+                                    <searchBar contentMode="redraw" insetsLayoutMarginsFromSafeArea="NO" searchBarStyle="minimal" placeholder="Søk" translatesAutoresizingMaskIntoConstraints="NO" id="BCe-NH-9v2">
+                                        <rect key="frame" x="0.0" y="22" width="375" height="54"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="BCe-NH-9v2" secondAttribute="trailing" id="PoU-uh-qv8"/>
+                                    <constraint firstItem="BCe-NH-9v2" firstAttribute="leading" secondItem="BHr-N6-f4o" secondAttribute="leading" id="U5V-xB-S1y"/>
+                                    <constraint firstAttribute="bottom" secondItem="BCe-NH-9v2" secondAttribute="bottom" id="i82-ZD-Rg7"/>
+                                    <constraint firstItem="BCe-NH-9v2" firstAttribute="top" secondItem="BHr-N6-f4o" secondAttribute="top" constant="22" id="ltM-7I-HxA"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLe-FB-vz7" customClass="UXView" customModule="TV_Remote" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="575" width="375" height="92"/>
@@ -994,28 +1015,17 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HDx-oP-bIR">
-                                <rect key="frame" x="0.0" y="73" width="375" height="3"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="progressTintColor" red="1" green="0.19215686269999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </progressView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" searchBarStyle="minimal" placeholder="Søk" translatesAutoresizingMaskIntoConstraints="NO" id="BCe-NH-9v2">
-                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="1" green="0.19215686269999999" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="QLe-FB-vz7" firstAttribute="leading" secondItem="1oR-f6-c9h" secondAttribute="leading" id="4hU-YB-T3R"/>
+                            <constraint firstItem="1oR-f6-c9h" firstAttribute="bottom" secondItem="BHr-N6-f4o" secondAttribute="bottom" constant="542" id="8CJ-uh-M8m"/>
                             <constraint firstItem="QLe-FB-vz7" firstAttribute="top" secondItem="1oR-f6-c9h" secondAttribute="top" constant="555" id="9Bp-1s-CcO"/>
+                            <constraint firstItem="1oR-f6-c9h" firstAttribute="top" secondItem="BHr-N6-f4o" secondAttribute="top" constant="20" id="9WN-Ua-qKu"/>
+                            <constraint firstItem="BHr-N6-f4o" firstAttribute="leading" secondItem="1oR-f6-c9h" secondAttribute="leading" id="AHg-2j-6Td"/>
+                            <constraint firstItem="1oR-f6-c9h" firstAttribute="trailing" secondItem="BHr-N6-f4o" secondAttribute="trailing" id="dAi-cV-2Du"/>
                             <constraint firstItem="QLe-FB-vz7" firstAttribute="bottom" secondItem="ECw-xu-aen" secondAttribute="bottom" id="gsj-jx-lGv"/>
                             <constraint firstItem="1oR-f6-c9h" firstAttribute="trailing" secondItem="QLe-FB-vz7" secondAttribute="trailing" id="tp9-V9-cVI"/>
                         </constraints>

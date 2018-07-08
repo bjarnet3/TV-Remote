@@ -66,15 +66,6 @@ class ViewController: NSViewController, URLSessionDelegate {
     
     @IBAction func loadRemote(_ sender: NSButton) {
         decodeRemotes()
-        /*
-        if let ssid = self.returnCurrentSSID() {
-            loadAll(from: ssid)
-        }
-         
-        if let remoteType = self.typeTextField.stringValue != "" ? self.typeTextField.stringValue : nil {
-            loadRemoteValue(from: remoteType)
-        }
-        */
     }
     
     @IBAction func editRemote(_ sender: NSButton) {
@@ -428,7 +419,6 @@ extension ViewController {
         }
     }
     */
-    
     
     // https://forums.developer.apple.com/thread/50302
     func currentSSIDs() -> [String] {
