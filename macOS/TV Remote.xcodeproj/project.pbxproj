@@ -17,13 +17,15 @@
 		5C46F06C20F06B79008CAC7B /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46F06B20F06B79008CAC7B /* Remote.swift */; };
 		5C46F06E20F082A6008CAC7B /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46F06D20F082A6008CAC7B /* Channel.swift */; };
 		5C6B546D2010189200D367F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B546C2010189200D367F2 /* AppDelegate.swift */; };
-		5C6B546F2010189200D367F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B546E2010189200D367F2 /* ViewController.swift */; };
+		5C6B546F2010189200D367F2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B546E2010189200D367F2 /* SettingViewController.swift */; };
 		5C6B54742010189200D367F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6B54722010189200D367F2 /* Main.storyboard */; };
 		5C6B5483201025AD00D367F2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6B5482201025AD00D367F2 /* NotificationCenter.framework */; };
 		5C6B5486201025AD00D367F2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B5485201025AD00D367F2 /* TodayViewController.swift */; };
 		5C6B5489201025AD00D367F2 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6B5487201025AD00D367F2 /* TodayViewController.xib */; };
 		5C6B548D201025AD00D367F2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C6B548B201025AD00D367F2 /* InfoPlist.strings */; };
 		5C6B5491201025AD00D367F2 /* TV Remote Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5C6B5480201025AD00D367F2 /* TV Remote Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5C74FEA520F6C8D200E03BAD /* RemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C74FEA320F6C8D200E03BAD /* RemoteViewController.swift */; };
+		5C74FEA820F6D47300E03BAD /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C74FEA720F6D47300E03BAD /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +62,7 @@
 		5C46F06D20F082A6008CAC7B /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		5C6B54692010189200D367F2 /* TV Remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Remote.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6B546C2010189200D367F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5C6B546E2010189200D367F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5C6B546E2010189200D367F2 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		5C6B54702010189200D367F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C6B54732010189200D367F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5C6B54752010189200D367F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,6 +73,8 @@
 		5C6B5488201025AD00D367F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
 		5C6B548A201025AD00D367F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C6B548C201025AD00D367F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5C74FEA320F6C8D200E03BAD /* RemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteViewController.swift; sourceTree = "<group>"; };
+		5C74FEA720F6D47300E03BAD /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		5CD81043201161F800B439F9 /* TV Remote Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TV Remote Extension.entitlements"; sourceTree = "<group>"; };
 		5CD810442011620500B439F9 /* TV Remote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TV Remote.entitlements"; sourceTree = "<group>"; };
 		5CE157AC202285A600F8517A /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -98,7 +102,8 @@
 		5C27E29A20605A6A00CF56E2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5C6B546E2010189200D367F2 /* ViewController.swift */,
+				5C6B546E2010189200D367F2 /* SettingViewController.swift */,
+				5C74FEA320F6C8D200E03BAD /* RemoteViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				5C6B54722010189200D367F2 /* Main.storyboard */,
+				5C74FEA720F6D47300E03BAD /* CustomButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,7 +337,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C6B546F2010189200D367F2 /* ViewController.swift in Sources */,
+				5C6B546F2010189200D367F2 /* SettingViewController.swift in Sources */,
+				5C74FEA520F6C8D200E03BAD /* RemoteViewController.swift in Sources */,
+				5C74FEA820F6D47300E03BAD /* CustomButton.swift in Sources */,
 				5C46F06E20F082A6008CAC7B /* Channel.swift in Sources */,
 				5C6B546D2010189200D367F2 /* AppDelegate.swift in Sources */,
 				5C46F06C20F06B79008CAC7B /* Remote.swift in Sources */,

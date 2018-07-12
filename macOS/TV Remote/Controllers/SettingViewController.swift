@@ -9,7 +9,7 @@
 import Cocoa
 import CoreWLAN
 
-class SettingsViewController: NSViewController, URLSessionDelegate {
+class SettingViewController: NSViewController, URLSessionDelegate {
     
     // MARK: - IBOutlet: Connection to Storyboard
     // ----------------------------------------
@@ -279,7 +279,7 @@ class SettingsViewController: NSViewController, URLSessionDelegate {
 
 // NETWORK
 // -------
-extension SettingsViewController {
+extension SettingViewController {
     
     // LIST OF DEVICES / INTERFACES
     // https://stackoverflow.com/questions/25626117/how-to-get-ip-address-in-swift
@@ -436,7 +436,7 @@ extension SettingsViewController {
 // ---------------------------------------------------------------------------------------------------------
 // Thanx to https://github.com/creekpld/ComboBoxExample/blob/master/ComboBoxExample/ComboBoxDataSource.swift
 // ---------------------------------------------------------------------------------------------------------
-extension SettingsViewController : NSComboBoxDelegate, NSComboBoxDataSource, NSComboBoxCellDataSource {
+extension SettingViewController : NSComboBoxDelegate, NSComboBoxDataSource, NSComboBoxCellDataSource {
     // Standard Table / List implementation
     func numberOfItems(in comboBox: NSComboBox) -> Int {
         return channels.count
@@ -522,7 +522,6 @@ extension SettingsViewController : NSComboBoxDelegate, NSComboBoxDataSource, NSC
 }
 
 //: Decodable Extension
-
 extension Decodable {
     static func decode(data: Data) throws -> Self {
         let decoder = JSONDecoder()
