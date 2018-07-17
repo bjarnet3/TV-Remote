@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C273CCE20FE8D73001BF9E4 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46F06B20F06B79008CAC7B /* Remote.swift */; };
 		5C27E299206059C600CF56E2 /* KeyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C27E298206059C600CF56E2 /* KeyButton.swift */; };
 		5C3BB4922033D3CE00E5255E /* CustomComboCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BB48F2033D0EC00E5255E /* CustomComboCell.swift */; };
 		5C3BB4962033D62700E5255E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3BB4952033D62700E5255E /* Media.xcassets */; };
@@ -355,6 +356,7 @@
 				5C6B5486201025AD00D367F2 /* TodayViewController.swift in Sources */,
 				5C3BB4992033D72800E5255E /* CustomButton.swift in Sources */,
 				5C27E299206059C600CF56E2 /* KeyButton.swift in Sources */,
+				5C273CCE20FE8D73001BF9E4 /* Remote.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

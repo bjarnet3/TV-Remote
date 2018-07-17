@@ -43,14 +43,17 @@ class SettingViewController: NSViewController, URLSessionDelegate {
         if let channelNumberInt = Int(channelNumberTitle) {
             // channels = [channelNameTitle:channelNumberInt]
             channels.updateValue(channelNumberInt, forKey: channelNameTitle)
-            setChannels()
+            saveChannels()
         }
     }
     
+    // When remoteList changesValue
     @IBAction func remoteChanged(_ sender: NSPopUpButton) {
         let remote = remotes[remoteList.indexOfSelectedItem]
+        // Set Value On Remote
         setValue(for: remote)
-        getChannels(from: remote)
+        // 
+        setChannels(for: remote)
     }
     
     // Save and Load Remote
@@ -100,25 +103,28 @@ class SettingViewController: NSViewController, URLSessionDelegate {
         self.typeTextField.stringValue = remote.remoteType
         self.hostTextField.stringValue = remote._remoteHost ?? ""
         
-        getChannels(from: remote)
+        setChannels(for: remote)
     }
-    
-    func setChannels() {
-        UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.set(self.channels, forKey: "channels")
-        UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.synchronize()
-        clearChannels()
-    }
-    
-    func getChannels(from remote: Remote) {
+
+    // CHANNELS
+    // --------
+    func setChannels(for remote: Remote) {
         if let channels = remote._remoteChannels {
             self.channels = channels
         }
+    }
+    
+    func saveChannels() {
+        UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.set(self.channels, forKey: "channels")
+        UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.synchronize()
+        clearChannels()
     }
     
     func clearChannels() {
         channelNumber.stringValue = ""
         channelName.stringValue = ""
     }
+    // --------
     
     func saveRemoteValue(for remote: Remote) {
         if let encoded = try? JSONEncoder().encode(remote) {
@@ -134,6 +140,11 @@ class SettingViewController: NSViewController, URLSessionDelegate {
             setValue(for: remote)
             dump(remote)
         }
+    }
+    
+    func resetRemoteValue() {
+        guard let SSID = returnCurrentSSID() else { return }
+        UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.removeObject(forKey: SSID)
     }
     
     func removeAllValues() {
@@ -220,16 +231,16 @@ class SettingViewController: NSViewController, URLSessionDelegate {
         
         if let channels = UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.dictionary(forKey: "channels") as? [String: Int] {
             
-            let remote1 = Remote(remoteName: "Nanny Now", remoteType: "Samsung_AH59", remoteCommands: nil, remoteChannels: channels, remoteSSID: "Skuteviken", remoteHost: "Nanny-Remote.local", remoteIP: "192.168.10.120", remotePort: "3000")
+            let remote1 = Remote(remoteName: "TV Remote", remoteType: "Samsung_AH59", remoteCommands: nil, remoteChannels: channels, remoteSSID: "Skuteviken", remoteHost: "TV-Remote.local", remoteIP: "192.168.10.120", remotePort: "3000")
             self.remotes.append(remote1)
             self.remoteList.addItem(withTitle: remote1.remoteName)
             
-            let remote2 = Remote(remoteName: "Basic", remoteType: "Samsung_AH59", remoteCommands: nil, remoteChannels: [
-                "NRK":1, "NRK2":2, "TV2":3, "TVNorge": 4, "TV3":5], remoteSSID: "Skuteviken", remoteHost: "Basic-Remote.local", remoteIP: "192.168.10.120", remotePort: "3000")
+            let remote2 = Remote(remoteName: "TV Remote 2", remoteType: "Samsung_AH59", remoteCommands: nil, remoteChannels: [
+                "NRK":1, "NRK2":2, "TV2":3, "TVNorge": 4, "TV3":5], remoteSSID: "Skuteviken", remoteHost: "TV-Remote2.local", remoteIP: "192.168.10.117", remotePort: "3000")
             self.remotes.append(remote2)
             self.remoteList.addItem(withTitle: remote2.remoteName)
             
-            let remote3 = Remote(remoteName: "All", remoteType: "Samsung_AH59", remoteCommands: nil, remoteChannels: allChannels, remoteSSID: "Skuteviken", remoteHost: "TV-Remote.local", remoteIP: "192.168.10.120", remotePort: "3000")
+            let remote3 = Remote(remoteName: "ALL", remoteType: "Samsung_AH59", remoteCommands: nil, remoteChannels: allChannels, remoteSSID: "Skuteviken", remoteHost: "TV-Remote.local", remoteIP: "192.168.10.120", remotePort: "3000")
             self.remotes.append(remote3)
             self.remoteList.addItem(withTitle: remote3.remoteName)
         }
@@ -258,15 +269,16 @@ class SettingViewController: NSViewController, URLSessionDelegate {
         channelList.delegate = self
         channelList.dataSource = self
         
-        // New Setup
+        // Setup Remotes / Comment out when done
         // setupRemotes()
-        self.remoteList.removeAllItems()
-        self.remotes.removeAll()
+
+        // self.remoteList.removeAllItems()
+        // self.remotes.removeAll()
         
         self.decodeRemotes()
         
         let remoteAtIndex = self.remotes[self.remoteList.indexOfSelectedItem]
-        getChannels(from: remoteAtIndex)
+        setChannels(for: remoteAtIndex)
     }
 
     override var representedObject: Any? {

@@ -50,6 +50,9 @@
                             </items>
                         </menu>
                     </popUpButtonCell>
+                    <connections>
+                        <action selector="setRemoteAction:" target="-2" id="DQb-nk-SDi"/>
+                    </connections>
                 </popUpButton>
                 <comboBox focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qf3-9M-eyN">
                     <rect key="frame" x="0.0" y="175" width="293" height="46"/>

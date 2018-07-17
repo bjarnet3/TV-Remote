@@ -56,7 +56,7 @@ class RemoteViewController: NSViewController, URLSessionDelegate {
         self.remoteName = remote.remoteName
         self.remoteType = remote.remoteType
 
-        getChannels(from: remote)
+        setChannels(for: remote)
     }
     
     func setRemote() {
@@ -64,7 +64,7 @@ class RemoteViewController: NSViewController, URLSessionDelegate {
         setValue(for: remotes[index])
     }
     
-    func getChannels(from remote: Remote) {
+    func setChannels(for remote: Remote) {
         if let channels = remote._remoteChannels {
             self.channels = channels
         }
@@ -152,7 +152,7 @@ class RemoteViewController: NSViewController, URLSessionDelegate {
         self.decodeRemotes()
         
         let remoteAtIndex = self.remotes[self.remoteList.indexOfSelectedItem]
-        getChannels(from: remoteAtIndex)
+        setChannels(for: remoteAtIndex)
     }
     
     override var representedObject: Any? {

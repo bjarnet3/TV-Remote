@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CoreWLAN
 import NotificationCenter
 
 class TodayViewController: NSViewController, NCWidgetProviding {
@@ -39,42 +40,19 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     var lastSelectedButton: CustomButton?
     var settingsActive = false
 
-    /// **Hostname** followed by **.local** ie ( **family-iMac.local** )
-    var hostname = "TV-Remote.local"
-    var ipAddress = "192.168.10.120"
-    var portNumber = "3000"
-    var SSL: Bool = false
-    // var selectedRemote = "Samsung_AH59"
-    
     // Dictionary of channels,, just add name and channel number if you want more channels on the list
-    var channels = [
-        "NRK":1,
-        "NRK2":2,
-        "TV2":3,
-        "TVNorge": 4,
-        "TV3":5,
-        
-        "TV2 Zebra":7,
-        
-        "Viasat 4": 9,
-        "Fem": 10,
-        "BBC Brit": 11,
-        "Nyhetskanalen":12,
-        
-        "MAX":14,
-        "VOX":15,
-        "Discovery": 16,
-        "TLC Norge": 17,
-        "Fox": 18,
-        
-        "National Geographics": 20,
-        "History": 21,
-        
-        "TV6": 37,
-        "BBC World": 38
-    ]
+    var remotes = [Remote]()
+    var channels: [String: Int] = [:]
     
-    var remotes = ["Samsung" : "Samsung_AH59"]
+    var remoteName: String?
+    var remoteType: String?
+    
+    var ssid: String?
+    var host: String?
+    var ip: String?
+    var port: String?
+    var SSL: Bool = false
+    
     var keyColors = [0: nil, 1: NSColor.red, 2: NSColor.blue, 3: NSColor.green, 4: NSColor.yellow, 5: NSColor.purple, 6:NSColor.black, 7: NSColor.cyan, 8: NSColor.systemPink, 9: NSColor.white]
     
     // MARK: - IBAction:
@@ -150,7 +128,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     // PORT AND IP - ValueChanged
     @IBAction func portIPValueChanged(_ sender: NSTextField) {
         if portField.stringValue.isEmpty && ipAddressField.stringValue.isEmpty {
-            if self.ipAddress.isEmpty || self.portNumber.isEmpty {
+            if (self.ip?.isEmpty)! || (self.port?.isEmpty)! {
                 ipAddressField.placeholderString = "  [ IP adresse ]"
                 portField.placeholderString = "[ PORT ]"
             }
@@ -165,12 +143,12 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         ipAddressField.isEnabled = true
         portField.isEnabled = true
         if sender.title == "Get" {
-            ipAddressField.stringValue = ipAddress
-            portField.stringValue = portNumber
+            ipAddressField.stringValue = ip!
+            portField.stringValue = port!
             sender.title = "Set"
         } else {
-            self.ipAddress = ipAddressField.stringValue
-            self.portNumber = portField.stringValue
+            self.ip = ipAddressField.stringValue
+            self.port = portField.stringValue
             sender.title = "Get"
             ipAddressField.stringValue = ""
             portField.stringValue = ""
@@ -211,9 +189,13 @@ class TodayViewController: NSViewController, NCWidgetProviding {
             lastSelectedButton?.isEnabled = true
             lastSelectedButton?.isTransparent = buttonHidden.state == .on
             
-            setChannels()
+            saveChannels()
             getChannels()
         }
+    }
+    
+    @IBAction func setRemoteAction(_ sender: NSPopUpButton) {
+        setRemote()
     }
     
     // MARK: - FUNCTIONS:
@@ -222,12 +204,15 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     // Send IR signal to Server
     func sendHTTP(keyName: String) {
         // get remoteType from remoteList
-        guard let remote = remotes[remoteList.title] else { return }
+        guard let remote = self.remoteType else { return }
+        guard let ip = self.ip else { return }
+        // guard let host = self.host else { return }
+        guard let port = self.port else { return }
         
         // URL and HTTP POST Request
         // http://raspberrypi.local:3000/remotes/Samsung_AH59/KEY_POWER
-        let secureUrl = URL(string: "https://\(self.ipAddress):3001/remotes/\(remote)/\(keyName)")!
-        let unsecureUrl = URL(string: "http://\(self.ipAddress):\(self.portNumber)/remotes/\(remote)/\(keyName)")!
+        let secureUrl = URL(string: "https://\(ip):\(port)/remotes/\(remote)/\(keyName)")!
+        let unsecureUrl = URL(string: "http://\(ip):\(port)/remotes/\(remote)/\(keyName)")!
         
         // You can test with Curl in Terminal
         // curl -d POST http://192.168.10.120:3000/remotes/Samsung_AH59/KEY_MUTE (or raspberrypi.local:3000)
@@ -259,36 +244,57 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         }
     }
     
-    func getIPAddress(from: String) {
-        let host = CFHostCreateWithName(nil,from as CFString).takeRetainedValue()
-        CFHostStartInfoResolution(host, .addresses, nil)
-        
-        var success: DarwinBoolean = false
-        if let addresses = CFHostGetAddressing(host, &success)?.takeUnretainedValue() as NSArray? {
-            for case let theAddress as NSData in addresses {
-
-                var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-                if getnameinfo(theAddress.bytes.assumingMemoryBound(to: sockaddr.self), socklen_t(theAddress.length),
-                               &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
-                    let numAddress = String(cString: hostname)
-                    // Filter out IPV4
-                    if numAddress.count == 14 {
-                        self.ipAddress = numAddress
-                        print(numAddress)
-                    }
-                }
-            }
-        }
-    }
     
-    func setChannels() {
+    
+    func saveChannels() {
         UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.set(self.channels, forKey: "channels")
         UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.synchronize()
+    }
+    
+    func setChannels(for remote: Remote) {
+        if let channels = remote._remoteChannels {
+            self.channels = channels
+        }
     }
     
     func getChannels() {
         if let channels = UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.dictionary(forKey: "channels") as? [String: Int] {
             self.channels = channels
+        }
+    }
+    
+    func setValue(for remote: Remote) {
+        self.ip = remote._remoteIP ?? ""
+        self.port = remote._remotePort ?? "3000"
+        self.ssid = remote._remoteSSID ?? ""
+        self.host = remote._remoteHost ?? ""
+        
+        self.remoteName = remote.remoteName
+        self.remoteType = remote.remoteType
+        
+        setChannels(for: remote)
+    }
+    
+    func setRemote() {
+        let index = remoteList.indexOfSelectedItem
+        setValue(for: remotes[index])
+    }
+    
+    // DecodeRemotes and Load in Remote View
+    // -------------------------------
+    func decodeRemotes() {
+        // Get SSID from Router
+        guard let SSID = returnCurrentSSID() else { return }
+        // Load data from UserDefaults
+        // ---------------------------
+        if let remoteData = UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.value(forKey: SSID) as? Data {
+            let decoder = JSONDecoder()
+            if let loadRemotes = try? decoder.decode(Array.self, from: remoteData) as [Remote] {
+                loadRemotes.forEach {
+                    self.remotes.append($0)
+                    self.remoteList.addItem(withTitle: $0.remoteName)
+                }
+            }
         }
     }
     
@@ -299,18 +305,22 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         channelList.delegate = self
         channelList.dataSource = self
         
+        // New Setup
+        // setupRemotes()
+        self.remoteList.removeAllItems()
+        self.remotes.removeAll()
+        
+        self.decodeRemotes()
+        
+        let remoteAtIndex = self.remotes[self.remoteList.indexOfSelectedItem]
+        setChannels(for: remoteAtIndex)
+        
         // NETWORK TESTING
-        getIPAddress(from: hostname)
+        // getIPAddress(from: hostname)
         
         // SET BUTTON (TEST)
         // setButtons()
-        getChannels()
-        
-        // REMOTE TESTING
-        remoteList.removeAllItems()
-        for key in remotes.keys {
-            remoteList.addItem(withTitle: key)
-        }
+        // getChannels()
     }
     
     override var nibName: NSNib.Name? {
@@ -324,6 +334,46 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         // time we called you
         completionHandler(.noData)
     }
+}
+
+// NETWORK
+// -------
+extension TodayViewController {
+    
+    // https://forums.developer.apple.com/thread/50302
+    func currentSSIDs() -> [String] {
+        let client = CWWiFiClient.shared()
+        return client.interfaces()?.compactMap{ interface in
+            return interface.ssid()
+            } ?? []
+    }
+    
+    func returnCurrentSSID() -> String? {
+        return currentSSIDs().first
+    }
+    
+    func getIPAddress(from: String) {
+        let host = CFHostCreateWithName(nil,from as CFString).takeRetainedValue()
+        CFHostStartInfoResolution(host, .addresses, nil)
+        
+        var success: DarwinBoolean = false
+        if let addresses = CFHostGetAddressing(host, &success)?.takeUnretainedValue() as NSArray? {
+            for case let theAddress as NSData in addresses {
+                
+                var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+                if getnameinfo(theAddress.bytes.assumingMemoryBound(to: sockaddr.self), socklen_t(theAddress.length),
+                               &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
+                    let numAddress = String(cString: hostname)
+                    // Filter out IPV4
+                    if numAddress.count == 14 {
+                        self.ip = numAddress
+                        print(numAddress)
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 // MARK: - EXTENSIONS / COMBOBOX / DELEGATES / DATASOURCES
