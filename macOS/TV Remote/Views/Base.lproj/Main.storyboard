@@ -698,10 +698,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Setting View Controller-->
+        <!--Settings-->
         <scene sceneID="DHf-Ze-hU6">
             <objects>
-                <viewController id="9kf-Hi-rm8" customClass="SettingViewController" customModule="TV_Remote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Settings" id="9kf-Hi-rm8" customClass="SettingViewController" customModule="TV_Remote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="hf4-YG-nN7">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="314"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -774,16 +774,10 @@
                                     <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f7c-Mc-t9H">
                                         <rect key="frame" x="63" y="66" width="152" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="square" title="Living Room" bezelStyle="shadowlessSquare" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" preferredEdge="maxY" selectedItem="yJJ-zO-OJ5" id="Mgc-hJ-pxV">
+                                        <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" preferredEdge="maxY" id="Mgc-hJ-pxV">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
-                                            <menu key="menu" id="h6o-BT-pgT">
-                                                <items>
-                                                    <menuItem title="Living Room" state="on" id="yJJ-zO-OJ5"/>
-                                                    <menuItem title="Bed Room" id="Jmz-I6-yDm"/>
-                                                    <menuItem title="Kitchen" id="gnU-Qq-KSO"/>
-                                                </items>
-                                            </menu>
+                                            <menu key="menu" id="h6o-BT-pgT"/>
                                         </popUpButtonCell>
                                         <connections>
                                             <action selector="remoteChanged:" target="9kf-Hi-rm8" id="grU-Cd-YFU"/>
@@ -989,32 +983,23 @@
             </objects>
             <point key="canvasLocation" x="75" y="627"/>
         </scene>
-        <!--Remote View Controller-->
+        <!--Test Remote-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="RemoteViewController" customModule="TV_Remote" customModuleProvider="target" sceneMemberID="viewController">
-                    <customView key="view" wantsLayer="YES" appearanceType="aqua" misplaced="YES" simulatedAppContext="notificationCenter" id="Rxo-U4-9TH">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="269"/>
+                <viewController title="Test Remote" id="XfG-lQ-9wD" customClass="RemoteViewController" customModule="TV_Remote" customModuleProvider="target" sceneMemberID="viewController">
+                    <customView key="view" wantsLayer="YES" appearanceType="aqua" simulatedAppContext="notificationCenter" id="Rxo-U4-9TH">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="261"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="e1K-gE-hlA">
                                 <rect key="frame" x="157" y="238" width="158" height="23"/>
-                                <popUpButtonCell key="cell" type="square" title="Samsung" bezelStyle="shadowlessSquare" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" arrowPosition="noArrow" preferredEdge="maxY" selectedItem="b8y-Cs-BaH" id="lhO-M7-Tov">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="3dC-aD-D5O"/>
+                                </constraints>
+                                <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" id="lhO-M7-Tov">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="kPh-Dr-bKn">
-                                        <items>
-                                            <menuItem title="Samsung" state="on" id="b8y-Cs-BaH">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Lenovo" id="hFq-nc-8kU">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Xbox" id="ClL-bG-3BI">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                        </items>
-                                    </menu>
+                                    <menu key="menu" id="kPh-Dr-bKn"/>
                                 </popUpButtonCell>
                                 <connections>
                                     <action selector="setRemoteAction:" target="XfG-lQ-9wD" id="4pe-h1-8oM"/>
@@ -2060,7 +2045,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1027"/>
+            <point key="canvasLocation" x="75" y="1026.5"/>
         </scene>
     </scenes>
 </document>

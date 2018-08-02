@@ -43,15 +43,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     // Dictionary of channels,, just add name and channel number if you want more channels on the list
     var remotes = [Remote]()
     var channels: [String: Int] = [:]
-    
-    var remoteName: String?
-    var remoteType: String?
-    
-    var ssid: String?
-    var host: String?
-    var ip: String?
-    var port: String?
-    var SSL: Bool = false
+    var selectedRemote: Remote?
     
     var keyColors = [0: nil, 1: NSColor.red, 2: NSColor.blue, 3: NSColor.green, 4: NSColor.yellow, 5: NSColor.purple, 6:NSColor.black, 7: NSColor.cyan, 8: NSColor.systemPink, 9: NSColor.white]
     
@@ -68,8 +60,10 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     @IBAction func keyAction(_ sender: CustomButton) {
         if !settingsActive {
             if !sender.isTransparent {
-                let identifier = sender.alternateTitle
-                sendHTTP(keyName: identifier)
+                if let remote = self.selectedRemote {
+                    let identifier = sender.alternateTitle
+                    remote.sendHTTP(keyName: identifier)
+                }
             }
         } else {
             lastSelectedButton?.isEnabled = true
@@ -128,10 +122,8 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     // PORT AND IP - ValueChanged
     @IBAction func portIPValueChanged(_ sender: NSTextField) {
         if portField.stringValue.isEmpty && ipAddressField.stringValue.isEmpty {
-            if (self.ip?.isEmpty)! || (self.port?.isEmpty)! {
                 ipAddressField.placeholderString = "  [ IP adresse ]"
                 portField.placeholderString = "[ PORT ]"
-            }
             self.setNetworkButton.title = "Get"
         } else {
             self.setNetworkButton.title = "Set"
@@ -142,17 +134,19 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     @IBAction func setPortAndIP(_ sender: NSButton) {
         ipAddressField.isEnabled = true
         portField.isEnabled = true
-        if sender.title == "Get" {
-            ipAddressField.stringValue = ip!
-            portField.stringValue = port!
-            sender.title = "Set"
-        } else {
-            self.ip = ipAddressField.stringValue
-            self.port = portField.stringValue
-            sender.title = "Get"
-            ipAddressField.stringValue = ""
-            portField.stringValue = ""
-        }
+        var remote = self.selectedRemote
+            if sender.title == "Get" {
+                ipAddressField.stringValue = remote?._remoteIP ?? ""
+                portField.stringValue = remote?._remotePort ?? ""
+                sender.title = "Set"
+            } else {
+                remote?.setIP(ipAdress: ipAddressField.stringValue)
+                remote?.setPort(port: portField.stringValue)
+                sender.title = "Get"
+                ipAddressField.stringValue = ""
+                portField.stringValue = ""
+            }
+        
     }
     
     // IR CODE AND KEY NAME - ValueChanged
@@ -201,50 +195,21 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     // MARK: - FUNCTIONS:
     // ----------------------------------------
     
-    // Send IR signal to Server
-    func sendHTTP(keyName: String) {
-        // get remoteType from remoteList
-        guard let remote = self.remoteType else { return }
-        guard let ip = self.ip else { return }
-        // guard let host = self.host else { return }
-        guard let port = self.port else { return }
-        
-        // URL and HTTP POST Request
-        // http://raspberrypi.local:3000/remotes/Samsung_AH59/KEY_POWER
-        let secureUrl = URL(string: "https://\(ip):\(port)/remotes/\(remote)/\(keyName)")!
-        let unsecureUrl = URL(string: "http://\(ip):\(port)/remotes/\(remote)/\(keyName)")!
-        
-        // You can test with Curl in Terminal
-        // curl -d POST http://192.168.10.120:3000/remotes/Samsung_AH59/KEY_MUTE (or raspberrypi.local:3000)
-        
-        let url = self.SSL ? secureUrl : unsecureUrl
-        let session = URLSession.shared
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-        })
-        task.resume()
-    }
-    
     func returnChannel(from: Int) {
-        let channelNumberString = String(from)
-        for (idx, channel) in channelNumberString.enumerated() {
-            let keyString = "KEY_\(channel)"
-            if (idx + 1) == channelNumberString.count {
-                sendHTTP(keyName: keyString)
-                sendHTTP(keyName: "KEY_OK")
-            } else {
-                sendHTTP(keyName: keyString)
+        if let remote = self.selectedRemote {
+            let channelNumberString = String(from)
+            for (idx, channel) in channelNumberString.enumerated() {
+                let keyString = "KEY_\(channel)"
+                if (idx + 1) == channelNumberString.count {
+                    remote.sendHTTP(keyName: keyString)
+                    remote.sendHTTP(keyName: "KEY_OK")
+                } else {
+                    remote.sendHTTP(keyName: keyString)
+                }
             }
         }
+        
     }
-    
-    
     
     func saveChannels() {
         UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.set(self.channels, forKey: "channels")
@@ -264,19 +229,12 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     }
     
     func setValue(for remote: Remote) {
-        self.ip = remote._remoteIP ?? ""
-        self.port = remote._remotePort ?? "3000"
-        self.ssid = remote._remoteSSID ?? ""
-        self.host = remote._remoteHost ?? ""
-        
-        self.remoteName = remote.remoteName
-        self.remoteType = remote.remoteType
-        
         setChannels(for: remote)
     }
     
     func setRemote() {
         let index = remoteList.indexOfSelectedItem
+        self.selectedRemote = remotes[index]
         setValue(for: remotes[index])
     }
     
@@ -311,16 +269,6 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         self.remotes.removeAll()
         
         self.decodeRemotes()
-        
-        let remoteAtIndex = self.remotes[self.remoteList.indexOfSelectedItem]
-        setChannels(for: remoteAtIndex)
-        
-        // NETWORK TESTING
-        // getIPAddress(from: hostname)
-        
-        // SET BUTTON (TEST)
-        // setButtons()
-        // getChannels()
     }
     
     override var nibName: NSNib.Name? {
@@ -366,7 +314,7 @@ extension TodayViewController {
                     let numAddress = String(cString: hostname)
                     // Filter out IPV4
                     if numAddress.count == 14 {
-                        self.ip = numAddress
+                        // self.ip = numAddress
                         print(numAddress)
                     }
                 }

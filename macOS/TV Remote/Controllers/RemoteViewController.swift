@@ -21,16 +21,7 @@ class RemoteViewController: NSViewController, URLSessionDelegate {
     // ----------------------------------------
     var remotes = [Remote]()
     var channels: [String: Int] = [:]
-    // var lastRemote: Remote?
-    
-    var ssid: String?
-    var host: String?
-    var ip: String?
-    var port: String?
-    var SSL: Bool = false
-    
-    var remoteName: String?
-    var remoteType: String?
+    var selectedRemote: Remote?
     
     // MARK: - IBAction: Methods connected to UI
     // ----------------------------------------
@@ -38,7 +29,10 @@ class RemoteViewController: NSViewController, URLSessionDelegate {
     // ALL BUTTON ACTIONS except "Channel List"
     @IBAction func keyAction(_ sender: CustomButton) {
         let identifier = sender.alternateTitle
-        sendHTTP(keyName: identifier)
+        if let remote = self.selectedRemote {
+            remote.sendHTTP(keyName: identifier)
+        }
+        // sendHTTP(keyName: identifier)
     }
     
     @IBAction func setRemoteAction(_ sender: NSPopUpButton) {
@@ -47,21 +41,11 @@ class RemoteViewController: NSViewController, URLSessionDelegate {
     
     // MARK: - Functions, Database & Animation
     // ----------------------------------------
-    func setValue(for remote: Remote) {
-        self.ip = remote._remoteIP ?? ""
-        self.port = remote._remotePort ?? "3000"
-        self.ssid = remote._remoteSSID ?? ""
-        self.host = remote._remoteHost ?? ""
-        
-        self.remoteName = remote.remoteName
-        self.remoteType = remote.remoteType
-
-        setChannels(for: remote)
-    }
-    
     func setRemote() {
         let index = remoteList.indexOfSelectedItem
-        setValue(for: remotes[index])
+        let remote = remotes[index]
+        setChannels(for: remote)
+        self.selectedRemote = remote
     }
     
     func setChannels(for remote: Remote) {
@@ -70,60 +54,11 @@ class RemoteViewController: NSViewController, URLSessionDelegate {
         }
     }
     
-    // Send IR signal to Server
-    func sendHTTP(keyName: String) {
-        // get remoteType from remoteList
-        guard let remote = self.remoteType else { return }
-        guard let ip = self.ip else { return }
-        // guard let host = self.host else { return }
-        guard let port = self.port else { return }
-        
-        // URL and HTTP POST Request
-        // http://raspberrypi.local:3000/remotes/Samsung_AH59/KEY_POWER
-        let secureUrl = URL(string: "https://\(ip):\(port)/remotes/\(remote)/\(keyName)")!
-        let unsecureUrl = URL(string: "http://\(ip):\(port)/remotes/\(remote)/\(keyName)")!
-        
-        print(unsecureUrl)
-        print(secureUrl)
-        
-        // You can test with Curl in Terminal
-        // curl -d POST http://192.168.10.120:3000/remotes/Samsung_AH59/KEY_MUTE (or raspberrypi.local:3000)
-        
-        let url = self.SSL ? secureUrl : unsecureUrl
-        let session = URLSession.shared
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-        })
-        task.resume()
-    }
-    
-    // NOT IN USE YET
-    // --------------
-    func returnChannel(from: Int) {
-        let channelNumberString = String(from)
-        for (idx, channel) in channelNumberString.enumerated() {
-            let keyString = "KEY_\(channel)"
-            if (idx + 1) == channelNumberString.count {
-                sendHTTP(keyName: keyString)
-                sendHTTP(keyName: "KEY_OK")
-            } else {
-                sendHTTP(keyName: keyString)
-            }
-        }
-    }
-    
     // DecodeRemotes and Load in Remote View
     // -------------------------------
     func decodeRemotes() {
         // Get SSID from Router
         guard let SSID = returnCurrentSSID() else { return }
-        self.ssid = SSID
         // Load data from UserDefaults
         // ---------------------------
         if let remoteData = UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.value(forKey: SSID) as? Data {
@@ -144,15 +79,7 @@ class RemoteViewController: NSViewController, URLSessionDelegate {
         channelList.delegate = self
         channelList.dataSource = self
         
-        // New Setup
-        // setupRemotes()
-        self.remoteList.removeAllItems()
-        self.remotes.removeAll()
-        
         self.decodeRemotes()
-        
-        let remoteAtIndex = self.remotes[self.remoteList.indexOfSelectedItem]
-        setChannels(for: remoteAtIndex)
     }
     
     override var representedObject: Any? {

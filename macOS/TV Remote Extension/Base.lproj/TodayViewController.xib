@@ -32,23 +32,11 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
                 <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="3rr-1Z-8BN">
-                    <rect key="frame" x="96" y="238" width="98" height="23"/>
-                    <popUpButtonCell key="cell" type="square" title="Samsung" bezelStyle="shadowlessSquare" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" arrowPosition="noArrow" preferredEdge="maxY" selectedItem="nxN-nD-9sX" id="Nxf-Xs-euU">
+                    <rect key="frame" x="96" y="255" width="98" height="6"/>
+                    <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" inset="2" arrowPosition="noArrow" preferredEdge="maxY" id="Nxf-Xs-euU">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="3Wc-3p-mUO">
-                            <items>
-                                <menuItem title="Samsung" state="on" id="nxN-nD-9sX">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Lenovo" id="94d-rL-wWh">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                                <menuItem title="Xbox" id="2Ga-kQ-pAl">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                            </items>
-                        </menu>
+                        <menu key="menu" id="3Wc-3p-mUO"/>
                     </popUpButtonCell>
                     <connections>
                         <action selector="setRemoteAction:" target="-2" id="DQb-nk-SDi"/>
@@ -341,7 +329,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zic-uT-M8y">
-                    <rect key="frame" x="116" y="218" width="58" height="21"/>
+                    <rect key="frame" x="116" y="235" width="58" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="19" id="Vc0-3H-rZS"/>
                     </constraints>
