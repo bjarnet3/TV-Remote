@@ -22,8 +22,6 @@ class RemoteViewController: UIViewController {
     
     @IBOutlet weak var touchableView: TouchableView!
     
-    
-    
     /// **Hostname** followed by **.local** ie ( **family-iMac.local** )
     var hostname = "TV-Remote.local"
     var ipAddress = "192.168.10.120"

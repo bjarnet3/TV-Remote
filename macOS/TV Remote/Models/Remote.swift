@@ -20,11 +20,12 @@ struct Remote: Codable {
     private (set) public var _remoteCommands: [String]?
     private (set) public var _remoteChannels: [String:Int]?
     private (set) public var _remoteLocation: Coordinate?
+    private (set) public var _remoteSelected = false
     private (set) public var _remoteSSID: String?
     private (set) public var _remoteHost: String?
     private (set) public var _remoteIP: String?
     private (set) public var _remotePort: String?
-    private (set) public var _remoteSSL: Bool = false
+    private (set) public var _remoteSSL = false
     
     var remoteType: String {
         return _remoteType
@@ -39,6 +40,10 @@ struct Remote: Codable {
     
     mutating func setPort(port: String) {
         self._remotePort = port
+    }
+    
+    mutating func setSelected(selected: Bool) {
+        self._remoteSelected = selected
     }
     
     // Send IR signal to Server

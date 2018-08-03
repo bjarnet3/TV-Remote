@@ -74,7 +74,7 @@ class SettingViewController: NSViewController, URLSessionDelegate {
     }
     
     @IBAction func loadRemote(_ sender: NSButton) {
-        decodeRemotes()
+        setupTestRemotes()
     }
     
     @IBAction func getSSID(_ sender: NSButton) {
@@ -87,6 +87,10 @@ class SettingViewController: NSViewController, URLSessionDelegate {
     
     @IBAction func clearRemote(_ sender: NSButton) {
         clearAllValues()
+    }
+    
+    @IBAction func clearRemotes(_ sender: Any) {
+        removeRemotes()
     }
     
     // MARK: - Functions, Database & Animation
@@ -130,16 +134,11 @@ class SettingViewController: NSViewController, URLSessionDelegate {
         }
     }
     
-    func loadRemoteValue(from remoteType: String) {
-        if let remoteData = UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.data(forKey: remoteType),
-            let remote = try? JSONDecoder().decode(Remote.self, from: remoteData) {
-            
-            setValue(for: remote)
-            dump(remote)
-        }
+    func clearRemotes() {
+        self.remotes.removeAll()
     }
     
-    func resetRemoteValue() {
+    func removeRemotes() {
         guard let SSID = returnCurrentSSID() else { return }
         UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.removeObject(forKey: SSID)
     }
@@ -246,6 +245,8 @@ class SettingViewController: NSViewController, URLSessionDelegate {
             self.remotes.append(remote3)
             self.remoteList.addItem(withTitle: remote3.remoteName)
         }
+        self.encodeRemotes()
+        
     }
 
     // MARK: - ViewDidLoad, ViewWillLoad etc...
@@ -258,7 +259,6 @@ class SettingViewController: NSViewController, URLSessionDelegate {
         channelList.dataSource = self
         
         self.decodeRemotes()
-        self.setupRemote()
     }
 
     override var representedObject: Any? {
