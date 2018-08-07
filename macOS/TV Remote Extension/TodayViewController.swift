@@ -43,7 +43,11 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     // Dictionary of channels,, just add name and channel number if you want more channels on the list
     var remotes = [Remote]()
     var channels: [String: Int] = [:]
+    
     var selectedRemote: Remote?
+    var selectedRemoteIndex: Int = 0
+    var lastSelectedRemoteIndex: Int = 0
+
     
     var keyColors = [0: nil, 1: NSColor.red, 2: NSColor.blue, 3: NSColor.green, 4: NSColor.yellow, 5: NSColor.purple, 6:NSColor.black, 7: NSColor.cyan, 8: NSColor.systemPink, 9: NSColor.white]
     
@@ -234,8 +238,33 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     
     func setRemote() {
         let index = remoteList.indexOfSelectedItem
+
         self.selectedRemote = remotes[index]
+        remotes[index].setSelected(selected: true)
+        self.lastSelectedRemoteIndex = index
+        remotes[lastSelectedRemoteIndex].setSelected(selected: false)
+        
         setValue(for: remotes[index])
+        encodeRemotes()
+    }
+    
+    // EncodeRemotes and Save to UserDefaults
+    // https://stackoverflow.com/questions/44441223/encode-decode-array-of-types-conforming-to-protocol-with-jsonencoder
+    func encodeRemotes() {
+        // Get SSID from Router
+        guard let SSID = returnCurrentSSID() else { return }
+        // Get array (remotes)
+        // --------------------------
+        let remotes = self.remotes
+        
+        // Save array and encode
+        // --------------------------
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(remotes) {
+            // Save to UserDefaults
+            UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.set(encoded, forKey: SSID)
+            UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.synchronize()
+        }
     }
     
     // DecodeRemotes and Load in Remote View
