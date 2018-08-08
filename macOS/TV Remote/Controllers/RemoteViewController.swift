@@ -58,7 +58,7 @@ class RemoteViewController: NSViewController, URLSessionDelegate {
     // -------------------------------
     func decodeRemotes() {
         // Get SSID from Router
-        guard let SSID = returnCurrentSSID() else { return }
+        guard let SSID = Network.instance.returnSSID() else { return }
         // Load data from UserDefaults
         // ---------------------------
         if let remoteData = UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.value(forKey: SSID) as? Data {
@@ -88,23 +88,6 @@ class RemoteViewController: NSViewController, URLSessionDelegate {
         }
     }
     
-}
-
-// NETWORK
-// -------
-extension RemoteViewController {
-    
-    // https://forums.developer.apple.com/thread/50302
-    func currentSSIDs() -> [String] {
-        let client = CWWiFiClient.shared()
-        return client.interfaces()?.compactMap{ interface in
-            return interface.ssid()
-            } ?? []
-    }
-    
-    func returnCurrentSSID() -> String? {
-        return currentSSIDs().first
-    }
 }
 
 extension RemoteViewController : NSComboBoxDelegate, NSComboBoxDataSource, NSComboBoxCellDataSource {

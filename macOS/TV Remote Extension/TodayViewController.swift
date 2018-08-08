@@ -48,12 +48,10 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     var selectedRemoteIndex: Int = 0
     var lastSelectedRemoteIndex: Int = 0
 
-    
     var keyColors = [0: nil, 1: NSColor.red, 2: NSColor.blue, 3: NSColor.green, 4: NSColor.yellow, 5: NSColor.purple, 6:NSColor.black, 7: NSColor.cyan, 8: NSColor.systemPink, 9: NSColor.white]
     
     // MARK: - IBAction:
     // ----------------------------------------
-    
     @IBAction func hideKey(_ sender: NSButton) {
         lastSelectedButton?.state = sender.state
         lastSelectedButton?.isTransparent = sender.state == .on ? true : false
@@ -198,7 +196,6 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     
     // MARK: - FUNCTIONS:
     // ----------------------------------------
-    
     func returnChannel(from: Int) {
         if let remote = self.selectedRemote {
             let channelNumberString = String(from)
@@ -241,6 +238,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
 
         self.selectedRemote = remotes[index]
         remotes[index].setSelected(selected: true)
+        
         self.lastSelectedRemoteIndex = index
         remotes[lastSelectedRemoteIndex].setSelected(selected: false)
         
@@ -252,7 +250,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     // https://stackoverflow.com/questions/44441223/encode-decode-array-of-types-conforming-to-protocol-with-jsonencoder
     func encodeRemotes() {
         // Get SSID from Router
-        guard let SSID = returnCurrentSSID() else { return }
+        guard let SSID = Network.instance.returnSSID() else { return }
         // Get array (remotes)
         // --------------------------
         let remotes = self.remotes
@@ -271,7 +269,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     // -------------------------------
     func decodeRemotes() {
         // Get SSID from Router
-        guard let SSID = returnCurrentSSID() else { return }
+        guard let SSID = Network.instance.returnSSID() else { return }
         // Load data from UserDefaults
         // ---------------------------
         if let remoteData = UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.value(forKey: SSID) as? Data {
@@ -298,6 +296,11 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         self.remotes.removeAll()
         
         self.decodeRemotes()
+        
+        // Set First Remote In List
+        // ------------------------
+        self.remoteList.selectItem(at: 0)
+        self.setRemote()
     }
     
     override var nibName: NSNib.Name? {
@@ -311,46 +314,6 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         // time we called you
         completionHandler(.noData)
     }
-}
-
-// NETWORK
-// -------
-extension TodayViewController {
-    
-    // https://forums.developer.apple.com/thread/50302
-    func currentSSIDs() -> [String] {
-        let client = CWWiFiClient.shared()
-        return client.interfaces()?.compactMap{ interface in
-            return interface.ssid()
-            } ?? []
-    }
-    
-    func returnCurrentSSID() -> String? {
-        return currentSSIDs().first
-    }
-    
-    func getIPAddress(from: String) {
-        let host = CFHostCreateWithName(nil,from as CFString).takeRetainedValue()
-        CFHostStartInfoResolution(host, .addresses, nil)
-        
-        var success: DarwinBoolean = false
-        if let addresses = CFHostGetAddressing(host, &success)?.takeUnretainedValue() as NSArray? {
-            for case let theAddress as NSData in addresses {
-                
-                var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-                if getnameinfo(theAddress.bytes.assumingMemoryBound(to: sockaddr.self), socklen_t(theAddress.length),
-                               &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
-                    let numAddress = String(cString: hostname)
-                    // Filter out IPV4
-                    if numAddress.count == 14 {
-                        // self.ip = numAddress
-                        print(numAddress)
-                    }
-                }
-            }
-        }
-    }
-    
 }
 
 // MARK: - EXTENSIONS / COMBOBOX / DELEGATES / DATASOURCES

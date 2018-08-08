@@ -10,6 +10,9 @@ import Foundation
 import MapKit
 
 struct Coordinate: Codable {
+    var Address: String
+    var Room: String
+    
     var latitude: Double
     var longitude: Double
 }
@@ -32,6 +35,14 @@ struct Remote: Codable {
     }
     var remoteName : String {
         return _remoteName
+    }
+
+    var remoteChannels: [String: Int]? {
+        set {
+            self._remoteChannels = newValue
+        } get {
+            return _remoteChannels
+        }
     }
     
     mutating func setIP(ipAdress: String) {
