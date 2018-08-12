@@ -107,7 +107,7 @@ struct Remote: Codable {
         self._remoteType = remoteType
     }
     
-    init(remoteName: String, remoteType: String, remoteCommands: [String]?, remoteChannels: [String:Int]?, remoteSSID: String, remoteHost: String, remoteIP: String, remotePort: String) {
+    init(remoteName: String, remoteType: String, remoteCommands: [String]?, remoteChannels: [String:Int]?, remoteSSID: String, remoteHost: String, remoteIP: String, remotePort: String, remoteLocation: Coordinate?) {
         self._remoteName = remoteName
         self._remoteType = remoteType
         self._remoteCommands = remoteCommands
@@ -116,5 +116,6 @@ struct Remote: Codable {
         self._remoteHost = remoteHost
         self._remoteIP = remoteIP
         self._remotePort = remotePort
+        self._remoteLocation = remoteLocation
     }
 }

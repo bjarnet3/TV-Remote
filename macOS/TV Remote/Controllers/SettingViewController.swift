@@ -8,9 +8,15 @@
 
 import Cocoa
 import CoreWLAN
+import MapKit
 import NotificationCenter
 
-class SettingViewController: NSViewController, URLSessionDelegate {
+enum Auto {
+    case on
+    case off
+}
+
+class SettingViewController: NSViewController, URLSessionDelegate, CLLocationManagerDelegate {
     
     // MARK: - IBOutlet: Connection to Storyboard
     // ----------------------------------------
@@ -28,11 +34,18 @@ class SettingViewController: NSViewController, URLSessionDelegate {
     @IBOutlet weak var nameTextField: NSTextField!
     @IBOutlet weak var typeTextField: NSTextField!
     
+    @IBOutlet weak var locationLong: NSTextField!
+    @IBOutlet weak var locationLat: NSTextField!
+    
+    @IBOutlet weak var remoteSelected: NSSegmentedControl!
+    
     // MARK: - Properties: Array and Varables
     // ----------------------------------------
     private var remotes = [Remote]()
     private var channels: [String: Int] = [:]
     private var selectedRemote: Remote?
+    private var locationManager = CLLocationManager()
+    private var coordinate: Coordinate?
     
     // MARK: - IBAction: Methods connected to UI
     // ----------------------------------------
@@ -46,13 +59,52 @@ class SettingViewController: NSViewController, URLSessionDelegate {
             
             saveChannels()
             clearChannels()
+            
+            encodeRemotes()
             completeSettings()
+            
+            self.channelList.reloadData()
         }
     }
     
+    
+    @IBAction func removeChannel(_ sender: NSButton) {
+        let channelNameTitle = channelName.stringValue
+        self.channels.removeValue(forKey: channelNameTitle)
+        self.remotes[self.remoteList.indexOfSelectedItem].remoteChannels = self.channels
+        
+        saveChannels()
+        clearChannels()
+        
+        encodeRemotes()
+        completeSettings()
+        
+        self.channelList.reloadData()
+    }
+    
+    @IBAction func autoLocation(_ sender: NSSegmentedControl) {
+        if sender.isSelected(forSegment: 1) {
+            self.locationManager.startUpdatingLocation()
+        } else {
+            self.locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    @IBAction func getLocation(_ sender: NSButton) {
+        if let location = locationManager.location {
+            self.locationLong.stringValue = String(location.coordinate.longitude)
+            self.locationLat.stringValue = String(location.coordinate.latitude)
+        }
+    }
+    
+    
     // When remoteList changesValue
     @IBAction func remoteChanged(_ sender: NSPopUpButton) {
+        self.locationManager.stopUpdatingLocation()
+        self.remoteSelected.setSelected(true, forSegment: 0)
+        
         let remote = remotes[remoteList.indexOfSelectedItem]
+        self.selectedRemote = remote
         // Set Value On Remote
         self.nameTextField.stringValue = remote._remoteName
         
@@ -120,6 +172,15 @@ class SettingViewController: NSViewController, URLSessionDelegate {
     
     // MARK: - Functions, Database & Animation
     // ----------------------------------------
+    
+    // LocationManager
+    private func enableLocationServices() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        // locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
     private func setTextField(for remote: Remote) {
         self.ipTextField.stringValue = remote._remoteIP ?? ""
         self.portTextField.stringValue = remote._remotePort ?? ""
@@ -128,7 +189,14 @@ class SettingViewController: NSViewController, URLSessionDelegate {
         self.typeTextField.stringValue = remote._remoteType
         self.hostTextField.stringValue = remote._remoteHost ?? ""
         
+        self.locationLong.stringValue = ""
+        self.locationLat.stringValue = ""
+        
         self.selectedRemote = remote
+        
+        guard let location = remote._remoteLocation else { return }
+        self.locationLong.stringValue = String(location.longitude)
+        self.locationLat.stringValue = String(location.latitude)
     }
     
     private func returnRemote() -> Remote {
@@ -139,7 +207,8 @@ class SettingViewController: NSViewController, URLSessionDelegate {
                             remoteSSID: self.ssidTextField.stringValue,
                             remoteHost: self.hostTextField.stringValue,
                             remoteIP: self.ipTextField.stringValue,
-                            remotePort: self.portTextField.stringValue)
+                            remotePort: self.portTextField.stringValue,
+                            remoteLocation: returnCoordinate())
         return remote
     }
     
@@ -150,6 +219,8 @@ class SettingViewController: NSViewController, URLSessionDelegate {
         self.nameTextField.stringValue = ""
         self.typeTextField.stringValue = ""
         self.hostTextField.stringValue = ""
+        self.locationLong.stringValue = ""
+        self.locationLat.stringValue = ""
     }
 
     // CHANNELS
@@ -186,6 +257,7 @@ class SettingViewController: NSViewController, URLSessionDelegate {
         completeSettings()
     }
     
+    // Helper function in the end over all commands
     private func completeSettings() {
         remoteList.isTransparent = false
         remoteList.isEnabled = true
@@ -233,43 +305,6 @@ class SettingViewController: NSViewController, URLSessionDelegate {
         }
     }
 
-    // Setup Test Remotes with channels connected
-    // ------------------------------------------
-    func setupTestRemotes() {
-        let allChannels = [
-            "NRK":1,
-            "NRK2":2,
-            "TV2":3,
-            "TVNorge": 4,
-            "TV3":5,
-            
-            "TV2 Zebra":7,
-            
-            "Viasat 4": 9,
-            "Fem": 10,
-            "BBC Brit": 11,
-            "Nyhetskanalen":12,
-            
-            "MAX":14,
-            "VOX":15,
-            "Discovery": 16,
-            "TLC Norge": 17,
-            "Fox": 18,
-            
-            "National Geographics": 20,
-            "History": 21,
-            
-            "TV6": 37,
-            "BBC World": 38
-        ]
-        
-        if let channels = UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.dictionary(forKey: "channels") as? [String: Int] {
-            let remote1 = Remote(remoteName: "TV Remote", remoteType: "Samsung_AH59", remoteCommands: nil, remoteChannels: allChannels, remoteSSID: "Skuteviken", remoteHost: "TV-Remote.local", remoteIP: "192.168.10.120", remotePort: "3000")
-            self.remotes.append(remote1)
-            self.remoteList.addItem(withTitle: remote1.remoteName)
-        }
-    }
-
     // MARK: - ViewDidLoad, ViewWillLoad etc...
     // ----------------------------------------
     override func viewDidLoad() {
@@ -279,9 +314,23 @@ class SettingViewController: NSViewController, URLSessionDelegate {
         channelList.delegate = self
         channelList.dataSource = self
         
+        enableLocationServices()
         self.decodeRemotes()
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations)
+    }
+    
+    func returnCoordinate() -> Coordinate? {
+        if let long = Double(self.locationLong.stringValue), self.locationLong.stringValue != "" {
+            if let lat = Double(self.locationLat.stringValue), self.locationLat.stringValue != "" {
+                let coordinate = Coordinate(Address: "", Room: "", latitude: lat, longitude: long)
+                return coordinate
+            }
+        }
+        return nil
+    }
     
 }
 
@@ -317,13 +366,16 @@ extension SettingViewController : NSComboBoxDelegate, NSComboBoxDataSource, NSCo
     // Same as Cell For Row at indexPath
     func comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any? {
         let keys = channels.keys
-        for (idx, key) in keys.enumerated() {
+        let values = channels.values
+        for (idx, name) in keys.enumerated() {
             if idx == index {
-                print("objectValueForItemAt")
-                // let cell = comboBox.cell as! CustomComboCell
-                // cell.image = NSImage(imageLiteralResourceName: "tv2-norge")
-                // cell.title = key
-                return key as Any
+                for (id, channel) in values.enumerated() {
+                    if id == idx {
+                        self.channelName.stringValue = name
+                        self.channelNumber.stringValue = "\(channel)"
+                        return name as Any
+                    }
+                }
             }
         }
         print("objectValueForItemAt emtpty")
@@ -345,49 +397,6 @@ extension SettingViewController : NSComboBoxDelegate, NSComboBoxDataSource, NSCo
         return -1
     }
     
-    /*
-    func comboBox(_ comboBox: NSComboBox, completedString string: String) -> String? {
-        for (key,_) in channels {
-            // substring must have less characters then stings to search
-            if string.count < key.count {
-                // only use first part of the strings in the list with length of the search string
-                let statePartialStr = key.lowercased()[key.lowercased().startIndex..<key.lowercased().index(key.lowercased().startIndex, offsetBy: string.count)]
-                
-                if statePartialStr.range(of: string.lowercased()) != nil {
-                    print("SubString Match=\(string).")
-                    return key
-                }
-            }
-        }
-        return ""
-    }
-    
-    func comboBoxSelectionIsChanging(_ notification: Notification) {
-        print("comboBoxSelectionIsChanging")
-    }
-    
-    func comboBoxSelectionDidChange(_ notification: Notification) {
-        print("comboBoxSelectionDidChange")
-    }
-    
-    func comboBoxWillDismiss(_ notification: Notification) {
-        print("comboBoxWillDismiss")
-        
-        let selectedIndex = channelList.indexOfSelectedItem
-        print("indexOfSelectedCell : \(selectedIndex)")
-        
-        if let comboValue = comboBox(self.channelList, objectValueForItemAt: selectedIndex) {
-            if let comboString = comboValue as? String {
-                if let channel = channels[comboString] {
-                    print("returnChannel in comboWillDismiss")
-                    self.returnChannel(from: channel)
-                    self.channelList.selectText(comboValue)
-                }
-            }
-        }
-    }
-    */
-    
     func comboBoxWillPopUp(_ notification: Notification) {
         print("comboBoxWillPopUp")
     }
@@ -407,5 +416,42 @@ extension Encodable {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         return try encoder.encode(self)
+    }
+}
+
+extension SettingViewController {
+    // Setup Test Remotes with channels connected
+    // ------------------------------------------
+    func setupTestRemotes() {
+        let allChannels = [
+            "NRK":1,
+            "NRK2":2,
+            "TV2":3,
+            "TVNorge": 4,
+            "TV3":5,
+            
+            "TV2 Zebra":7,
+            
+            "Viasat 4": 9,
+            "Fem": 10,
+            "BBC Brit": 11,
+            "Nyhetskanalen":12,
+            
+            "MAX":14,
+            "VOX":15,
+            "Discovery": 16,
+            "TLC Norge": 17,
+            "Fox": 18,
+            
+            "National Geographics": 20,
+            "History": 21,
+            
+            "TV6": 37,
+            "BBC World": 38
+        ]
+        
+        let remote1 = Remote(remoteName: "TV Remote", remoteType: "Samsung_AH59", remoteCommands: nil, remoteChannels: allChannels, remoteSSID: "Skuteviken", remoteHost: "TV-Remote.local", remoteIP: "192.168.10.120", remotePort: "3000", remoteLocation: nil)
+        self.remotes.append(remote1)
+        self.remoteList.addItem(withTitle: remote1.remoteName)
     }
 }

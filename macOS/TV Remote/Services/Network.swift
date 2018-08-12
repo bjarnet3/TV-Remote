@@ -20,10 +20,12 @@ class Network {
             } ?? []
     }
     
+    // Return the SSID of currently connected WIFI / Router
     func returnSSID() -> String? {
         return getSSID().first
     }
     
+    // Return IPV4 Address from LocalhostName ending with local (Bjarnes-Mac.local) - (typical IPV6)
     func returnIPAddress(from: String) -> String? {
         // Instansiate host with "name"
         let host = CFHostCreateWithName(nil,from as CFString).takeRetainedValue()

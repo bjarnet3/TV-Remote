@@ -703,11 +703,11 @@
             <objects>
                 <viewController title="Settings" id="9kf-Hi-rm8" customClass="SettingViewController" customModule="TV_Remote" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="hf4-YG-nN7">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="314"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="316"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <comboBox focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GGQ-WS-K1D">
-                                <rect key="frame" x="0.0" y="239" width="483" height="46"/>
+                                <rect key="frame" x="0.0" y="262" width="483" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="24y-qx-NCL"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Gbs-g0-xVJ"/>
@@ -722,7 +722,7 @@
                                 </comboBoxCell>
                             </comboBox>
                             <textField toolTip="IR Code: e.g. [ KEY_CHANNELUP ] - Click On The Button You want to customize" verticalHuggingPriority="750" allowsExpansionToolTips="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c29-uf-iN5">
-                                <rect key="frame" x="0.0" y="195" width="80" height="40"/>
+                                <rect key="frame" x="0.0" y="217" width="80" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Cgl-26-CyI"/>
                                     <constraint firstAttribute="width" constant="80" id="FPU-Kb-Isc"/>
@@ -734,10 +734,10 @@
                                 </textFieldCell>
                             </textField>
                             <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nfR-G6-UJx">
-                                <rect key="frame" x="400" y="194" width="80" height="42"/>
+                                <rect key="frame" x="361" y="216" width="61" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="5un-2O-Vcj"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="dRq-Xf-Lus"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="61" id="ZNV-9d-MYt"/>
+                                    <constraint firstAttribute="height" constant="40" id="snP-mX-IZw"/>
                                 </constraints>
                                 <buttonCell key="cell" type="smallSquare" title="Add" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NuF-K6-Q1t">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -748,7 +748,7 @@
                                 </connections>
                             </button>
                             <textField toolTip="IR Code: e.g. [ KEY_CHANNELUP ] - Click On The Button You want to customize" verticalHuggingPriority="750" allowsExpansionToolTips="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXl-Zr-fah">
-                                <rect key="frame" x="85" y="195" width="307" height="40"/>
+                                <rect key="frame" x="85" y="217" width="268" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="4oH-dA-HsK"/>
                                 </constraints>
@@ -759,11 +759,11 @@
                                 </textFieldCell>
                             </textField>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cqX-80-qZj">
-                                <rect key="frame" x="20" y="61" width="440" height="126"/>
+                                <rect key="frame" x="20" y="53" width="440" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IkH-2E-xe2">
-                                        <rect key="frame" x="63" y="66" width="121" height="23"/>
+                                        <rect key="frame" x="63" y="96" width="121" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Room ( ex: Living )" drawsBackground="YES" id="SEx-BQ-ZJM">
                                             <font key="font" metaFont="system"/>
@@ -772,7 +772,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <popUpButton fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f7c-Mc-t9H">
-                                        <rect key="frame" x="63" y="66" width="121" height="23"/>
+                                        <rect key="frame" x="63" y="96" width="121" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" preferredEdge="maxY" id="Mgc-hJ-pxV">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -784,7 +784,7 @@
                                         </connections>
                                     </popUpButton>
                                     <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C6A-cO-vy1">
-                                        <rect key="frame" x="0.0" y="33" width="55" height="25"/>
+                                        <rect key="frame" x="0.0" y="63" width="55" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="SSID" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iJB-uG-ujY">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -794,28 +794,8 @@
                                             <action selector="getSSID:" target="9kf-Hi-rm8" id="Mh6-Z9-zph"/>
                                         </connections>
                                     </button>
-                                    <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h1H-8f-5fE">
-                                        <rect key="frame" x="0.0" y="-1" width="55" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="smallSquare" title="IP" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5EP-XJ-ePF">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="cellTitle"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="getIP:" target="9kf-Hi-rm8" id="Sbx-P3-wzM"/>
-                                        </connections>
-                                    </button>
-                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pts-19-BUW">
-                                        <rect key="frame" x="63" y="0.0" width="103" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="192.168.10.1" drawsBackground="YES" id="3V5-Wn-63B">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ru6-tw-Ujv">
-                                        <rect key="frame" x="63" y="34" width="152" height="23"/>
+                                        <rect key="frame" x="63" y="64" width="152" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Network Name" drawsBackground="YES" id="O1x-RS-6Fx">
                                             <font key="font" metaFont="system"/>
@@ -824,7 +804,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TBd-3D-Fn9">
-                                        <rect key="frame" x="288" y="34" width="152" height="23"/>
+                                        <rect key="frame" x="288" y="64" width="152" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="raspberrypi.local" drawsBackground="YES" id="3KU-pd-Sbw">
                                             <font key="font" metaFont="system"/>
@@ -832,37 +812,26 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9wB-HL-Lx9">
-                                        <rect key="frame" x="225" y="-1" width="55" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="smallSquare" title="ADD" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nPN-zi-x6K">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="cellTitle"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="addRemote:" target="9kf-Hi-rm8" id="e2p-3z-2Ly"/>
-                                        </connections>
-                                    </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N1p-mT-01q">
-                                        <rect key="frame" x="-2" y="97" width="221" height="23"/>
+                                        <rect key="frame" x="-2" y="127" width="108" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="   Remote / Room" id="j5m-J1-GfX">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Remote / Room" id="j5m-J1-GfX">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1cR-Fb-trC">
-                                        <rect key="frame" x="223" y="97" width="219" height="23"/>
+                                        <rect key="frame" x="223" y="127" width="129" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="   Network / Location" id="JB4-pZ-dGk">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Network / Location" id="JB4-pZ-dGk">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZSW-gx-Dxl">
-                                        <rect key="frame" x="225" y="33" width="55" height="25"/>
+                                        <rect key="frame" x="225" y="63" width="55" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="HOST" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HMP-ME-gLI">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -870,7 +839,7 @@
                                         </buttonCell>
                                     </button>
                                     <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4cl-RK-qpF">
-                                        <rect key="frame" x="225" y="65" width="55" height="25"/>
+                                        <rect key="frame" x="225" y="95" width="55" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="TYPE" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CzV-z0-AuP">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -878,7 +847,7 @@
                                         </buttonCell>
                                     </button>
                                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hYA-e4-JRc">
-                                        <rect key="frame" x="288" y="66" width="152" height="23"/>
+                                        <rect key="frame" x="288" y="96" width="152" height="23"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="( ex: SONY_E26 )" drawsBackground="YES" id="wBQ-Fd-cKS">
                                             <font key="font" metaFont="system"/>
@@ -887,7 +856,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SrX-Yg-6YK">
-                                        <rect key="frame" x="0.0" y="65" width="55" height="25"/>
+                                        <rect key="frame" x="0.0" y="95" width="55" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="EDIT" bezelStyle="smallSquare" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J9z-7a-hm7">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -897,50 +866,8 @@
                                             <action selector="editRemote:" target="9kf-Hi-rm8" id="D3x-FH-5BL"/>
                                         </connections>
                                     </button>
-                                    <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Db2-CR-pc6">
-                                        <rect key="frame" x="392" y="-1" width="48" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="smallSquare" title="SAVE" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="606-eI-vec">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="cellTitle"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="saveRemote:" target="9kf-Hi-rm8" id="fCu-cc-Job"/>
-                                        </connections>
-                                    </button>
-                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVh-BF-d7X">
-                                        <rect key="frame" x="174" y="0.0" width="41" height="23"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="3000" drawsBackground="YES" id="xIG-IJ-caO">
-                                            <font key="font" metaFont="cellTitle"/>
-                                            <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FPh-8H-cJT">
-                                        <rect key="frame" x="287" y="-1" width="45" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="smallSquare" title="CLEAR" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pxT-yd-Rb9">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="cellTitle"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="clearRemote:" target="9kf-Hi-rm8" id="8Od-pS-dR2"/>
-                                        </connections>
-                                    </button>
-                                    <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zI2-1n-3Z5">
-                                        <rect key="frame" x="340" y="-1" width="44" height="25"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="smallSquare" title="RESET" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tVa-ot-RWh">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="cellTitle"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="resetRemote:" target="9kf-Hi-rm8" id="Ice-l1-7ZO"/>
-                                        </connections>
-                                    </button>
                                     <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eRU-SR-c6s">
-                                        <rect key="frame" x="192" y="65" width="23" height="25"/>
+                                        <rect key="frame" x="192" y="95" width="23" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="smallSquare" title="X" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Xa-2l-jRk">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -951,9 +878,9 @@
                                         </connections>
                                     </button>
                                     <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MQe-5z-gVo">
-                                        <rect key="frame" x="368" y="100" width="72" height="22"/>
+                                        <rect key="frame" x="358" y="129" width="75" height="19"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="smallSquare" title="Setup Test" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="biS-jf-uFG">
+                                        <buttonCell key="cell" type="roundRect" title="Setup Test" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="biS-jf-uFG">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="cellTitle"/>
                                         </buttonCell>
@@ -961,8 +888,138 @@
                                             <action selector="setupRemote:" target="9kf-Hi-rm8" id="c0H-Jn-Oov"/>
                                         </connections>
                                     </button>
+                                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IcI-vj-Ubh">
+                                        <rect key="frame" x="110" y="128" width="109" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" controlSize="small" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="x0W-nl-OHG">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <segments>
+                                                <segment label="Manual" width="52"/>
+                                                <segment label="Auto" width="51" selected="YES" tag="1"/>
+                                            </segments>
+                                        </segmentedCell>
+                                        <connections>
+                                            <action selector="autoLocation:" target="9kf-Hi-rm8" id="Tlr-7I-ahK"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h1H-8f-5fE">
+                                        <rect key="frame" x="0.0" y="30" width="55" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="smallSquare" title="IP" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5EP-XJ-ePF">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="cellTitle"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="getIP:" target="9kf-Hi-rm8" id="Sbx-P3-wzM"/>
+                                        </connections>
+                                    </button>
+                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pts-19-BUW">
+                                        <rect key="frame" x="63" y="31" width="103" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="192.168.10.1" drawsBackground="YES" id="3V5-Wn-63B">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVh-BF-d7X">
+                                        <rect key="frame" x="174" y="31" width="41" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="3000" drawsBackground="YES" id="xIG-IJ-caO">
+                                            <font key="font" metaFont="cellTitle"/>
+                                            <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vjS-Ys-HW1">
+                                        <rect key="frame" x="225" y="30" width="55" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="smallSquare" title="CORD" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ntE-c2-AIS">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="cellTitle"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="getLocation:" target="9kf-Hi-rm8" id="1te-yv-Da6"/>
+                                        </connections>
+                                    </button>
+                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VlT-g4-3rt">
+                                        <rect key="frame" x="288" y="31" width="73" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Longitude" drawsBackground="YES" id="yQZ-YL-IdN">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Db2-CR-pc6">
+                                        <rect key="frame" x="336" y="-1" width="104" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="smallSquare" title="SAVE" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="606-eI-vec">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="cellTitle"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="saveRemote:" target="9kf-Hi-rm8" id="fCu-cc-Job"/>
+                                        </connections>
+                                    </button>
+                                    <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FPh-8H-cJT">
+                                        <rect key="frame" x="112" y="-1" width="103" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="smallSquare" title="CLEAR" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pxT-yd-Rb9">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="cellTitle"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="clearRemote:" target="9kf-Hi-rm8" id="8Od-pS-dR2"/>
+                                        </connections>
+                                    </button>
+                                    <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zI2-1n-3Z5">
+                                        <rect key="frame" x="225" y="-1" width="103" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="smallSquare" title="RESET" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tVa-ot-RWh">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="cellTitle"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="resetRemote:" target="9kf-Hi-rm8" id="Ice-l1-7ZO"/>
+                                        </connections>
+                                    </button>
+                                    <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9wB-HL-Lx9">
+                                        <rect key="frame" x="0.0" y="-1" width="104" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="smallSquare" title="ADD" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nPN-zi-x6K">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="cellTitle"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="addRemote:" target="9kf-Hi-rm8" id="e2p-3z-2Ly"/>
+                                        </connections>
+                                    </button>
+                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l3h-vb-A0W">
+                                        <rect key="frame" x="367" y="31" width="73" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Latitude" drawsBackground="YES" id="6xl-Ak-eGy">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
                             </customView>
+                            <button toolTip="Set [KEY Name] for [IR Code]" verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dGl-Al-93L">
+                                <rect key="frame" x="430" y="216" width="30" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ghV-DA-Pzp"/>
+                                    <constraint firstAttribute="width" constant="30" id="zqP-7m-zyp"/>
+                                </constraints>
+                                <buttonCell key="cell" type="smallSquare" title="X" bezelStyle="smallSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="k9u-xP-Bta">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="15"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="removeChannel:" target="9kf-Hi-rm8" id="LA0-f6-jSL"/>
+                                </connections>
+                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uyz-2t-TZ6">
                                 <rect key="frame" x="14" y="13" width="452" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -977,18 +1034,18 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="c29-uf-iN5" firstAttribute="leading" secondItem="hf4-YG-nN7" secondAttribute="leading" id="03D-hy-iem"/>
-                            <constraint firstItem="XXl-Zr-fah" firstAttribute="top" secondItem="hf4-YG-nN7" secondAttribute="top" constant="79" id="10K-Eg-Tvu"/>
+                            <constraint firstItem="XXl-Zr-fah" firstAttribute="top" secondItem="hf4-YG-nN7" secondAttribute="top" constant="59" id="10K-Eg-Tvu"/>
                             <constraint firstItem="XXl-Zr-fah" firstAttribute="leading" secondItem="hf4-YG-nN7" secondAttribute="leading" constant="85" id="6UJ-8D-ILr"/>
-                            <constraint firstItem="GGQ-WS-K1D" firstAttribute="top" secondItem="hf4-YG-nN7" secondAttribute="top" constant="31" id="CO8-Dy-vGa"/>
-                            <constraint firstItem="c29-uf-iN5" firstAttribute="top" secondItem="hf4-YG-nN7" secondAttribute="top" constant="79" id="GIh-zz-7so"/>
+                            <constraint firstItem="dGl-Al-93L" firstAttribute="top" secondItem="hf4-YG-nN7" secondAttribute="top" constant="59" id="AKx-VZ-Shj"/>
+                            <constraint firstItem="GGQ-WS-K1D" firstAttribute="top" secondItem="hf4-YG-nN7" secondAttribute="top" constant="10" id="CO8-Dy-vGa"/>
+                            <constraint firstItem="nfR-G6-UJx" firstAttribute="top" secondItem="hf4-YG-nN7" secondAttribute="top" constant="59" id="FRI-AQ-UdI"/>
+                            <constraint firstItem="c29-uf-iN5" firstAttribute="top" secondItem="hf4-YG-nN7" secondAttribute="top" constant="59" id="GIh-zz-7so"/>
                             <constraint firstItem="XXl-Zr-fah" firstAttribute="leading" secondItem="c29-uf-iN5" secondAttribute="trailing" constant="5" id="JF3-0m-5XX"/>
-                            <constraint firstAttribute="trailing" secondItem="nfR-G6-UJx" secondAttribute="trailing" id="Nca-1j-vq7"/>
-                            <constraint firstItem="nfR-G6-UJx" firstAttribute="leading" secondItem="XXl-Zr-fah" secondAttribute="trailing" constant="8" id="Ood-bu-smc"/>
-                            <constraint firstItem="nfR-G6-UJx" firstAttribute="top" secondItem="hf4-YG-nN7" secondAttribute="top" constant="79" id="bF7-uK-ceK"/>
-                            <constraint firstAttribute="trailing" secondItem="XXl-Zr-fah" secondAttribute="trailing" constant="88" id="irz-Rn-Bm8"/>
+                            <constraint firstItem="dGl-Al-93L" firstAttribute="leading" secondItem="nfR-G6-UJx" secondAttribute="trailing" constant="8" id="KEu-MJ-Rgk"/>
+                            <constraint firstAttribute="trailing" secondItem="dGl-Al-93L" secondAttribute="trailing" constant="20" id="aFi-5y-hYK"/>
+                            <constraint firstItem="nfR-G6-UJx" firstAttribute="leading" secondItem="XXl-Zr-fah" secondAttribute="trailing" constant="8" id="fCm-RR-AJ0"/>
                             <constraint firstItem="GGQ-WS-K1D" firstAttribute="leading" secondItem="hf4-YG-nN7" secondAttribute="leading" id="oQy-m1-o6n"/>
                             <constraint firstAttribute="trailing" secondItem="GGQ-WS-K1D" secondAttribute="trailing" id="tV4-Cn-J6i"/>
-                            <constraint firstItem="nfR-G6-UJx" firstAttribute="top" secondItem="GGQ-WS-K1D" secondAttribute="bottom" constant="8" id="zyh-Mp-RhY"/>
                         </constraints>
                     </view>
                     <connections>
@@ -997,16 +1054,19 @@
                         <outlet property="channelNumber" destination="c29-uf-iN5" id="DXT-hv-gck"/>
                         <outlet property="hostTextField" destination="TBd-3D-Fn9" id="kNf-4j-EzA"/>
                         <outlet property="ipTextField" destination="Pts-19-BUW" id="uw2-RT-w0I"/>
+                        <outlet property="locationLat" destination="l3h-vb-A0W" id="JaG-gw-XqN"/>
+                        <outlet property="locationLong" destination="VlT-g4-3rt" id="eLm-Ya-Gn1"/>
                         <outlet property="nameTextField" destination="IkH-2E-xe2" id="ZtN-hZ-kiY"/>
                         <outlet property="portTextField" destination="jVh-BF-d7X" id="uI5-gL-emD"/>
                         <outlet property="remoteList" destination="f7c-Mc-t9H" id="X6c-1U-cA3"/>
+                        <outlet property="remoteSelected" destination="IcI-vj-Ubh" id="fig-bp-PWv"/>
                         <outlet property="ssidTextField" destination="ru6-tw-Ujv" id="RRU-as-QYX"/>
                         <outlet property="typeTextField" destination="hYA-e4-JRc" id="c63-QQ-Ndv"/>
                     </connections>
                 </viewController>
                 <customObject id="dYY-xf-r1i" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="631"/>
+            <point key="canvasLocation" x="75" y="632"/>
         </scene>
         <!--Test Remote-->
         <scene sceneID="hIz-AP-VOD">

@@ -70,7 +70,6 @@
 		5C6B54702010189200D367F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C6B54732010189200D367F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5C6B54752010189200D367F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C6B54762010189200D367F2 /* TV_Remote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TV_Remote.entitlements; sourceTree = "<group>"; };
 		5C6B5480201025AD00D367F2 /* TV Remote Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TV Remote Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C6B5482201025AD00D367F2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		5C6B5485201025AD00D367F2 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -202,7 +201,6 @@
 				5C6B54702010189200D367F2 /* Assets.xcassets */,
 				5C6B54752010189200D367F2 /* Info.plist */,
 				5CD810442011620500B439F9 /* TV Remote.entitlements */,
-				5C6B54762010189200D367F2 /* TV_Remote.entitlements */,
 			);
 			path = "TV Remote";
 			sourceTree = "<group>";
@@ -288,6 +286,12 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+							com.apple.Maps.Mac = {
+								enabled = 0;
+							};
+							com.apple.Sandbox = {
 								enabled = 1;
 							};
 						};
