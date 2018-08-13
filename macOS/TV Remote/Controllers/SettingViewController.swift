@@ -43,9 +43,12 @@ class SettingViewController: NSViewController, URLSessionDelegate, CLLocationMan
     // ----------------------------------------
     private var remotes = [Remote]()
     private var channels: [String: Int] = [:]
+    private var selected = [String: Int?]()
+    private var automatic = true
+    
     private var selectedRemote: Remote?
     private var locationManager = CLLocationManager()
-    private var coordinate: Coordinate?
+    // private var coordinate: Coordinate?
     
     // MARK: - IBAction: Methods connected to UI
     // ----------------------------------------
@@ -67,7 +70,6 @@ class SettingViewController: NSViewController, URLSessionDelegate, CLLocationMan
         }
     }
     
-    
     @IBAction func removeChannel(_ sender: NSButton) {
         let channelNameTitle = channelName.stringValue
         self.channels.removeValue(forKey: channelNameTitle)
@@ -84,9 +86,13 @@ class SettingViewController: NSViewController, URLSessionDelegate, CLLocationMan
     
     @IBAction func autoLocation(_ sender: NSSegmentedControl) {
         if sender.isSelected(forSegment: 1) {
-            self.locationManager.startUpdatingLocation()
+            self.enableLocationServices()
+            self.setSelected(index: nil)
+            setAutomatic()
         } else {
             self.locationManager.stopUpdatingLocation()
+            self.setSelected(index: self.remoteList.indexOfSelectedItem)
+            setAutomatic()
         }
     }
     
@@ -97,19 +103,22 @@ class SettingViewController: NSViewController, URLSessionDelegate, CLLocationMan
         }
     }
     
-    
     // When remoteList changesValue
     @IBAction func remoteChanged(_ sender: NSPopUpButton) {
         self.locationManager.stopUpdatingLocation()
         self.remoteSelected.setSelected(true, forSegment: 0)
         
-        let remote = remotes[remoteList.indexOfSelectedItem]
+        let remoteIndex = remoteList.indexOfSelectedItem
+        let remote = remotes[remoteIndex]
+        
+        self.setSelected(index: remoteIndex)
         self.selectedRemote = remote
         // Set Value On Remote
         self.nameTextField.stringValue = remote._remoteName
         
         setTextField(for: remote)
         setChannels(for: remote)
+        setAutomatic()
     }
     
     // Save and Load REMOTE
@@ -138,6 +147,7 @@ class SettingViewController: NSViewController, URLSessionDelegate, CLLocationMan
     }
 
     @IBAction func clearRemote(_ sender: NSButton) {
+        clearTextField()
         completeSettings()
     }
     
@@ -169,16 +179,19 @@ class SettingViewController: NSViewController, URLSessionDelegate, CLLocationMan
     }
     // -----------------
     
-    
     // MARK: - Functions, Database & Animation
     // ----------------------------------------
-    
-    // LocationManager
-    private func enableLocationServices() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        // locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
+    private func returnRemote() -> Remote {
+        let remote = Remote(remoteName: self.nameTextField.stringValue,
+                            remoteType: self.typeTextField.stringValue,
+                            remoteCommands: nil,
+                            remoteChannels: self.channels,
+                            remoteSSID: self.ssidTextField.stringValue,
+                            remoteHost: self.hostTextField.stringValue,
+                            remoteIP: self.ipTextField.stringValue,
+                            remotePort: self.portTextField.stringValue,
+                            remoteLocation: returnCoordinate())
+        return remote
     }
     
     private func setTextField(for remote: Remote) {
@@ -197,19 +210,6 @@ class SettingViewController: NSViewController, URLSessionDelegate, CLLocationMan
         guard let location = remote._remoteLocation else { return }
         self.locationLong.stringValue = String(location.longitude)
         self.locationLat.stringValue = String(location.latitude)
-    }
-    
-    private func returnRemote() -> Remote {
-        let remote = Remote(remoteName: self.nameTextField.stringValue,
-                            remoteType: self.typeTextField.stringValue,
-                            remoteCommands: nil,
-                            remoteChannels: self.channels,
-                            remoteSSID: self.ssidTextField.stringValue,
-                            remoteHost: self.hostTextField.stringValue,
-                            remoteIP: self.ipTextField.stringValue,
-                            remotePort: self.portTextField.stringValue,
-                            remoteLocation: returnCoordinate())
-        return remote
     }
     
     private func clearTextField() {
@@ -265,6 +265,42 @@ class SettingViewController: NSViewController, URLSessionDelegate, CLLocationMan
         clearTextField()
     }
     
+    private func setRemote(index: Int) {
+        self.remoteSelected.setSelected(true, forSegment: 0)
+        self.remoteList.selectItem(at: index)
+        
+        let remote = remotes[index]
+        self.selectedRemote = remote
+        // Set Value On Remote
+        self.nameTextField.stringValue = remote._remoteName
+        
+        setAutomatic()
+        setTextField(for: remote)
+        setChannels(for: remote)
+    }
+    
+    private func setSelected(index: Int?) {
+        guard let SSID = Network.instance.returnSSID() else { return }
+        switch index {
+        case nil:
+            self.selected = [SSID:nil]
+            encodeSelected()
+        default:
+            self.selected = [SSID:index!]
+            encodeSelected()
+        }
+    }
+    
+    private func setAutomatic() {
+        if remoteSelected.indexOfSelectedItem == 0 {
+            self.automatic = false
+            self.encodeAutomatic()
+        } else {
+            self.automatic = true
+            self.encodeAutomatic()
+        }
+    }
+    
     // EncodeRemotes and Save to UserDefaults
     // --------------------------------------
     // https://stackoverflow.com/questions/44441223/encode-decode-array-of-types-conforming-to-protocol-with-jsonencoder
@@ -304,6 +340,30 @@ class SettingViewController: NSViewController, URLSessionDelegate, CLLocationMan
             }
         }
     }
+    
+    private func encodeSelected() {
+        let selected = self.selected
+        UserDefaults.standard.set(selected, forKey: "selected")
+        UserDefaults.standard.synchronize()
+    }
+    
+    private func decodeSelected() {
+        if let selected = UserDefaults.standard.value(forKey: "selected") as? [String:Int?] {
+            self.selected = selected
+        }
+    }
+    
+    private func encodeAutomatic() {
+        let automatic = self.automatic
+        UserDefaults.standard.set(automatic, forKey: "automatic")
+        UserDefaults.standard.synchronize()
+    }
+    
+    private func decodeAutomatic() {
+        let automatic = UserDefaults.standard.bool(forKey: "automatic")
+        self.automatic = automatic
+
+    }
 
     // MARK: - ViewDidLoad, ViewWillLoad etc...
     // ----------------------------------------
@@ -314,15 +374,30 @@ class SettingViewController: NSViewController, URLSessionDelegate, CLLocationMan
         channelList.delegate = self
         channelList.dataSource = self
         
-        enableLocationServices()
         self.decodeRemotes()
+        self.decodeSelected()
+        self.decodeAutomatic()
+        
+        self.setupSelected()
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations)
+    private func setupSelected() {
+        if let SSID = Network.instance.returnSSID() {
+            print(automatic)
+            if automatic {
+                self.enableLocationServices()
+            } else {
+                if let selected = selected[SSID] {
+                    if let index = selected {
+                        setRemote(index: index)
+                    }
+                }
+            }
+        }
     }
-    
-    func returnCoordinate() -> Coordinate? {
+
+    // ---------------------------
+    private func returnCoordinate() -> Coordinate? {
         if let long = Double(self.locationLong.stringValue), self.locationLong.stringValue != "" {
             if let lat = Double(self.locationLat.stringValue), self.locationLat.stringValue != "" {
                 let coordinate = Coordinate(Address: "", Room: "", latitude: lat, longitude: long)
@@ -330,6 +405,37 @@ class SettingViewController: NSViewController, URLSessionDelegate, CLLocationMan
             }
         }
         return nil
+    }
+
+    private func enableLocationServices() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        // locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        setAutomatic()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            print(location)
+            if let selectedLocationDistance = self.remotes[self.remoteList.indexOfSelectedItem].returnLocationDistance(fromLocation: location) {
+                for (idx, remote) in remotes.enumerated() {
+                    if let remoteReturnDistance = remote.returnLocationDistance(fromLocation: location) {
+                        if remoteReturnDistance < selectedLocationDistance {
+                            self.remoteList.selectItem(at: idx)
+                            
+                            let remote = remotes[remoteList.indexOfSelectedItem]
+                            self.selectedRemote = remote
+                            // Set Value On Remote
+                            self.nameTextField.stringValue = remote._remoteName
+                            
+                            setTextField(for: remote)
+                            setChannels(for: remote)
+                        }
+                    }
+                }
+            }
+        }
     }
     
 }

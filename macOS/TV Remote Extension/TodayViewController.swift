@@ -8,9 +8,10 @@
 
 import Cocoa
 import CoreWLAN
+import MapKit
 import NotificationCenter
 
-class TodayViewController: NSViewController, NCWidgetProviding {
+class TodayViewController: NSViewController, NCWidgetProviding, CLLocationManagerDelegate {
     
     // MARK: - IBOutlet: Connection to View "xib"
     // ----------------------------------------
@@ -35,23 +36,39 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     @IBOutlet weak var onButtonDown: NSButton!
     @IBOutlet weak var keyColorPopUp: NSPopUpButton!
     
+    @IBOutlet weak var autoSelect: NSButton!
+    
     // MARK: - PROPERTIES
     // ----------------------------------------
-    var lastSelectedButton: CustomButton?
-    var settingsActive = false
+    private var lastSelectedButton: CustomButton?
+    private var settingsActive = false
 
-    // Dictionary of channels,, just add name and channel number if you want more channels on the list
-    var remotes = [Remote]()
-    var channels: [String: Int] = [:]
+    private var remotes = [Remote]()
+    private var channels: [String: Int] = [:]
+    private var selected = [String: Int?]()
+    private var automatic = true
     
-    var selectedRemote: Remote?
-    var selectedRemoteIndex: Int = 0
-    var lastSelectedRemoteIndex: Int = 0
+    private var selectedRemote: Remote?
+    private var locationManager = CLLocationManager()
+    private var coordinate: Coordinate?
 
-    var keyColors = [0: nil, 1: NSColor.red, 2: NSColor.blue, 3: NSColor.green, 4: NSColor.yellow, 5: NSColor.purple, 6:NSColor.black, 7: NSColor.cyan, 8: NSColor.systemPink, 9: NSColor.white]
+    private var keyColors = [0: nil, 1: NSColor.red, 2: NSColor.blue, 3: NSColor.green, 4: NSColor.yellow, 5: NSColor.purple, 6:NSColor.black, 7: NSColor.cyan, 8: NSColor.systemPink, 9: NSColor.white]
     
     // MARK: - IBAction:
-    // ----------------------------------------
+    // --------------------------------------
+    @IBAction func enableAutomatic(_ sender: NSButton) {
+        if sender.state == .on {
+            enableLocationServices()
+            // locationManager.startUpdatingLocation()
+            self.automatic = true
+            self.encodeAutomatic()
+        } else {
+            locationManager.stopUpdatingLocation()
+            self.automatic = false
+            self.encodeAutomatic()
+        }
+    }
+    
     @IBAction func hideKey(_ sender: NSButton) {
         lastSelectedButton?.state = sender.state
         lastSelectedButton?.isTransparent = sender.state == .on ? true : false
@@ -114,7 +131,6 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         
         keyField.stringValue = ""
         irCodeField.stringValue = ""
-        
         setNetworkButton.title = "Get"
         
         ipAddressField.placeholderString = "  [ IP adresse ]"
@@ -167,11 +183,6 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         if settingsActive {
             lastSelectedButton?.alternateTitle = irCodeField.stringValue
             lastSelectedButton?.title = keyField.stringValue
-            
-            // If fastClick
-            // Checked = action will run on [Button Down] else [Button Up]
-            // Uncheck = action will run on [Button Up]
-            
             lastSelectedButton?.buttonDown = onButtonDown.state == .on
             
             // Remove value in textFields
@@ -191,12 +202,16 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     }
     
     @IBAction func setRemoteAction(_ sender: NSPopUpButton) {
-        setRemote()
+        setRemote(for: sender.indexOfSelectedItem)
+        setSelected(index: sender.indexOfSelectedItem)
+        
+        locationManager.stopUpdatingLocation()
+        self.autoSelect.state = .off
     }
     
     // MARK: - FUNCTIONS:
     // ----------------------------------------
-    func returnChannel(from: Int) {
+    private func returnChannel(from: Int) {
         if let remote = self.selectedRemote {
             let channelNumberString = String(from)
             for (idx, channel) in channelNumberString.enumerated() {
@@ -212,43 +227,50 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         
     }
     
-    func saveChannels() {
+    private func saveChannels() {
         UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.set(self.channels, forKey: "channels")
         UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.synchronize()
     }
     
-    func setChannels(for remote: Remote) {
+    private func setChannels(for remote: Remote) {
         if let channels = remote._remoteChannels {
             self.channels = channels
         }
     }
     
-    func getChannels() {
+    private func getChannels() {
         if let channels = UserDefaults(suiteName: "group.no.digitalmood.TV-Remote")?.dictionary(forKey: "channels") as? [String: Int] {
             self.channels = channels
         }
     }
     
-    func setValue(for remote: Remote) {
+    private func setValue(for remote: Remote) {
         setChannels(for: remote)
     }
     
-    func setRemote() {
-        let index = remoteList.indexOfSelectedItem
+    private func setRemote(for index: Int? = nil) {
+        let index = index ?? remoteList.indexOfSelectedItem
+        self.remoteList.selectItem(at: index)
 
         self.selectedRemote = remotes[index]
         remotes[index].setSelected(selected: true)
         
-        self.lastSelectedRemoteIndex = index
-        remotes[lastSelectedRemoteIndex].setSelected(selected: false)
+        // self.lastSelectedRemoteIndex = index
+        remotes[index].setSelected(selected: false)
         
         setValue(for: remotes[index])
         encodeRemotes()
+        
+        self.setSelected(index: index)
+        self.automatic = false
+        
+        encodeSelected()
+        encodeAutomatic()
     }
     
     // EncodeRemotes and Save to UserDefaults
     // https://stackoverflow.com/questions/44441223/encode-decode-array-of-types-conforming-to-protocol-with-jsonencoder
-    func encodeRemotes() {
+    private func encodeRemotes() {
         // Get SSID from Router
         guard let SSID = Network.instance.returnSSID() else { return }
         // Get array (remotes)
@@ -267,7 +289,7 @@ class TodayViewController: NSViewController, NCWidgetProviding {
     
     // DecodeRemotes and Load in Remote View
     // -------------------------------
-    func decodeRemotes() {
+    private func decodeRemotes() {
         // Get SSID from Router
         guard let SSID = Network.instance.returnSSID() else { return }
         // Load data from UserDefaults
@@ -283,10 +305,47 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         }
     }
     
+    // Local Storage With UserDefaults
+    // ------------------------------
+    private func encodeSelected() {
+        let selected = self.selected
+        UserDefaults.standard.set(selected, forKey: "selected")
+        UserDefaults.standard.synchronize()
+    }
+    
+    private func decodeSelected() {
+        if let selected = UserDefaults.standard.value(forKey: "selected") as? [String:Int?] {
+            self.selected = selected
+        }
+    }
+    
+    private func encodeAutomatic() {
+        let automatic = self.automatic
+        UserDefaults.standard.set(automatic, forKey: "automatic")
+        UserDefaults.standard.synchronize()
+    }
+    
+    private func decodeAutomatic() {
+        let automatic = UserDefaults.standard.bool(forKey: "automatic")
+        self.automatic = automatic
+        
+    }
+    
+    private func setSelected(index: Int?) {
+        guard let SSID = Network.instance.returnSSID() else { return }
+        switch index {
+        case nil:
+            self.selected = [SSID:nil]
+            encodeSelected()
+        default:
+            self.selected = [SSID:index!]
+            encodeSelected()
+        }
+    }
+    
     // MARK: - View Controller Lifecycle / View Did Load / Xib Implementations
     // ----------------------------------------
     override func viewDidLoad() {
-        // self.channelList.addItems(withObjectValues: channels)
         channelList.delegate = self
         channelList.dataSource = self
         
@@ -295,12 +354,52 @@ class TodayViewController: NSViewController, NCWidgetProviding {
         self.remoteList.removeAllItems()
         self.remotes.removeAll()
         
+        // self.decodeLocation()
         self.decodeRemotes()
         
-        // Set First Remote In List
-        // ------------------------
-        self.remoteList.selectItem(at: 0)
-        self.setRemote()
+        self.decodeSelected()
+        self.decodeAutomatic()
+        
+        self.setupRemote()
+    }
+    
+    private func setupRemote() {
+        if self.automatic {
+            self.autoSelect.state = .on
+            self.enableLocationServices()
+        } else {
+            self.autoSelect.state = .off
+            if let SSID = Network.instance.returnSSID() {
+                if let selectedIndex = self.selected[SSID] {
+                    if let index = selectedIndex {
+                        self.setRemote(for: index)
+                    }
+                }
+            }
+        }
+    }
+    
+    // LocationManager
+    private func enableLocationServices() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        // locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            print(location)
+            if let selectedLocationDistance = self.remotes[self.remoteList.indexOfSelectedItem].returnLocationDistance(fromLocation: location) {
+                for (idx, remote) in remotes.enumerated() {
+                    if let remoteReturnDistance = remote.returnLocationDistance(fromLocation: location) {
+                        if remoteReturnDistance < selectedLocationDistance {
+                            setRemote(for: idx)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     override var nibName: NSNib.Name? {

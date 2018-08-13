@@ -102,6 +102,15 @@ struct Remote: Codable {
         }
     }
     
+    func returnLocationDistance(fromLocation: CLLocation) -> CLLocationDistance? {
+        if let location = self._remoteLocation {
+            let toLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
+            return toLocation.distance(from: fromLocation)
+        } else {
+            return nil
+        }
+    }
+    
     init(remoteName: String, remoteType: String) {
         self._remoteName = remoteName
         self._remoteType = remoteType
