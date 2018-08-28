@@ -334,7 +334,7 @@
                     </constraints>
                     <buttonCell key="cell" type="smallSquare" title="POWER" alternateTitle="KEY_POWER" bezelStyle="smallSquare" image="power_red_white5_small" imagePosition="trailing" alignment="right" lineBreakMode="truncatingTail" state="on" borderStyle="border" allowsMixedState="YES" imageScaling="proportionallyDown" inset="2" id="8QO-Q1-9EY">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system" size="9"/>
+                        <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="buttonDown" value="NO"/>
@@ -428,7 +428,7 @@
                     </constraints>
                     <buttonCell key="cell" type="smallSquare" title="SOURCE" alternateTitle="KEY_SOURCE" bezelStyle="smallSquare" image="source_grey_medium" imagePosition="leading" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WwA-Ee-ZZc">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system" size="9"/>
+                        <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
