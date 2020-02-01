@@ -952,47 +952,37 @@
                                             <action selector="buttonAction:" destination="x0A-80-CI7" eventType="touchUpInside" id="zcQ-a8-Xpf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUA-ec-B5z">
-                                        <rect key="frame" x="75.5" y="230" width="74" height="37"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="KEY_GUIDE"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="37" id="dfv-Ml-OfO"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <inset key="contentEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Guide" image="tabbar_tvguide2">
-                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="buttonAction:" destination="x0A-80-CI7" eventType="touchUpInside" id="Qwx-ZN-Y2I"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWd-9b-ZsJ">
+                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWd-9b-ZsJ">
                                         <rect key="frame" x="75.5" y="43" width="74" height="36"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="KEY_INFO"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="nu4-W6-96d"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="ℹ︎">
-                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="-50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="TV" image="tv.circle.fill" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="buttonAction:" destination="x0A-80-CI7" eventType="touchUpInside" id="Tv3-z3-SDq"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHx-ze-ci0">
+                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHx-ze-ci0">
                                         <rect key="frame" x="225.5" y="43" width="74" height="36"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="KEY_MENU"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="Lif-pS-3dR"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                        <state key="normal" title="⌸">
-                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="3"/>
+                                        <state key="normal" title="Guide" image="tabbar_tvguide2">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <connections>
                                             <action selector="buttonAction:" destination="x0A-80-CI7" eventType="touchUpInside" id="2Pb-ep-0dt"/>
@@ -1058,18 +1048,40 @@
                                             <action selector="buttonAction:" destination="x0A-80-CI7" eventType="touchUpInside" id="nLd-GP-dzP"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tj1-br-Ush">
+                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tj1-br-Ush">
                                         <rect key="frame" x="225.5" y="230" width="74" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="x7l-vu-UTl"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                        <state key="normal" title="▣">
-                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
+                                        <state key="normal" title="Home" image="house" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="buttonAction:" destination="x0A-80-CI7" eventType="touchUpInside" id="uKc-Rj-AzJ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUA-ec-B5z">
+                                        <rect key="frame" x="75.5" y="230" width="74" height="37"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="KEY_GUIDE"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="dfv-Ml-OfO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="titleEdgeInsets" minX="-45" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="44" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Back" image="gobackward" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonAction:" destination="x0A-80-CI7" eventType="touchUpInside" id="Qwx-ZN-Y2I"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1280,6 +1292,8 @@
     <resources>
         <image name="channel_list_grey" width="25.5" height="25.5"/>
         <image name="channel_list_grey5" width="25.5" height="25.5"/>
+        <image name="gobackward" catalog="system" width="60" height="64"/>
+        <image name="house" catalog="system" width="64" height="54"/>
         <image name="power_medium" width="18" height="18"/>
         <image name="source_grey_medium" width="17" height="17"/>
         <image name="source_grey_medium2" width="17" height="17"/>
@@ -1288,6 +1302,7 @@
         <image name="tabbar_tv" width="32" height="48"/>
         <image name="tabbar_tvguide" width="32" height="48"/>
         <image name="tabbar_tvguide2" width="32" height="48"/>
+        <image name="tv.circle.fill" catalog="system" width="64" height="60"/>
         <image name="volume_mute_6" width="25.5" height="25.5"/>
         <image name="volume_mute_grey" width="25.5" height="25.5"/>
     </resources>

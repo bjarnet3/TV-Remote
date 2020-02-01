@@ -34,18 +34,18 @@ class ChannelsViewController: UIViewController {
     
     /// **Hostname** followed by **.local** ie ( **family-iMac.local** )
     private var hostname = "TV-Remote.local"
-    private var ipAddress = "192.168.10.120"
+    private var ipAddress = "192.168.1.7"
     private var portNumber = "3000"
     private var SSL: Bool = false
-
-    private var navigationBarHeight: CGFloat {
-        return navigationController?.navigationBar.frame.height ?? 49.0
-    }
 
     private var remoteIsHidden = true
     private let remoteViewTopHeight: CGFloat = 43.0
     private var remoteViewAnimationDistance: CGFloat {
         return remoteView.frame.height - remoteViewTopHeight - navigationBarHeight
+    }
+
+    private var navigationBarHeight: CGFloat {
+        return navigationController?.navigationBar.frame.height ?? 49.0
     }
     
     private var scrollContentOffset : CGFloat = 0.0
