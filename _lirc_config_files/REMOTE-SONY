@@ -1,0 +1,54 @@
+#
+# This config file was automatically generated
+# using lirc-0.9.4c(emulation) on Mon Oct  1 04:31:19 2018
+# Command line used: -d /dev/lirc0 -a SONY_RMT-TX100D.conf
+# Kernel version (uname -r): 4.9.76+
+#
+# Remote name (as of config file): SONY_RMT-TX100D
+# Brand of remote device, the thing you hold in your hand:
+# Remote device model nr:
+# Remote device info url:
+# Does remote device has a bundled capture device e. g., a
+#     usb dongle? :
+# For bundled USB devices: usb vendor id, product id
+#     and device string (use dmesg or lsusb):
+# Type of device controlled
+#     (TV, VCR, Audio, DVD, Satellite, Cable, HTPC, ...) :
+# Device(s) controlled by this remote:
+
+begin remote
+
+  name  SONY_RMT-TX100D
+  bits           15
+  flags SPACE_ENC|CONST_LENGTH
+  eps            30
+  aeps          100
+
+  header       2438   556
+  one          1246   555
+  zero          645   555
+  gap          45020
+  toggle_bit_mask 0x0
+  frequency    38000
+
+      begin codes
+          KEY_SYNC-MENU            0x0D58
+          KEY_DIGI-ANA             0x58EE
+          KEY_TV-RADIO             0x7558
+          KEY_FOOTBALL             0x3758
+          KEY_RED                  0x52E9
+          KEY_GREEN                0x32E9
+          KEY_YELLOW               0x72E9
+          KEY_BLUE                 0x12E9
+          KEY_ACTION-MENU          0x6923
+          KEY_GUIDE                0x6D25
+          KEY_DISCOVER             0x6758
+          KEY_BACK                 0x62E9
+          KEY_SCREENSIZE           0x5E25
+          KEY_HELP                 0x5923
+          KEY_SUBTITLE             0x0AE9
+          KEY_RECORD               0x02E9
+          KEY_TITLE-LIST           0x5358
+      end codes
+
+end remote

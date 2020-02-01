@@ -32,3 +32,19 @@ extension UXView {
         insertSubview(frost, at: 0)
     }
 }
+
+extension UISearchBar {
+    func setEffect(blurEffect: UIBlurEffectStyle = .dark) {
+        for view in subviews {
+            if view is UIVisualEffectView {
+                view.removeFromSuperview()
+            }
+        }
+
+        let frost = UIVisualEffectView(effect: UIBlurEffect(style: blurEffect))
+        frost.frame = bounds
+        frost.autoresizingMask = .flexibleWidth
+
+        insertSubview(frost, at: 0)
+    }
+}

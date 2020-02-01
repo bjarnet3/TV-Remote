@@ -70,8 +70,10 @@ struct Remote: Codable {
         let secureUrl = URL(string: "https://\(ip):\(port)/remotes/\(remote)/\(keyName)")!
         let unsecureUrl = URL(string: "http://\(ip):\(port)/remotes/\(remote)/\(keyName)")!
         
+        print(unsecureUrl.absoluteString)
         // You can test with Curl in Terminal
         // curl -d POST http://192.168.10.120:3000/remotes/Samsung_AH59/KEY_MUTE (or raspberrypi.local:3000)
+        // curl -d POST http://192.168.1.233:3000/remotes/Samsung_AH59/KEY_MUTE
         
         let url = _remoteSSL ? secureUrl : unsecureUrl
         let session = URLSession.shared
@@ -95,7 +97,7 @@ struct Remote: Codable {
             let keyString = "KEY_\(channel)"
             if (idx + 1) == channelNumberString.count {
                 sendHTTP(keyName: keyString)
-                sendHTTP(keyName: "KEY_OK")
+                sendHTTP(keyName: "KEY_ENTER")
             } else {
                 sendHTTP(keyName: keyString)
             }

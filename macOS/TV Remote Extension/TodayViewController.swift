@@ -82,6 +82,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, CLLocationManage
                 if let remote = self.selectedRemote {
                     let identifier = sender.alternateTitle
                     remote.sendHTTP(keyName: identifier)
+                    print(identifier)
                 }
             }
         } else {
@@ -218,7 +219,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, CLLocationManage
                 let keyString = "KEY_\(channel)"
                 if (idx + 1) == channelNumberString.count {
                     remote.sendHTTP(keyName: keyString)
-                    remote.sendHTTP(keyName: "KEY_OK")
+                    remote.sendHTTP(keyName: "KEY_ENTER")
                 } else {
                     remote.sendHTTP(keyName: keyString)
                 }

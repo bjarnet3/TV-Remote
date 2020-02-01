@@ -15,7 +15,7 @@ class ChannelsViewController: UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var backView: UXView!
     @IBOutlet weak var remoteView: UXView!
-    @IBOutlet weak var searchView: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // Remote Button Outlets
     @IBOutlet weak var remoteUpButton: UIButton!
@@ -37,8 +37,16 @@ class ChannelsViewController: UIViewController {
     private var ipAddress = "192.168.10.120"
     private var portNumber = "3000"
     private var SSL: Bool = false
-    
+
+    private var navigationBarHeight: CGFloat {
+        return navigationController?.navigationBar.frame.height ?? 49.0
+    }
+
     private var remoteIsHidden = true
+    private let remoteViewTopHeight: CGFloat = 43.0
+    private var remoteViewAnimationDistance: CGFloat {
+        return remoteView.frame.height - remoteViewTopHeight - navigationBarHeight
+    }
     
     private var scrollContentOffset : CGFloat = 0.0
     // private var downDistance: CGFloat = 0.0
@@ -100,11 +108,15 @@ class ChannelsViewController: UIViewController {
         remoteAnimation()
     }
     
-    private func dismissKeyboard() {
-        self.view.endEditing(true)
+    private func dismissKeyboard(dismissView: UIView? = nil) {
+        if let dismissView = dismissView {
+            dismissView.endEditing(true)
+        } else {
+            self.view.endEditing(true)
+        }
     }
     
-    // MARK: - FUNCTIONS:
+    // MARK: - Functions:
     // ----------------------------------------
     // Remote Send Action
     private func returnChannelNumber(from: String) {
@@ -191,17 +203,41 @@ class ChannelsViewController: UIViewController {
             }
         }
     }
-    
+
+    // MARK: - Setup View / Effects
+
     private func setupRemoteView() {
         self.remoteView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         self.remoteView.layer.cornerRadius = 26.0
         self.remoteView.layer.borderColor = UIColor.black.cgColor
         self.remoteView.layer.borderWidth = 0.75
         self.remoteView.layer.masksToBounds = true
+        self.hideRemoteView(animated: false)
     }
-    
-    
 
+    private func setupParallaxEffect() {
+        // Distance Close
+        addParallaxEffectOnView(self.remoteUpButton, 22)
+        addParallaxEffectOnView(self.remoteLeftButton, 22)
+        addParallaxEffectOnView(self.remoteRightButton, 22)
+        addParallaxEffectOnView(self.remoteDownButton, 22)
+        addParallaxEffectOnView(self.remoteOKButton, 25)
+
+        // Distance Middle
+        addParallaxEffectOnView(self.remoteRedButton, 15)
+        addParallaxEffectOnView(self.remoteGreenButton, 15)
+        addParallaxEffectOnView(self.remoteYellowButton, 15)
+        addParallaxEffectOnView(self.remoteBlueButton, 15)
+
+        // Distance Far
+        addParallaxEffectOnView(self.remoteView, 13)
+        addParallaxEffectOnView(self.progressView, 9)
+
+        // Distance Very Far
+        addParallaxEffectOnView(self.tableView, 2)
+    }
+
+    // MARK: - View Load Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // NETWORK TESTING
@@ -213,7 +249,7 @@ class ChannelsViewController: UIViewController {
         tableView.contentInset.top = 40.0
         tableView.contentInset.bottom = 20.0
         
-        setParallaxEffectOnView()
+        setupParallaxEffect()
         
         // Haptic and Taptic Engine Support
         print("UIDevice.current.platform: \(UIDevice.current.platform.rawValue)")
@@ -253,57 +289,57 @@ class ChannelsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
-// UI, UX, GFX and ANIMATIONS
+// MARK: - Animations & Effects
 // --------------------------
 extension ChannelsViewController {
-    
-    private func setParallaxEffectOnView() {
-        // Distance Close
-        addParallaxEffectOnView(self.remoteUpButton, 22)
-        addParallaxEffectOnView(self.remoteLeftButton, 22)
-        addParallaxEffectOnView(self.remoteRightButton, 22)
-        addParallaxEffectOnView(self.remoteDownButton, 22)
-        addParallaxEffectOnView(self.remoteOKButton, 25)
-        
-        // Distance Middle
-        addParallaxEffectOnView(self.remoteRedButton, 15)
-        addParallaxEffectOnView(self.remoteGreenButton, 15)
-        addParallaxEffectOnView(self.remoteYellowButton, 15)
-        addParallaxEffectOnView(self.remoteBlueButton, 15)
-        // Distance Far
-        addParallaxEffectOnView(self.remoteView, 13)
-        addParallaxEffectOnView(self.searchView, 13)
-        addParallaxEffectOnView(self.progressView, 9)
-        // Distance Very Far
-        addParallaxEffectOnView(self.tableView, 2)
-        // Distance Base
-    }
-    
-    private func remoteAnimation() {
-        if remoteIsHidden {
-            hapticButton(.medium)
-            // SHOW REMOTE
-            // -----------
+
+    private func showRemoteView(animated: Bool = true) {
+        // SHOW REMOTE
+        // -----------
+        if animated {
             UIView.animate(withDuration: 0.58, delay: 0.00, usingSpringWithDamping: 0.50, initialSpringVelocity: 0.34, options: .curveEaseOut, animations: {
-                self.remoteView.frame = CGRect(x: 0, y: 337.0, width: 375.0, height: 330.0)
+
+                self.remoteView.transform = CGAffineTransform(translationX: 0, y: .zero)
                 self.remoteView.layer.cornerRadius = 0
             })
             UIView.animate(withDuration: 0.71, delay: 0.034, usingSpringWithDamping: 0.50, initialSpringVelocity: 0.34, options: .curveEaseOut, animations: {
                 self.postAnimation()
             })
-            self.remoteIsHidden = false
         } else {
-            hapticButton(.medium)
-            // HIDE REMOTE
-            // -----------
+            self.remoteView.transform = CGAffineTransform(translationX: 0, y: .zero)
+            self.remoteView.layer.cornerRadius = 0
+            self.postAnimation()
+        }
+        self.remoteIsHidden = false
+    }
+
+    private func hideRemoteView(animated: Bool = true) {
+        // HIDE REMOTE
+        // -----------
+        if animated {
             UIView.animate(withDuration: 0.50, delay: 0.00, usingSpringWithDamping: 0.52, initialSpringVelocity: 0.36, options: .curveEaseOut, animations: {
                 self.preAnimation()
             })
             UIView.animate(withDuration: 0.65, delay: 0.024, usingSpringWithDamping: 0.55, initialSpringVelocity: 0.36, options: .curveEaseOut, animations: {
-                self.remoteView.frame = CGRect(x: 0, y: 576.0, width: 375.0, height: 92.0)
+
+                self.remoteView.transform = CGAffineTransform(translationX: 0, y: self.remoteViewAnimationDistance)
                 self.remoteView.layer.cornerRadius = 26
             })
-            self.remoteIsHidden = true
+        } else {
+            self.preAnimation()
+            self.remoteView.transform = CGAffineTransform(translationX: 0, y: remoteViewAnimationDistance)
+            self.remoteView.layer.cornerRadius = 26
+        }
+        self.remoteIsHidden = true
+    }
+    
+    private func remoteAnimation() {
+        if remoteIsHidden {
+            hapticButton(.medium)
+            showRemoteView()
+        } else {
+            hapticButton(.medium)
+            hideRemoteView()
         }
     }
     
@@ -348,6 +384,7 @@ extension ChannelsViewController {
     }
 }
 
+// MARK: - UIScrollView
 extension ChannelsViewController: UIScrollViewDelegate {
     
     func returnScrollValue(with scrollOffset: CGFloat, valueOffset: CGFloat) -> CGFloat {
@@ -372,7 +409,6 @@ extension ChannelsViewController: UIScrollViewDelegate {
                 // move down
                 self.remoteAnimation()
             }
-            
         }
     }
     
@@ -386,6 +422,7 @@ extension ChannelsViewController: UIScrollViewDelegate {
         // update the new position acquired
         hideWhenScrolling(scrollView.contentOffset.y)
         self.scrollContentOffset = scrollView.contentOffset.y
+        dismissKeyboard(dismissView: self.searchBar)
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

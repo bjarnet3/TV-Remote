@@ -418,6 +418,7 @@ class SettingViewController: NSViewController, URLSessionDelegate, CLLocationMan
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             print(location)
+            /*
             if let selectedLocationDistance = self.remotes[self.remoteList.indexOfSelectedItem].returnLocationDistance(fromLocation: location) {
                 for (idx, remote) in remotes.enumerated() {
                     if let remoteReturnDistance = remote.returnLocationDistance(fromLocation: location) {
@@ -435,6 +436,7 @@ class SettingViewController: NSViewController, URLSessionDelegate, CLLocationMan
                     }
                 }
             }
+            */
         }
     }
     
