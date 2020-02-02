@@ -16,7 +16,6 @@ class ChannelsViewController: UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var backView: UXView!
     @IBOutlet weak var remoteView: UXView!
-    @IBOutlet weak var searchBar: UISearchBar!
     
     // Remote Button Outlets
     @IBOutlet weak var remoteUpButton: UIButton!
@@ -375,7 +374,6 @@ extension ChannelsViewController: UIScrollViewDelegate {
 
         // hideWhenScrolling(scrollView.contentOffset.y)
         self.scrollContentOffset = scrollView.contentOffset.y
-        dismissKeyboard(dismissView: self.searchBar)
     }
 
     // Begin Decelerating

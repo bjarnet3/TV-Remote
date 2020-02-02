@@ -121,8 +121,8 @@
 		5CBE61AD20B364150057ED02 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5C7E40FA20B3445F006DF2E4 /* RemoteViewController.swift */,
 				5C39991A20BA2F4200B03CCE /* ChannelsViewController.swift */,
+				5C7E40FA20B3445F006DF2E4 /* RemoteViewController.swift */,
 				5C39991E20BA42BE00B03CCE /* TVViewController.swift */,
 				5C39992020BA42C100B03CCE /* SettingsViewController.swift */,
 			);

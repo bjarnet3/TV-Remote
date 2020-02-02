@@ -67,12 +67,6 @@ class RemoteViewController: UIViewController {
         hapticButton(.medium)
     }
     
-    // KEYBOARD
-    @IBAction func touchedBackground(_ sender: Any) {
-        // Dissmiss
-        dismissKeyboard()
-    }
-    
     private func dismissKeyboard() {
         self.view.endEditing(true)
     }
@@ -212,12 +206,6 @@ extension RemoteViewController {
         
         // NETWORK TESTING
         getIPAddress(from: hostname)
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        remotePicker.delegate = self
-        remotePicker.dataSource = self
     }
     
     override func didReceiveMemoryWarning() {
