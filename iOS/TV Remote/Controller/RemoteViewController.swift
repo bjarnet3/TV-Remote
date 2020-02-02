@@ -20,8 +20,6 @@ class RemoteViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var remotePicker: UIPickerView!
     
-    @IBOutlet weak var touchableView: TouchableView!
-    
     /// **Hostname** followed by **.local** ie ( **family-iMac.local** )
     var hostname = "TV-Remote.local"
     var ipAddress = "192.168.10.120"
@@ -30,8 +28,8 @@ class RemoteViewController: UIViewController {
     
     var lastRemote: Remote?
     var remotes: [Remote] = [
-        Remote(remoteName: "Samsung", remoteType: "Samsung_AH59"),
-        Remote(remoteName: "Sony", remoteType: "Sony")
+        Remote(name: "Samsung", type: .ir),
+        Remote(name: "Sony", type: .smart)
     ]
     
     var channels: [Channel] = [

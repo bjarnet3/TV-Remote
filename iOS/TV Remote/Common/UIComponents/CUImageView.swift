@@ -15,8 +15,8 @@ class CUImageView: UIImageView {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.layer.borderWidth = 0.6
-        self.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderWidth = 0.8
+        self.layer.borderColor = UIColor.darkGray.cgColor
     }
     
     override func layoutSubviews() {

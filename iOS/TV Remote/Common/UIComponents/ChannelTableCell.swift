@@ -25,10 +25,54 @@ class ChannelTableCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
+
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+
+        if highlighted {
+            exitAnimation()
+        } else {
+            enterAnimation()
+        }
+
+    }
     
     public enum Direction {
         case enter
         case exit
+    }
+
+    func enterAnimation(animated: Bool = true) {
+        if animated {
+            UIView.animate(withDuration: 0.45, delay: 0.0, usingSpringWithDamping: 0.35, initialSpringVelocity: 0.225, options: .curveEaseOut, animations: {
+
+                self.alpha = 1
+                self.layer.transform = CATransform3DMakeRotation(0, 1, 0, 0)
+
+                // self.contentView.alpha = 1
+                // self.contentView.transform = CGAffineTransform(scaleX: 1.00, y: 1.00)
+            })
+        } else {
+            self.contentView.alpha = 1
+            self.contentView.transform = CGAffineTransform(scaleX: 1.00, y: 1.00)
+        }
+
+    }
+
+    func exitAnimation(animated: Bool = true) {
+        if animated {
+            UIView.animate(withDuration: 0.50, delay: 0.0, usingSpringWithDamping: 0.40, initialSpringVelocity: 0.25, options: .curveEaseOut, animations: {
+
+                self.alpha = 0.85
+                self.layer.transform = CATransform3DMakeRotation(CGFloat.pi / 15, 1, 0, 0)
+
+                // self.contentView.alpha = 0.85
+                // self.contentView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            })
+        } else {
+            self.contentView.alpha = 0.85
+            self.contentView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
     }
     
     func animateView( direction: Direction) {

@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import Alamofire
 
 class ChannelsViewController: UIViewController {
     
@@ -26,41 +27,38 @@ class ChannelsViewController: UIViewController {
     
     @IBOutlet weak var remotePowerButton: UIButton!
     @IBOutlet weak var remoteSourceButton: UIButton!
-    
+    @IBOutlet weak var remoteMinimizeButton: UIButton!
+
     @IBOutlet weak var remoteRedButton: UIButton!
     @IBOutlet weak var remoteGreenButton: UIButton!
     @IBOutlet weak var remoteYellowButton: UIButton!
     @IBOutlet weak var remoteBlueButton: UIButton!
-    
-    /// **Hostname** followed by **.local** ie ( **family-iMac.local** )
-    private var hostname = "TV-Remote.local"
-    private var ipAddress = "192.168.1.7"
-    private var portNumber = "3000"
-    private var SSL: Bool = false
 
+    private var timer = Timer()
+
+    private var remoteHandler: RemoteHandler?
     private var remoteIsHidden = true
     private let remoteViewTopHeight: CGFloat = 43.0
     private var remoteViewAnimationDistance: CGFloat {
         return remoteView.frame.height - remoteViewTopHeight - navigationBarHeight
     }
 
+    private var scrollViewDraggingOffset: CGFloat = 0.0
+    private var scrollViewDraggingDistance: CGFloat = 0.0
+
+    private var scrollContentOffset : CGFloat = 0.0
     private var navigationBarHeight: CGFloat {
         return navigationController?.navigationBar.frame.height ?? 49.0
     }
-    
-    private var scrollContentOffset : CGFloat = 0.0
-    // private var downDistance: CGFloat = 0.0
-    // private var upDistance : CGFloat = 0.0
-    
-    private var lastRemote: Remote?
+
     private var remotes: [Remote] = [
-        Remote(remoteName: "Samsung", remoteType: "Samsung_AH59"),
-        Remote(remoteName: "Sony", remoteType: "Sony")
+        Remote(name: "Samsung", type: .ir),
+        Remote(name: "Sony", type: .smart, ip: "192.168.1.7", key: "0000")
     ]
     
     private var channels: [Channel] = [
         Channel(channelName: "TV2", channelNumber: 3, channelImageName: "tv2-norge.png", channelCategory: "Tabloid", channelURL: "www.tv2.no"),
-        Channel(channelName: "Nyhetskanalen", channelNumber: 12, channelImageName: "tv2-nyhetskanalen.png", channelCategory: "Nyheter", channelURL: "www.tv2.no"),
+        Channel(channelName: "Nyhetskanalen", channelNumber: 22, channelImageName: "tv2-nyhetskanalen.png", channelCategory: "Nyheter", channelURL: "www.tv2.no"),
         Channel(channelName: "TV2 Zebra", channelNumber: 7, channelImageName: "zebra.png", channelCategory: "Blogging", channelURL: "www.tv2.no"),
         Channel(channelName: "NRK", channelNumber: 1, channelImageName: "nrk.png", channelCategory: "Propaganda", channelURL: "www.nrk.no"),
         Channel(channelName: "NRK2", channelNumber: 2, channelImageName: "nrk2.png", channelCategory: "Propaganda", channelURL: "www.nrk.no"),
@@ -97,10 +95,18 @@ class ChannelsViewController: UIViewController {
     // MARK: - IBAction:
     // ----------------------------------------
     @IBAction func buttonAction(_ sender: UIButton) {
-        if let keyName = sender.accessibilityIdentifier {
-            sendHTTP(keyName: keyName)
-            hapticButton(.medium)
+        guard let remote = self.remoteHandler
+            else {
+                print("Unable to set remoteHandler")
+            return
         }
+        guard let keyString = sender.accessibilityIdentifier else {
+            print("Unable to get sender.accessibilityIdentifier" )
+            return
+        }
+
+        remote.send(keyString: keyString)
+        hapticButton(.medium)
         dismissKeyboard()
     }
 
@@ -119,100 +125,25 @@ class ChannelsViewController: UIViewController {
     // MARK: - Functions:
     // ----------------------------------------
     // Remote Send Action
-    private func returnChannelNumber(from: String) {
-        for channel in channels {
-            if channel._channelName == from {
-                self.returnChannelString(from: channel._channelNumber)
-            }
-        }
-    }
-    
-    private func returnChannelString(from: Int) {
-        let channelNumberString = String(from)
-        // Break up channelNumber into charaters
-        for (idx, channel) in channelNumberString.enumerated() {
-            let keyString = "KEY_\(channel)"
-            if (idx + 1) == channelNumberString.count {
-                sendHTTP(keyName: keyString)
-                sendHTTP(keyName: "KEY_OK")
-            } else {
-                sendHTTP(keyName: keyString)
-            }
-        }
-    }
-    
-    // Send IR signal to Server
-    private func sendHTTP(keyName: String) {
-        // get remoteType from remoteList
-        let remote = self.remotes[0].remoteType // remotes[remoteList.title] else { return }
-        
-        // URL and HTTP POST Request
-        // http://raspberrypi.local:3000/remotes/Samsung_AH59/KEY_POWER
-        let secureUrl = URL(string: "https://\(self.ipAddress):3001/remotes/\(remote)/\(keyName)")!
-        let unsecureUrl = URL(string: "http://\(self.ipAddress):\(self.portNumber)/remotes/\(remote)/\(keyName)")!
-        
-        // You can test with Curl in Terminal
-        // curl -d POST http://192.168.10.120:3000/remotes/Samsung_AH59/KEY_MUTE (or raspberrypi.local:3000)
-        
-        let url = self.SSL ? secureUrl : unsecureUrl
-        let session = URLSession.shared
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        
-        let task = session.dataTask(with: request, completionHandler: { (data, response, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
-        })
-        task.resume()
-    }
-    
-    // Settings & Setup
-    private func getIPAddress(from: String) {
-        let host = CFHostCreateWithName(nil,from as CFString).takeRetainedValue()
-        CFHostStartInfoResolution(host, .addresses, nil)
-        
-        var success: DarwinBoolean = false
-        if let addresses = CFHostGetAddressing(host, &success)?.takeUnretainedValue() as NSArray? {
-            for case let theAddress as NSData in addresses {
-                
-                var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-                if getnameinfo(theAddress.bytes.assumingMemoryBound(to: sockaddr.self), socklen_t(theAddress.length),
-                               &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
-                    let numAddress = String(cString: hostname)
-                    // Filter out IPV4
-                    if numAddress.count == 14 {
-                        ipAddress = numAddress
-                    }
-                }
-            }
-        }
-    }
-    
-    private func setProgress(progress: Float = 1.0, animated: Bool = true, alpha: CGFloat = 1.0) {
-        if let progressView = self.progressView {
-            if animated {
-                progressView.setProgress(progress, animated: animated)
-                UIView.animate(withDuration: 0.60, delay: 0.75, usingSpringWithDamping: 0.70, initialSpringVelocity: 0.3, options: .curveEaseOut, animations: {
-                    progressView.alpha = alpha
-                })
-            } else {
-                progressView.setProgress(progress, animated: animated)
-                progressView.alpha = alpha
-            }
-        }
+
+    // MARK: - Setup Handler / View / Effects
+
+    private func setupData() {
+        let remote = Remote(name: "Sony Remote", type: .smart, ip: "192.168.1.7", key: "0000")
+        self.remoteHandler = RemoteHandler(remote: remote)
     }
 
-    // MARK: - Setup View / Effects
-
-    private func setupRemoteView() {
+    private func setupView() {
         self.remoteView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         self.remoteView.layer.cornerRadius = 26.0
-        self.remoteView.layer.borderColor = UIColor.black.cgColor
-        self.remoteView.layer.borderWidth = 0.75
+        self.remoteView.layer.borderColor = UIColor.darkGray.cgColor
+        self.remoteView.layer.borderWidth = 0.55
         self.remoteView.layer.masksToBounds = true
         self.hideRemoteView(animated: false)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.68, execute: {
+            self.showRemoteView()
+        })
     }
 
     private func setupParallaxEffect() {
@@ -240,9 +171,9 @@ class ChannelsViewController: UIViewController {
     // MARK: - View Load Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // NETWORK TESTING
-        getIPAddress(from: hostname)
-        setupRemoteView()
+
+        setupData()
+        setupView()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -268,9 +199,11 @@ class ChannelsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         setProgress(progress: 0.0, animated: false, alpha: 1.0)
+
         animateCellsWithProgress(in: self.tableView, true, progress: self.progressView, completion: {
             print("animateCellsWithProgress completion")
         })
+
         prepareForFeedbackGenerator()
     }
     
@@ -350,8 +283,9 @@ extension ChannelsViewController {
         self.remoteUpButton.alpha = 0.2
         self.remoteDownButton.alpha = 0.2
         
-        self.remotePowerButton.alpha = 0.0
-        self.remoteSourceButton.alpha = 0.0
+        self.remotePowerButton.alpha = 0.65
+        self.remoteSourceButton.alpha = 0.65
+        self.remoteMinimizeButton.alpha = 0.65
         
         self.remoteOKButton.transform = CGAffineTransform(scaleX: 0.53, y: 0.53)
         self.remoteLeftButton.transform = CGAffineTransform(scaleX: 0.53, y: 0.53)
@@ -359,8 +293,8 @@ extension ChannelsViewController {
         self.remoteUpButton.transform = CGAffineTransform(scaleX: 0.53, y: 0.53)
         self.remoteDownButton.transform = CGAffineTransform(scaleX: 0.53, y: 0.53)
         
-        self.remotePowerButton.transform = CGAffineTransform(scaleX: 0.53, y: 0.53)
-        self.remoteSourceButton.transform = CGAffineTransform(scaleX: 0.53, y: 0.53)
+        // self.remotePowerButton.transform = CGAffineTransform(scaleX: 0.53, y: 0.53)
+        // self.remoteSourceButton.transform = CGAffineTransform(scaleX: 0.53, y: 0.53)
     }
     
     private func postAnimation() {
@@ -370,8 +304,9 @@ extension ChannelsViewController {
         self.remoteUpButton.alpha = 1.0
         self.remoteDownButton.alpha = 1.0
         
-        self.remotePowerButton.alpha = 1.0
-        self.remoteSourceButton.alpha = 1.0
+        self.remotePowerButton.alpha = 0.65
+        self.remoteSourceButton.alpha = 0.65
+        self.remoteMinimizeButton.alpha = 0.65
         
         self.remoteOKButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         self.remoteLeftButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
@@ -379,87 +314,112 @@ extension ChannelsViewController {
         self.remoteUpButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         self.remoteDownButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         
-        self.remotePowerButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-        self.remoteSourceButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        // self.remotePowerButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        // self.remoteSourceButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+    }
+
+    private func setProgress(progress: Float = 1.0, animated: Bool = true, alpha: CGFloat = 1.0) {
+        if let progressView = self.progressView {
+            if animated {
+                progressView.setProgress(progress, animated: animated)
+                UIView.animate(withDuration: 0.60, delay: 0.75, usingSpringWithDamping: 0.70, initialSpringVelocity: 0.3, options: .curveEaseOut, animations: {
+                    progressView.alpha = alpha
+                })
+            } else {
+                progressView.setProgress(progress, animated: animated)
+                progressView.alpha = alpha
+            }
+        }
     }
 }
 
-// MARK: - UIScrollView
+// MARK: - ScrollView Delegate
 extension ChannelsViewController: UIScrollViewDelegate {
-    
-    func returnScrollValue(with scrollOffset: CGFloat, valueOffset: CGFloat) -> CGFloat {
-        let value = (((scrollOffset / 100)) / -1) - valueOffset
-        
-        let valueMin = value < 0.0 ? 0.0 : value
-        let valueMax = value > 1.0 ? 1.0 : value
-        
-        let result = value < valueMin ? valueMin : valueMax
-        print(result)
-        
-        return result
+
+    func setTimer(timeInterval: TimeInterval, completion: Completion? = nil) {
+        self.timer = Timer.scheduledTimer(
+            withTimeInterval: timeInterval, repeats: false, block: { time in
+                completion?()
+        })
     }
-    
-    func hideWhenScrolling(_ scrollViewDistance: CGFloat) {
-        print(scrollViewDistance)
-        if !self.remoteIsHidden {
-            if (350.0 < scrollViewDistance) {
-                // move up
-                self.remoteAnimation()
-            } else if (-300 > scrollViewDistance) {
-                // move down
-                self.remoteAnimation()
+
+    func scrollViewDragging(_ scrollView: UIScrollView) {
+        hapticButton(.medium)
+        setTimer(timeInterval: 3.0, completion: {
+            let distance = scrollView.contentOffset.y - self.scrollViewDraggingOffset
+            guard
+                scrollView.isDragging,
+                distance > 160
+                else {
+                    return
+            }
+            self.showRemoteView()
+            hapticButton(.success)
+        })
+    }
+
+    func scrollViewDraggingUpdater(_ scrollView: UIScrollView) {
+        if scrollView.isDragging {
+            let distance = scrollView.contentOffset.y - self.scrollViewDraggingOffset
+            scrollViewDraggingDistance = distance
+
+            if distance > 180 || distance < -180 {
+                hideRemoteView()
             }
         }
     }
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        self.scrollContentOffset = 0.0
-        print("scrollViewWillBeginDragging")
-    }
-    
-    // Search for: scrollViewDidScroll UIVisualEffect
+    // Did Scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // update the new position acquired
-        hideWhenScrolling(scrollView.contentOffset.y)
+        scrollViewDraggingUpdater(scrollView)
+
+        // hideWhenScrolling(scrollView.contentOffset.y)
         self.scrollContentOffset = scrollView.contentOffset.y
         dismissKeyboard(dismissView: self.searchBar)
     }
-    
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        if scrollView.contentOffset.y <= -80 {
-            print("scrollViewWillEndDragging: \(velocity) with -80 in offset ")
-            
-            
-        }
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print("scrollViewDidEndDragging")
-        print("decelerate: \(decelerate)")
-    }
-    
+
+    // Begin Decelerating
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-            print("scrollViewWillBeginDecelerating")
+        print("scrollViewWillBeginDecelerating")
     }
-    
+
+    // End Decelerating
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("scrollViewDidEndDecelerating")
         self.scrollContentOffset = 0.0
-        
+
         // Drag down
         if scrollView.contentOffset.y <= -80 {
             print("scrollViewDidEndDecelerating and -80 y. offset")
         }
     }
+
+    // Begin Dragging
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.scrollContentOffset = 0.0
+        self.scrollViewDraggingDistance = 0.0
+        self.scrollViewDraggingOffset = scrollView.contentOffset.y
+    }
+
+    // End Draging
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y >= 300 {
+            hideRemoteView(animated: true)
+        }
+        if scrollView.contentOffset.y <= -300 {
+            hideRemoteView(animated: true)
+        }
+    }
     
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         print("scrollViewDidEndScrollingAnimation")
-        
-        
     }
-    
 }
 
+// MARK: - TableView / Delegate / Data
 extension ChannelsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -485,15 +445,29 @@ extension ChannelsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+
+        guard let remote = self.remoteHandler else { return }
         let channelNumber = channels[indexPath.row]._channelNumber
-        returnChannelString(from: channelNumber)
+
+        print("\(channelNumber)")
+        remote.send(channelNumber: channelNumber)
     }
+
     
+    
+    // THE END OF TABLEVIEW DELEGATE EXTENSIONS
+    // ----------------------------------------------------
+    
+}
+
+// MARK: - Haptic Engine
+extension ChannelsViewController {
+
     // Prepared Haptic Feedback Implementation in TableView
     // ----------------------------------------------------
     func hapticTitle(in tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var title = sections[section].title
-        
+
         let supported = " (SUPPORTED)"
         let unsupported = " (UNSUPPORTED)"
         switch section {
@@ -519,7 +493,7 @@ extension ChannelsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return title
     }
-    
+
     func hapticImplementation(in tableView: UITableView, indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
@@ -619,9 +593,4 @@ extension ChannelsViewController: UITableViewDelegate, UITableViewDataSource {
             break
         }
     }
-    
-    
-    // THE END OF TABLEVIEW DELEGATE EXTENSIONS
-    // ----------------------------------------------------
-    
 }

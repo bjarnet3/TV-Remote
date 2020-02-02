@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,16 +17,18 @@
 		5C39992320BA433A00B03CCE /* CUImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39992220BA433A00B03CCE /* CUImageView.swift */; };
 		5C46BB3920F0E0F700C927B9 /* CULabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46BB3820F0E0F700C927B9 /* CULabel.swift */; };
 		5C46BB3B20F0EFD700C927B9 /* UXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46BB3A20F0EFD700C927B9 /* UXView.swift */; };
-		5C46BB3D20F1393A00C927B9 /* UXButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46BB3C20F1393A00C927B9 /* UXButton.swift */; };
-		5C61012520F1676200609EE1 /* TouchableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C61012420F1676200609EE1 /* TouchableView.swift */; };
-		5C61012720F167BC00609EE1 /* TouchSpotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C61012620F167BC00609EE1 /* TouchSpotView.swift */; };
 		5C7E40F920B3445F006DF2E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E40F820B3445F006DF2E4 /* AppDelegate.swift */; };
 		5C7E40FB20B3445F006DF2E4 /* RemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E40FA20B3445F006DF2E4 /* RemoteViewController.swift */; };
 		5C7E40FE20B3445F006DF2E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E40FC20B3445F006DF2E4 /* Main.storyboard */; };
 		5C7E410020B34460006DF2E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E40FF20B34460006DF2E4 /* Assets.xcassets */; };
 		5C7E410320B34460006DF2E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7E410120B34460006DF2E4 /* LaunchScreen.storyboard */; };
-		5C8E937420F16B5C006365E6 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E937320F16B5C006365E6 /* UIDevice+Extension.swift */; };
+		5C8E937420F16B5C006365E6 /* UIDevice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8E937320F16B5C006365E6 /* UIDevice+Ext.swift */; };
 		5CBE61B220B3646B0057ED02 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBE61B120B3646B0057ED02 /* Functions.swift */; };
+		5CD691EB23E52C9C00EF919F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD691EA23E52C9C00EF919F /* Settings.swift */; };
+		5CD691EE23E5317B00EF919F /* RemoteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD691ED23E5317B00EF919F /* RemoteHandler.swift */; };
+		5CD691F023E531D500EF919F /* RemoteCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD691EF23E531D500EF919F /* RemoteCommand.swift */; };
+		5CD691F223E5B2C500EF919F /* SimpleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD691F123E5B2C500EF919F /* SimpleTableCell.swift */; };
+		5CD691F423E6063100EF919F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD691F323E6063100EF919F /* SceneDelegate.swift */; };
 		9EE219D78B6CE7CD35FDC8E0 /* Pods_TV_Remote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EDF8A7974CB91944807E1A /* Pods_TV_Remote.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,10 +45,7 @@
 		5C39992220BA433A00B03CCE /* CUImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUImageView.swift; sourceTree = "<group>"; };
 		5C46BB3820F0E0F700C927B9 /* CULabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CULabel.swift; sourceTree = "<group>"; };
 		5C46BB3A20F0EFD700C927B9 /* UXView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXView.swift; sourceTree = "<group>"; };
-		5C46BB3C20F1393A00C927B9 /* UXButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXButton.swift; sourceTree = "<group>"; };
 		5C48D7DD20EFF9320032F2D5 /* TV Remote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TV Remote.entitlements"; sourceTree = "<group>"; };
-		5C61012420F1676200609EE1 /* TouchableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchableView.swift; sourceTree = "<group>"; };
-		5C61012620F167BC00609EE1 /* TouchSpotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchSpotView.swift; sourceTree = "<group>"; };
 		5C7E40F520B3445F006DF2E4 /* TV Remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Remote.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C7E40F820B3445F006DF2E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C7E40FA20B3445F006DF2E4 /* RemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteViewController.swift; sourceTree = "<group>"; };
@@ -54,8 +53,13 @@
 		5C7E40FF20B34460006DF2E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C7E410220B34460006DF2E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C7E410420B34460006DF2E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C8E937320F16B5C006365E6 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		5C8E937320F16B5C006365E6 /* UIDevice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Ext.swift"; sourceTree = "<group>"; };
 		5CBE61B120B3646B0057ED02 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		5CD691EA23E52C9C00EF919F /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		5CD691ED23E5317B00EF919F /* RemoteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteHandler.swift; sourceTree = "<group>"; };
+		5CD691EF23E531D500EF919F /* RemoteCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCommand.swift; sourceTree = "<group>"; };
+		5CD691F123E5B2C500EF919F /* SimpleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableCell.swift; sourceTree = "<group>"; };
+		5CD691F323E6063100EF919F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C9EDF8A7974CB91944807E1A /* Pods_TV_Remote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TV_Remote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -77,7 +81,6 @@
 				505B73A7051121088F34184F /* Pods-TV Remote.debug.xcconfig */,
 				099E6CD31BED8054955289B2 /* Pods-TV Remote.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -103,11 +106,13 @@
 			isa = PBXGroup;
 			children = (
 				5C48D7DD20EFF9320032F2D5 /* TV Remote.entitlements */,
-				5CBE61B020B364490057ED02 /* Library */,
-				5CBE61AF20B3642E0057ED02 /* Model */,
+				5CBE61B020B364490057ED02 /* Resources */,
+				5CD691F623E6222000EF919F /* Common */,
+				5CBE61AF20B3642E0057ED02 /* Models */,
 				5CBE61AE20B364220057ED02 /* View */,
 				5CBE61AD20B364150057ED02 /* Controller */,
 				5C7E40F820B3445F006DF2E4 /* AppDelegate.swift */,
+				5CD691F323E6063100EF919F /* SceneDelegate.swift */,
 				5C7E410420B34460006DF2E4 /* Info.plist */,
 			);
 			path = "TV Remote";
@@ -133,31 +138,71 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		5CBE61AF20B3642E0057ED02 /* Model */ = {
+		5CBE61AF20B3642E0057ED02 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5CBE61B120B3646B0057ED02 /* Functions.swift */,
-				5C39992220BA433A00B03CCE /* CUImageView.swift */,
-				5C46BB3820F0E0F700C927B9 /* CULabel.swift */,
-				5C39991C20BA427200B03CCE /* CUButton.swift */,
-				5C0F0F8920BB7A5800544B28 /* Remote.swift */,
+				5CD691EC23E5316400EF919F /* Remote */,
 				5C39991820BA2C5400B03CCE /* Channel.swift */,
-				5C0F0F8B20BB886200544B28 /* ChannelTableCell.swift */,
-				5C46BB3A20F0EFD700C927B9 /* UXView.swift */,
-				5C46BB3C20F1393A00C927B9 /* UXButton.swift */,
-				5C61012420F1676200609EE1 /* TouchableView.swift */,
-				5C61012620F167BC00609EE1 /* TouchSpotView.swift */,
-				5C8E937320F16B5C006365E6 /* UIDevice+Extension.swift */,
+				5CD691EA23E52C9C00EF919F /* Settings.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		5CBE61B020B364490057ED02 /* Library */ = {
+		5CBE61B020B364490057ED02 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				5C7E40FF20B34460006DF2E4 /* Assets.xcassets */,
 			);
-			path = Library;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5CD691EC23E5316400EF919F /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				5C0F0F8920BB7A5800544B28 /* Remote.swift */,
+				5CD691ED23E5317B00EF919F /* RemoteHandler.swift */,
+				5CD691EF23E531D500EF919F /* RemoteCommand.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		5CD691F523E6209000EF919F /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				5C46BB3A20F0EFD700C927B9 /* UXView.swift */,
+				5C39992220BA433A00B03CCE /* CUImageView.swift */,
+				5C46BB3820F0E0F700C927B9 /* CULabel.swift */,
+				5C39991C20BA427200B03CCE /* CUButton.swift */,
+				5C0F0F8B20BB886200544B28 /* ChannelTableCell.swift */,
+				5CD691F123E5B2C500EF919F /* SimpleTableCell.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		5CD691F623E6222000EF919F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5CD691F823E622C500EF919F /* Functions */,
+				5CD691F723E6227300EF919F /* Extensions */,
+				5CD691F523E6209000EF919F /* UIComponents */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		5CD691F723E6227300EF919F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5C8E937320F16B5C006365E6 /* UIDevice+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5CD691F823E622C500EF919F /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				5CBE61B120B3646B0057ED02 /* Functions.swift */,
+			);
+			path = Functions;
 			sourceTree = "<group>";
 		};
 		CEFE4CA0DC704046B5543066 /* Frameworks */ = {
@@ -288,23 +333,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C61012520F1676200609EE1 /* TouchableView.swift in Sources */,
 				5C39991B20BA2F4200B03CCE /* ChannelsViewController.swift in Sources */,
-				5C61012720F167BC00609EE1 /* TouchSpotView.swift in Sources */,
 				5C0F0F8A20BB7A5800544B28 /* Remote.swift in Sources */,
 				5C39992320BA433A00B03CCE /* CUImageView.swift in Sources */,
 				5C7E40FB20B3445F006DF2E4 /* RemoteViewController.swift in Sources */,
+				5CD691EB23E52C9C00EF919F /* Settings.swift in Sources */,
+				5CD691F423E6063100EF919F /* SceneDelegate.swift in Sources */,
 				5C39991D20BA427200B03CCE /* CUButton.swift in Sources */,
 				5C39991920BA2C5400B03CCE /* Channel.swift in Sources */,
-				5C8E937420F16B5C006365E6 /* UIDevice+Extension.swift in Sources */,
+				5C8E937420F16B5C006365E6 /* UIDevice+Ext.swift in Sources */,
 				5C39991F20BA42BE00B03CCE /* TVViewController.swift in Sources */,
 				5C7E40F920B3445F006DF2E4 /* AppDelegate.swift in Sources */,
-				5C46BB3D20F1393A00C927B9 /* UXButton.swift in Sources */,
+				5CD691F223E5B2C500EF919F /* SimpleTableCell.swift in Sources */,
+				5CD691F023E531D500EF919F /* RemoteCommand.swift in Sources */,
 				5C46BB3920F0E0F700C927B9 /* CULabel.swift in Sources */,
 				5C39992120BA42C100B03CCE /* SettingsViewController.swift in Sources */,
 				5C46BB3B20F0EFD700C927B9 /* UXView.swift in Sources */,
 				5C0F0F8C20BB886200544B28 /* ChannelTableCell.swift in Sources */,
 				5CBE61B220B3646B0057ED02 /* Functions.swift in Sources */,
+				5CD691EE23E5317B00EF919F /* RemoteHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
