@@ -57,12 +57,16 @@ class ChannelsViewController: UIViewController {
     
     private var channels: [Channel] = [
         Channel(channelName: "TV2", channelNumber: 3, channelImageName: "tv2-norge.png", channelCategory: "Tabloid", channelURL: "www.tv2.no"),
+        Channel(channelName: "TV2 Sport 1", channelNumber: 12, channelImageName: "tv2_sport1.png", channelCategory: "Sport", channelURL: "www.tv2.no"),
+        Channel(channelName: "TV2 Sport 2", channelNumber: 13, channelImageName: "tv2_sport2.png", channelCategory: "Sport", channelURL: "www.tv2.no"),
         Channel(channelName: "Nyhetskanalen", channelNumber: 22, channelImageName: "tv2-nyhetskanalen.png", channelCategory: "Nyheter", channelURL: "www.tv2.no"),
         Channel(channelName: "TV2 Zebra", channelNumber: 7, channelImageName: "zebra.png", channelCategory: "Blogging", channelURL: "www.tv2.no"),
+        Channel(channelName: "TV2 Livstil", channelNumber: 8, channelImageName: "tv2_livstil.png", channelCategory: "Blogging", channelURL: "www.tv2.no"),
         Channel(channelName: "NRK", channelNumber: 1, channelImageName: "nrk.png", channelCategory: "Propaganda", channelURL: "www.nrk.no"),
         Channel(channelName: "NRK2", channelNumber: 2, channelImageName: "nrk2.png", channelCategory: "Propaganda", channelURL: "www.nrk.no"),
         Channel(channelName: "TVNorge", channelNumber: 4, channelImageName: "tvnorge.png", channelCategory: "Tabloid", channelURL: "www.tvnorge.no"),
         Channel(channelName: "TV3", channelNumber: 5, channelImageName: "tv3.png", channelCategory: "Tabloid", channelURL: "www.tv3.no"),
+        Channel(channelName: "NRK Super", channelNumber: 6, channelImageName: "nrk_super.png", channelCategory: "Propaganda", channelURL: "www.nrk.no"),
         Channel(channelName: "Viasat 4", channelNumber: 9, channelImageName: "viasat4", channelCategory: "Tabloid", channelURL: "www.viasat.no"),
         Channel(channelName: "Fem", channelNumber: 10, channelImageName: "fem.png", channelCategory: "Tabloid", channelURL: "www.tvnorge.no"),
         Channel(channelName: "BBC Brit", channelNumber: 11, channelImageName: "bbcbrit.png", channelCategory: "Propaganda", channelURL: "www.bbc.com"),
@@ -73,8 +77,17 @@ class ChannelsViewController: UIViewController {
         Channel(channelName: "Fox", channelNumber: 18, channelImageName: "fox.png", channelCategory: "Tabloid", channelURL: "www.fox.com"),
         Channel(channelName: "National Geographics", channelNumber: 20, channelImageName: "nationalgeo.png", channelCategory: "Nature", channelURL: "www.nationalgeographics.com"),
         Channel(channelName: "History", channelNumber: 21, channelImageName: "history.png", channelCategory: "History", channelURL: "www.historychannel.com"),
-        Channel(channelName: "TV6", channelNumber: 37, channelImageName: "tv6.png", channelCategory: "Tabloid", channelURL: "www.tvnorge.no"),
-        Channel(channelName: "BBC World", channelNumber: 38, channelImageName: "bbcworld.png", channelCategory: "News", channelURL: "www.bbc.com"),
+        Channel(channelName: "TV6", channelNumber: 19, channelImageName: "tv6.png", channelCategory: "Tabloid", channelURL: "www.tvnorge.no"),
+        Channel(channelName: "BBC World News", channelNumber: 55, channelImageName: "bbcworld.png", channelCategory: "News", channelURL: "www.bbc.com"),
+
+        Channel(channelName: "Viasport 1", channelNumber: 26, channelImageName: "viasport1.png", channelCategory: "Sport", channelURL: "www.bbc.com"),
+        Channel(channelName: "Eurosport", channelNumber: 29, channelImageName: "eurosport.png", channelCategory: "Sport", channelURL: "www.bbc.com"),
+        Channel(channelName: "Eurosport Norge", channelNumber: 30, channelImageName: "eurosport_n.png", channelCategory: "Sport", channelURL: "www.bbc.com"),
+
+        Channel(channelName: "Disney Channel", channelNumber: 31, channelImageName: "disney.png", channelCategory: "Children", channelURL: "www.bbc.com"),
+        Channel(channelName: "Disney Junior", channelNumber: 32, channelImageName: "disney_junior.png", channelCategory: "Children", channelURL: "www.bbc.com"),
+        Channel(channelName: "SVT 1", channelNumber: 44, channelImageName: "svt.png", channelCategory: "News", channelURL: "www.bbc.com"),
+        Channel(channelName: "TV2 Sport Premium", channelNumber: 81, channelImageName: "tv2_sport_premium.png", channelCategory: "Sport", channelURL: "www.tv2.no"),
         ]
     
     // Taptic & Haptic Support
@@ -128,6 +141,7 @@ class ChannelsViewController: UIViewController {
     // MARK: - Setup Handler / View / Effects
 
     private func setupData() {
+        self.channels = channels.sorted { $0._channelNumber < $1._channelNumber }
         let remote = Remote(name: "Sony Remote", type: .smart, ip: "192.168.1.7", key: "0000")
         self.remoteHandler = RemoteHandler(remote: remote)
     }
@@ -180,6 +194,7 @@ class ChannelsViewController: UIViewController {
         tableView.contentInset.bottom = 20.0
         
         setupParallaxEffect()
+        let sorted = channels.sorted { $0._channelName < $1._channelName }
         
         // Haptic and Taptic Engine Support
         print("UIDevice.current.platform: \(UIDevice.current.platform.rawValue)")
@@ -370,7 +385,7 @@ extension ChannelsViewController: UIScrollViewDelegate {
     
     // Did Scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollViewDraggingUpdater(scrollView)
+        // scrollViewDraggingUpdater(scrollView)
 
         // hideWhenScrolling(scrollView.contentOffset.y)
         self.scrollContentOffset = scrollView.contentOffset.y
@@ -404,10 +419,10 @@ extension ChannelsViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if scrollView.contentOffset.y >= 300 {
+        if scrollView.contentOffset.y >= 180 {
             hideRemoteView(animated: true)
         }
-        if scrollView.contentOffset.y <= -300 {
+        if scrollView.contentOffset.y <= -180 {
             hideRemoteView(animated: true)
         }
     }

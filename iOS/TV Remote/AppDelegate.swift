@@ -62,11 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         switch shortcutItem.type {
         case "no.digitalmood.TV-Remote.iOS.power" :
             let vc = RemoteViewController()
-            vc.sendHTTP(keyName: BasicCommands.power.rawValue)
-            // succeeded = shortCutCase()
+            // vc.sendHTTP(keyName: BasicCommands.power.rawValue)
+            succeeded = shortCutCase()
         default :
             let vc = RemoteViewController()
-            vc.sendHTTP(keyName: BasicCommands.mute.rawValue)
+            // vc.sendHTTP(keyName: BasicCommands.mute.rawValue)
             succeeded = shortCutCase()
         }
         return succeeded

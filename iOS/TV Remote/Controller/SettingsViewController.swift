@@ -70,6 +70,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             else { return }
 
         remote.send(command: remoteCommand)
+        hapticButton(.selection)
     }
 
 }
