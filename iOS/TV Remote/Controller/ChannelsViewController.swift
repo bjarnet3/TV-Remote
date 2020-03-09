@@ -194,7 +194,7 @@ class ChannelsViewController: UIViewController {
         tableView.contentInset.bottom = 20.0
         
         setupParallaxEffect()
-        let sorted = channels.sorted { $0._channelName < $1._channelName }
+        channels.sort { $0._channelName < $1._channelName }
         
         // Haptic and Taptic Engine Support
         print("UIDevice.current.platform: \(UIDevice.current.platform.rawValue)")
