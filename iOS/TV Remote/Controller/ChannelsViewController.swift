@@ -107,9 +107,8 @@ class ChannelsViewController: UIViewController {
     // MARK: - IBAction:
     // ----------------------------------------
     @IBAction func buttonAction(_ sender: UIButton) {
-        guard let remote = self.remoteHandler
-            else {
-                print("Unable to set remoteHandler")
+        guard let remote = self.remoteHandler else {
+            print("Unable to set remoteHandler")
             return
         }
         guard let keyString = sender.accessibilityIdentifier else {
@@ -142,7 +141,9 @@ class ChannelsViewController: UIViewController {
 
     private func setupData() {
         self.channels = channels.sorted { $0._channelNumber < $1._channelNumber }
-        let remote = Remote(name: "Sony Remote", type: .smart, ip: "192.168.1.7", key: "0000")
+
+        let ip = UserDefaults.standard.string(forKey: "ip") ?? "192.168.50.7"
+        let remote = Remote(name: "Sony Remote", type: .smart, ip: ip, key: "0000")
         self.remoteHandler = RemoteHandler(remote: remote)
     }
 

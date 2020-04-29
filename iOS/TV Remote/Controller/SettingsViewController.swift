@@ -11,6 +11,7 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var ipTextField: UITextField!
 
     var remoteHandler: RemoteHandler?
     var remoteCommands: [RemoteCommand]? = RemoteCommand.allCases.map({ $0 })
@@ -22,13 +23,22 @@ class SettingsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
-        setupRemote()
+        getRemote()
 
         tableView.reloadData()
     }
 
-    func setupRemote() {
-        let remote = Remote(name: "Sony TV", type: .smart, ip: "192.168.1.7", key: "0000")
+    @IBAction func setRemote(_ sender: Any) {
+        if let ip = ipTextField.text {
+            UserDefaults.standard.set(ip, forKey: "ip")
+        }
+    }
+
+    func getRemote() {
+        let ip = UserDefaults.standard.string(forKey: "ip") ?? "192.168.50.7"
+        ipTextField.text = ip
+        
+        let remote = Remote(name: "Sony TV", type: .smart, ip: ip, key: "0000")
         remoteHandler = RemoteHandler(remote: remote)
     }
 
