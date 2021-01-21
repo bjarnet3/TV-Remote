@@ -20,7 +20,7 @@ struct Remote {
     private var _remoteLocation: CLLocation?
     private var _remoteSSID: String?
     private var _remoteIP: String?
-    private var _remoteKey: String?
+    private var _remotePin: String?
     private var _remotePort: String?
     private var _remoteSSL: Bool = false
 
@@ -36,14 +36,14 @@ struct Remote {
         return _remoteIP ?? "192.168.1.7"
     }
 
-    var remoteKey: String {
-        return _remoteKey ?? "0000"
+    var remotePin: String {
+        return _remotePin ?? "0000"
     }
     
-    init(name: String, type: RemoteType, ip: String? = nil, key: String? = nil) {
+    init(name: String, type: RemoteType, ip: String? = nil, pin: String? = nil) {
         self._remoteName = name
         self._remoteType = type
         self._remoteIP = ip
-        self._remoteKey = key
+        self._remotePin = pin
     }
 }

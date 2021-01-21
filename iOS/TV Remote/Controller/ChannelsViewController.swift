@@ -49,11 +49,6 @@ class ChannelsViewController: UIViewController {
     private var navigationBarHeight: CGFloat {
         return navigationController?.navigationBar.frame.height ?? 49.0
     }
-
-    private var remotes: [Remote] = [
-        Remote(name: "Samsung", type: .ir),
-        Remote(name: "Sony", type: .smart, ip: "192.168.1.7", key: "0000")
-    ]
     
     private var channels: [Channel] = [
         Channel(channelName: "TV2", channelNumber: 3, channelImageName: "tv2-norge.png", channelCategory: "Tabloid", channelURL: "www.tv2.no"),
@@ -104,7 +99,7 @@ class ChannelsViewController: UIViewController {
         ("Haptic Feedback - Selection", ["Selection"])
     ]
     
-    // MARK: - IBAction:
+    // MARK: - IBAction & Functions:
     // ----------------------------------------
     @IBAction func buttonAction(_ sender: UIButton) {
         guard let remote = self.remoteHandler else {
@@ -132,18 +127,18 @@ class ChannelsViewController: UIViewController {
             self.view.endEditing(true)
         }
     }
-    
-    // MARK: - Functions:
+
     // ----------------------------------------
     // Remote Send Action
 
-    // MARK: - Setup Handler / View / Effects
+    // MARK: Setup Handler / View / Effects
 
     private func setupData() {
         self.channels = channels.sorted { $0._channelNumber < $1._channelNumber }
 
         let ip = UserDefaults.standard.string(forKey: "ip") ?? "192.168.50.7"
-        let remote = Remote(name: "Sony Remote", type: .smart, ip: ip, key: "0000")
+        let pin = UserDefaults.standard.string(forKey: "pin") ?? "0000"
+        let remote = Remote(name: "Sony Remote", type: .smart, ip: ip, pin: pin)
         self.remoteHandler = RemoteHandler(remote: remote)
     }
 

@@ -50,26 +50,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Shortcut Action (2)
     // ---------------------
     func handleShortcut(shortcutItem: UIApplicationShortcutItem ) -> Bool {
-        var succeeded = false
+
+        // Init remote
+        let ip = UserDefaults.standard.string(forKey: "ip") ?? "192.168.50.7"
+        let pin = UserDefaults.standard.string(forKey: "pin") ?? "0000"
+
+        let remote = Remote(name: "Sony Remote", type: .smart, ip: ip, pin: pin)
+        let remoteHandler = RemoteHandler(remote: remote)
         
         func shortCutCase() -> Bool {
             let sb = UIStoryboard(name: "Main", bundle: nil)
             let vc = sb.instantiateInitialViewController()
             window?.rootViewController = vc
+
             return true
         }
         
         switch shortcutItem.type {
         case "no.digitalmood.TV-Remote.iOS.power" :
-            let vc = RemoteViewController()
-            // vc.sendHTTP(keyName: BasicCommands.power.rawValue)
-            succeeded = shortCutCase()
+
+            remoteHandler.send(command: .power)
+            return shortCutCase()
+
         default :
-            let vc = RemoteViewController()
-            // vc.sendHTTP(keyName: BasicCommands.mute.rawValue)
-            succeeded = shortCutCase()
+
+            remoteHandler.send(command: .mute)
+            return shortCutCase()
         }
-        return succeeded
+
     }
     
     

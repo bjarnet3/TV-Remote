@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,13 @@
 		5C39991F20BA42BE00B03CCE /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39991E20BA42BE00B03CCE /* TVViewController.swift */; };
 		5C39992120BA42C100B03CCE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39992020BA42C100B03CCE /* SettingsViewController.swift */; };
 		5C39992320BA433A00B03CCE /* CUImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39992220BA433A00B03CCE /* CUImageView.swift */; };
+		5C41079724DBED2F00C85798 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41079624DBED2F00C85798 /* AppDelegate.swift */; };
+		5C41079924DBED2F00C85798 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41079824DBED2F00C85798 /* SceneDelegate.swift */; };
+		5C41079B24DBED2F00C85798 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41079A24DBED2F00C85798 /* ViewController.swift */; };
+		5C41079E24DBED2F00C85798 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C41079C24DBED2F00C85798 /* Main.storyboard */; };
+		5C4107A024DBED3000C85798 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C41079F24DBED3000C85798 /* Assets.xcassets */; };
+		5C4107A324DBED3000C85798 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C4107A124DBED3000C85798 /* LaunchScreen.storyboard */; };
+		5C4107A824DBED3000C85798 /* TV Remote Clips.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 5C41079424DBED2F00C85798 /* TV Remote Clips.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5C46BB3920F0E0F700C927B9 /* CULabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46BB3820F0E0F700C927B9 /* CULabel.swift */; };
 		5C46BB3B20F0EFD700C927B9 /* UXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46BB3A20F0EFD700C927B9 /* UXView.swift */; };
 		5C7E40F920B3445F006DF2E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7E40F820B3445F006DF2E4 /* AppDelegate.swift */; };
@@ -32,6 +39,30 @@
 		9EE219D78B6CE7CD35FDC8E0 /* Pods_TV_Remote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EDF8A7974CB91944807E1A /* Pods_TV_Remote.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5C4107A624DBED3000C85798 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C7E40ED20B3445F006DF2E4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C41079324DBED2F00C85798;
+			remoteInfo = "TV Remote Clips";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5C4107A924DBED3000C85798 /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				5C4107A824DBED3000C85798 /* TV Remote Clips.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		099E6CD31BED8054955289B2 /* Pods-TV Remote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Remote.release.xcconfig"; path = "Target Support Files/Pods-TV Remote/Pods-TV Remote.release.xcconfig"; sourceTree = "<group>"; };
 		505B73A7051121088F34184F /* Pods-TV Remote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TV Remote.debug.xcconfig"; path = "Target Support Files/Pods-TV Remote/Pods-TV Remote.debug.xcconfig"; sourceTree = "<group>"; };
@@ -43,6 +74,15 @@
 		5C39991E20BA42BE00B03CCE /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
 		5C39992020BA42C100B03CCE /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		5C39992220BA433A00B03CCE /* CUImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUImageView.swift; sourceTree = "<group>"; };
+		5C41079424DBED2F00C85798 /* TV Remote Clips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Remote Clips.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C41079624DBED2F00C85798 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5C41079824DBED2F00C85798 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		5C41079A24DBED2F00C85798 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5C41079D24DBED2F00C85798 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5C41079F24DBED3000C85798 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5C4107A224DBED3000C85798 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5C4107A424DBED3000C85798 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C4107A524DBED3000C85798 /* TV_Remote_Clips.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TV_Remote_Clips.entitlements; sourceTree = "<group>"; };
 		5C46BB3820F0E0F700C927B9 /* CULabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CULabel.swift; sourceTree = "<group>"; };
 		5C46BB3A20F0EFD700C927B9 /* UXView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXView.swift; sourceTree = "<group>"; };
 		5C48D7DD20EFF9320032F2D5 /* TV Remote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TV Remote.entitlements"; sourceTree = "<group>"; };
@@ -64,6 +104,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5C41079124DBED2F00C85798 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5C7E40F220B3445F006DF2E4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -75,6 +122,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C41079524DBED2F00C85798 /* TV Remote Clips */ = {
+			isa = PBXGroup;
+			children = (
+				5C41079624DBED2F00C85798 /* AppDelegate.swift */,
+				5C41079824DBED2F00C85798 /* SceneDelegate.swift */,
+				5C41079A24DBED2F00C85798 /* ViewController.swift */,
+				5C41079C24DBED2F00C85798 /* Main.storyboard */,
+				5C41079F24DBED3000C85798 /* Assets.xcassets */,
+				5C4107A124DBED3000C85798 /* LaunchScreen.storyboard */,
+				5C4107A424DBED3000C85798 /* Info.plist */,
+				5C4107A524DBED3000C85798 /* TV_Remote_Clips.entitlements */,
+			);
+			path = "TV Remote Clips";
+			sourceTree = "<group>";
+		};
 		5C50A25E9A833717843B383D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				5C7E40F720B3445F006DF2E4 /* TV Remote */,
+				5C41079524DBED2F00C85798 /* TV Remote Clips */,
 				5C7E40F620B3445F006DF2E4 /* Products */,
 				5C50A25E9A833717843B383D /* Pods */,
 				CEFE4CA0DC704046B5543066 /* Frameworks */,
@@ -98,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				5C7E40F520B3445F006DF2E4 /* TV Remote.app */,
+				5C41079424DBED2F00C85798 /* TV Remote Clips.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -216,6 +280,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5C41079324DBED2F00C85798 /* TV Remote Clips */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C4107AC24DBED3000C85798 /* Build configuration list for PBXNativeTarget "TV Remote Clips" */;
+			buildPhases = (
+				5C41079024DBED2F00C85798 /* Sources */,
+				5C41079124DBED2F00C85798 /* Frameworks */,
+				5C41079224DBED2F00C85798 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TV Remote Clips";
+			productName = "TV Remote Clips";
+			productReference = 5C41079424DBED2F00C85798 /* TV Remote Clips.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
 		5C7E40F420B3445F006DF2E4 /* TV Remote */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C7E410720B34460006DF2E4 /* Build configuration list for PBXNativeTarget "TV Remote" */;
@@ -225,10 +306,12 @@
 				5C7E40F220B3445F006DF2E4 /* Frameworks */,
 				5C7E40F320B3445F006DF2E4 /* Resources */,
 				0DAFF82E32D08FD3262D3491 /* [CP] Embed Pods Frameworks */,
+				5C4107A924DBED3000C85798 /* Embed App Clips */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5C4107A724DBED3000C85798 /* PBXTargetDependency */,
 			);
 			name = "TV Remote";
 			productName = "TV Remote";
@@ -241,10 +324,13 @@
 		5C7E40ED20B3445F006DF2E4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Digital Mood";
 				TargetAttributes = {
+					5C41079324DBED2F00C85798 = {
+						CreatedOnToolsVersion = 12.0;
+					};
 					5C7E40F420B3445F006DF2E4 = {
 						CreatedOnToolsVersion = 9.3.1;
 						SystemCapabilities = {
@@ -269,11 +355,22 @@
 			projectRoot = "";
 			targets = (
 				5C7E40F420B3445F006DF2E4 /* TV Remote */,
+				5C41079324DBED2F00C85798 /* TV Remote Clips */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5C41079224DBED2F00C85798 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C4107A324DBED3000C85798 /* LaunchScreen.storyboard in Resources */,
+				5C4107A024DBED3000C85798 /* Assets.xcassets in Resources */,
+				5C41079E24DBED2F00C85798 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5C7E40F320B3445F006DF2E4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -329,6 +426,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5C41079024DBED2F00C85798 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C41079B24DBED2F00C85798 /* ViewController.swift in Sources */,
+				5C41079724DBED2F00C85798 /* AppDelegate.swift in Sources */,
+				5C41079924DBED2F00C85798 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5C7E40F120B3445F006DF2E4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -357,7 +464,32 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5C4107A724DBED3000C85798 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 5C41079324DBED2F00C85798 /* TV Remote Clips */;
+			targetProxy = 5C4107A624DBED3000C85798 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		5C41079C24DBED2F00C85798 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C41079D24DBED2F00C85798 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5C4107A124DBED3000C85798 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C4107A224DBED3000C85798 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		5C7E40FC20B3445F006DF2E4 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -377,6 +509,53 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5C4107AA24DBED3000C85798 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "TV Remote Clips/TV_Remote_Clips.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GCRJ652248;
+				INFOPLIST_FILE = "TV Remote Clips/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "no.digitalmood.TV-Remote.iOS.Clip";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5C4107AB24DBED3000C85798 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "TV Remote Clips/TV_Remote_Clips.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = GCRJ652248;
+				INFOPLIST_FILE = "TV Remote Clips/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "no.digitalmood.TV-Remote.iOS.Clip";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		5C7E410520B34460006DF2E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -495,6 +674,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 505B73A7051121088F34184F /* Pods-TV Remote.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TV Remote/TV Remote.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -506,6 +686,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "no.digitalmood.TV-Remote.iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -515,6 +696,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 099E6CD31BED8054955289B2 /* Pods-TV Remote.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "TV Remote/TV Remote.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -526,6 +708,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "no.digitalmood.TV-Remote.iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -534,6 +717,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5C4107AC24DBED3000C85798 /* Build configuration list for PBXNativeTarget "TV Remote Clips" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C4107AA24DBED3000C85798 /* Debug */,
+				5C4107AB24DBED3000C85798 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5C7E40F020B3445F006DF2E4 /* Build configuration list for PBXProject "TV Remote" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
