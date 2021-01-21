@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dHA-Jw-BeB">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dHA-Jw-BeB">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,18 +14,18 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="RemoteViewController" customModule="TV_Remote" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hOH-tX-Kix">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kMG-oR-nrp" customClass="UXView" customModule="TV_Remote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Startpage" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiR-Bb-XyE">
-                                        <rect key="frame" x="142.5" y="35.5" width="90" height="27.5"/>
+                                        <rect key="frame" x="150" y="36" width="90" height="27"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -68,26 +68,26 @@
             <objects>
                 <viewController id="x0A-80-CI7" customClass="ChannelsViewController" customModule="TV_Remote" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ECw-xu-aen">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YIY-a5-Uet">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
                                 <color key="tintColor" red="0.98823529409999999" green="0.1843137255" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="channelTableCell" rowHeight="60" id="548-xw-sme" customClass="ChannelTableCell" customModule="TV_Remote" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="390" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="548-xw-sme" id="gqv-L2-vgF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VLB-wG-tlc">
-                                                    <rect key="frame" x="59" y="9" width="41" height="39.5"/>
+                                                    <rect key="frame" x="59" y="9" width="41" height="39.666666666666664"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TV 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRs-3K-Cfc">
-                                                            <rect key="frame" x="0.0" y="0.0" width="41" height="27.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="41" height="27.333333333333332"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -95,7 +95,7 @@
                                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Tabloid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNj-cR-CKL">
-                                                            <rect key="frame" x="0.0" y="27.5" width="41" height="12"/>
+                                                            <rect key="frame" x="0.0" y="27.333333333333332" width="41" height="12.333333333333332"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="11"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,7 +105,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPw-FS-IP5" customClass="CULabel" customModule="TV_Remote" customModuleProvider="target">
-                                                    <rect key="frame" x="330" y="7" width="30" height="30"/>
+                                                    <rect key="frame" x="345" y="7" width="30" height="30"/>
                                                     <color key="backgroundColor" systemColor="systemRedColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="OPw-FS-IP5" secondAttribute="height" multiplier="1:1" id="cUp-XO-KBk"/>
@@ -115,7 +115,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WgQ-IT-fDT" customClass="CUImageView" customModule="TV_Remote" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="9" width="41" height="41.5"/>
+                                                    <rect key="frame" x="10" y="9" width="41" height="41.666666666666664"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="41" id="2TP-ff-orh"/>
                                                         <constraint firstAttribute="width" constant="41" id="ObB-j3-WHw"/>
@@ -147,10 +147,10 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHr-N6-f4o" customClass="UXView" customModule="TV_Remote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TV Channels" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gc-t3-BRh">
-                                        <rect key="frame" x="131.5" y="35.5" width="112.5" height="27.5"/>
+                                        <rect key="frame" x="139" y="35.666666666666664" width="112.33333333333331" height="27.333333333333336"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -171,10 +171,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLe-FB-vz7" customClass="UXView" customModule="TV_Remote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="247" width="375" height="420"/>
+                                <rect key="frame" x="0.0" y="390" width="390" height="420"/>
                                 <subviews>
                                     <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="dvT-c6-wnj">
-                                        <rect key="frame" x="300.5" y="0.0" width="73.5" height="43"/>
+                                        <rect key="frame" x="308" y="0.0" width="81" height="43"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <accessibility key="accessibilityConfiguration" identifier="power"/>
                                         <constraints>
@@ -195,7 +195,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4J-Pz-olE">
-                                        <rect key="frame" x="1" y="0.0" width="73.5" height="43"/>
+                                        <rect key="frame" x="1" y="0.0" width="81" height="43"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <accessibility key="accessibilityConfiguration" identifier="action"/>
                                         <constraints>
@@ -214,7 +214,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="0mS-po-QyQ">
-                                        <rect key="frame" x="75.5" y="0.0" width="224" height="43"/>
+                                        <rect key="frame" x="83" y="0.0" width="224" height="43"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="224" id="PKZ-u5-z21"/>
@@ -231,7 +231,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QfB-SH-PZ2">
-                                        <rect key="frame" x="1" y="78" width="73.5" height="74"/>
+                                        <rect key="frame" x="1" y="78" width="81" height="74"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="channelUp"/>
                                         <constraints>
@@ -246,7 +246,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEA-Wi-Urt">
-                                        <rect key="frame" x="1" y="228" width="73.5" height="74"/>
+                                        <rect key="frame" x="1" y="228" width="81" height="74"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="channelDown"/>
                                         <constraints>
@@ -261,7 +261,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWv-VC-r29">
-                                        <rect key="frame" x="300.5" y="78" width="73.5" height="74"/>
+                                        <rect key="frame" x="308" y="78" width="81" height="74"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="volumeUp"/>
                                         <constraints>
@@ -276,7 +276,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2H9-Fq-icw">
-                                        <rect key="frame" x="300.5" y="228" width="73.5" height="74"/>
+                                        <rect key="frame" x="308" y="228" width="81" height="74"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="volumeDown"/>
                                         <constraints>
@@ -291,7 +291,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mu0-bT-5Qb">
-                                        <rect key="frame" x="300.5" y="153" width="73.5" height="74"/>
+                                        <rect key="frame" x="308" y="153" width="81" height="74"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="mute"/>
                                         <constraints>
@@ -306,7 +306,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMB-oe-EJ4">
-                                        <rect key="frame" x="1" y="153" width="73.5" height="74"/>
+                                        <rect key="frame" x="1" y="153" width="81" height="74"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="tenKey"/>
                                         <constraints>
@@ -320,7 +320,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjW-cK-ZmC">
-                                        <rect key="frame" x="112.5" y="228" width="37" height="37"/>
+                                        <rect key="frame" x="120" y="228" width="37" height="37"/>
                                         <color key="backgroundColor" red="1" green="0.050980392159999999" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration" identifier="red"/>
                                         <constraints>
@@ -338,7 +338,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOn-i7-K7p">
-                                        <rect key="frame" x="112.5" y="115" width="37" height="37"/>
+                                        <rect key="frame" x="120" y="115" width="37" height="37"/>
                                         <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration" identifier="green"/>
                                         <constraints>
@@ -355,7 +355,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYg-k2-A6O">
-                                        <rect key="frame" x="225.5" y="115" width="37" height="37"/>
+                                        <rect key="frame" x="233" y="115" width="37" height="37"/>
                                         <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration" identifier="yellow"/>
                                         <constraints>
@@ -372,7 +372,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZP-WV-riq">
-                                        <rect key="frame" x="225.5" y="228" width="37" height="37"/>
+                                        <rect key="frame" x="233" y="228" width="37" height="37"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration" identifier="blue"/>
                                         <constraints>
@@ -390,7 +390,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJG-Ie-3Ao">
-                                        <rect key="frame" x="150.5" y="153" width="74" height="74"/>
+                                        <rect key="frame" x="158" y="153" width="74" height="74"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <accessibility key="accessibilityConfiguration" identifier="enter"/>
                                         <constraints>
@@ -406,7 +406,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLO-00-EQv">
-                                        <rect key="frame" x="150.5" y="78" width="74" height="74"/>
+                                        <rect key="frame" x="158" y="78" width="74" height="74"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <accessibility key="accessibilityConfiguration" identifier="up"/>
                                         <constraints>
@@ -421,7 +421,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CH5-CW-IKK">
-                                        <rect key="frame" x="75.5" y="153" width="74" height="74"/>
+                                        <rect key="frame" x="83" y="153" width="74" height="74"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <accessibility key="accessibilityConfiguration" identifier="left"/>
                                         <constraints>
@@ -437,7 +437,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llO-Dh-5eF">
-                                        <rect key="frame" x="225.5" y="153" width="74" height="74"/>
+                                        <rect key="frame" x="233" y="153" width="74" height="74"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <accessibility key="accessibilityConfiguration" identifier="right"/>
                                         <constraints>
@@ -453,7 +453,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qm2-mG-4aP">
-                                        <rect key="frame" x="150.5" y="228" width="74" height="74"/>
+                                        <rect key="frame" x="158" y="228" width="74" height="74"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <accessibility key="accessibilityConfiguration" identifier="down"/>
                                         <constraints>
@@ -469,7 +469,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWd-9b-ZsJ">
-                                        <rect key="frame" x="75.5" y="78" width="74" height="36"/>
+                                        <rect key="frame" x="83" y="78" width="74" height="36"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="tv"/>
                                         <constraints>
@@ -490,7 +490,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHx-ze-ci0">
-                                        <rect key="frame" x="225.5" y="78" width="74" height="36"/>
+                                        <rect key="frame" x="233" y="78" width="74" height="36"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="guide"/>
                                         <constraints>
@@ -511,7 +511,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbI-oh-6o8">
-                                        <rect key="frame" x="263.5" y="228" width="36" height="37"/>
+                                        <rect key="frame" x="271" y="228" width="36" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="dux"/>
                                         <constraints>
@@ -527,7 +527,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r65-Pm-uvZ">
-                                        <rect key="frame" x="263.5" y="115" width="36" height="37"/>
+                                        <rect key="frame" x="271" y="115" width="36" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="display"/>
                                         <constraints>
@@ -543,7 +543,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prQ-3m-bAE">
-                                        <rect key="frame" x="75.5" y="115" width="36" height="37"/>
+                                        <rect key="frame" x="83" y="115" width="36" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="pap"/>
                                         <constraints>
@@ -559,7 +559,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnP-Um-xmS">
-                                        <rect key="frame" x="75.5" y="228" width="36" height="37"/>
+                                        <rect key="frame" x="83" y="228" width="36" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="epg"/>
                                         <constraints>
@@ -575,7 +575,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tj1-br-Ush">
-                                        <rect key="frame" x="225.5" y="265" width="74" height="37"/>
+                                        <rect key="frame" x="233" y="265" width="74" height="37"/>
                                         <accessibility key="accessibilityConfiguration" identifier="home"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="x7l-vu-UTl"/>
@@ -596,7 +596,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUA-ec-B5z">
-                                        <rect key="frame" x="75.5" y="265" width="74" height="37"/>
+                                        <rect key="frame" x="83" y="265" width="74" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="back"/>
                                         <constraints>
@@ -618,12 +618,12 @@
                                         </connections>
                                     </button>
                                     <progressView opaque="NO" alpha="0.5" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HDx-oP-bIR">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="4"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="4"/>
                                         <color key="progressTintColor" systemColor="systemRedColor"/>
                                         <color key="trackTintColor" systemColor="systemPinkColor"/>
                                     </progressView>
                                     <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aj9-tb-4th">
-                                        <rect key="frame" x="0.0" y="328" width="112" height="43"/>
+                                        <rect key="frame" x="0.0" y="328" width="119.33333333333333" height="43"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <accessibility key="accessibilityConfiguration" identifier="netflix"/>
                                         <constraints>
@@ -641,7 +641,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfW-zY-ZPV">
-                                        <rect key="frame" x="112.5" y="328" width="150" height="43"/>
+                                        <rect key="frame" x="120" y="328" width="150" height="43"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <accessibility key="accessibilityConfiguration" identifier="dux"/>
                                         <constraints>
@@ -662,7 +662,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeT-1L-dnf">
-                                        <rect key="frame" x="264" y="328" width="111" height="43"/>
+                                        <rect key="frame" x="271.33333333333331" y="328" width="118.66666666666669" height="43"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <accessibility key="accessibilityConfiguration" identifier="jump"/>
                                         <constraints>
@@ -821,14 +821,14 @@
             <objects>
                 <viewController id="Cd2-Jg-YoT" customClass="TVViewController" customModule="TV_Remote" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nt7-xu-lio">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wgj-oN-mnt" customClass="UXView" customModule="TV_Remote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TV-Guide" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8I-XP-695">
-                                        <rect key="frame" x="145.5" y="35.5" width="84" height="27.5"/>
+                                        <rect key="frame" x="153" y="36" width="84" height="27"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -863,22 +863,22 @@
             <objects>
                 <viewController id="SBd-ch-iN2" customClass="SettingsViewController" customModule="TV_Remote" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TLI-7g-rCJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dwr-MA-7MT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="simpleTableCell" rowHeight="60" id="Hfz-FX-1yf" customClass="SimpleTableCell" customModule="TV_Remote" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="390" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hfz-FX-1yf" id="i8E-4Z-fB4">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbc-qq-Z2B">
-                                                    <rect key="frame" x="16" y="11" width="336" height="38"/>
+                                                    <rect key="frame" x="20" y="11" width="343" height="38"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -898,10 +898,10 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TvG-L4-Lim" customClass="UXView" customModule="TV_Remote" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="75"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3J-0B-t2C">
-                                        <rect key="frame" x="150.5" y="35.5" width="74" height="27.5"/>
+                                        <rect key="frame" x="158" y="36" width="74" height="27"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -917,10 +917,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fy1-EL-1eB">
-                                <rect key="frame" x="0.0" y="257" width="375" height="361"/>
+                                <rect key="frame" x="0.0" y="400" width="390" height="361"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TV ip-address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lcc-jk-1Yg">
-                                        <rect key="frame" x="8" y="15" width="201" height="30"/>
+                                        <rect key="frame" x="8" y="15" width="216" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="WQV-U7-758"/>
                                         </constraints>
@@ -928,7 +928,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vpe-CE-lNo">
-                                        <rect key="frame" x="307" y="15" width="60" height="30"/>
+                                        <rect key="frame" x="322" y="15" width="60" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="MOp-F7-MuX"/>
@@ -942,7 +942,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TV Pin" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wCL-7C-j5H">
-                                        <rect key="frame" x="217" y="15" width="80" height="30"/>
+                                        <rect key="frame" x="232" y="15" width="80" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="UPx-EG-oru"/>
                                             <constraint firstAttribute="width" constant="80" id="sti-eV-HUE"/>
@@ -1070,7 +1070,7 @@
         <image name="tv.circle.fill" catalog="system" width="128" height="121"/>
         <image name="volume_mute_grey_medium3" width="17" height="17"/>
         <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1079,13 +1079,10 @@
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.83475586312956562" green="0.83475586312956562" blue="0.83475586312956562" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="viewFlipsideBackgroundColor">
-            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.83475586312956562" green="0.83475586312956562" blue="0.83475586312956562" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="viewFlipsideBackgroundColor">
             <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
