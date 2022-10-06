@@ -18,7 +18,6 @@ class ConnectionManager {
 
     func startNetworkMonitoring(networkType: NWInterface.InterfaceType) {
         monitorNetwork = NWPathMonitor(requiredInterfaceType: networkType)
-        // let status = monitorWiFi.currentPath.status
         monitorNetwork.pathUpdateHandler = { path in
             /// This closure is called every time the connection status changes
             DispatchQueue.main.async {
