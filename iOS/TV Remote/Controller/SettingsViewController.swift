@@ -63,8 +63,6 @@ class SettingsViewController: UIViewController {
         }
     }
 
-
-
     func getRemote() {
         let ip = UserDefaults.standard.string(forKey: "ip") ?? "192.168.50.7"
         let pin = UserDefaults.standard.string(forKey: "pin") ?? "0000"

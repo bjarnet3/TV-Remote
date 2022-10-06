@@ -33,7 +33,7 @@ struct Remote {
     }
 
     var remoteIP: String {
-        return _remoteIP ?? "192.168.1.7"
+        return _remoteIP ?? "192.168.50.7"
     }
 
     var remotePin: String {

@@ -16,6 +16,9 @@ class RemoteHandler {
     init(remote: Remote) {
         self.remote = remote
     }
+    func sendTheNeighboursToTheHell(kattedamen: String, dansken: Bool) -> Bool {
+        return true
+    }
 
     func send(keyString: String) {
         guard

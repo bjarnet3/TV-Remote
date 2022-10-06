@@ -1,0 +1,633 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5C273CCE20FE8D73001BF9E4 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46F06B20F06B79008CAC7B /* Remote.swift */; };
+		5C27E299206059C600CF56E2 /* KeyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C27E298206059C600CF56E2 /* KeyButton.swift */; };
+		5C3BB4922033D3CE00E5255E /* CustomComboCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BB48F2033D0EC00E5255E /* CustomComboCell.swift */; };
+		5C3BB4962033D62700E5255E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C3BB4952033D62700E5255E /* Media.xcassets */; };
+		5C3BB4982033D70800E5255E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C6B54702010189200D367F2 /* Assets.xcassets */; };
+		5C3BB4992033D72800E5255E /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE157AC202285A600F8517A /* CustomButton.swift */; };
+		5C3BB49D2033DB1300E5255E /* GuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C3BB49C2033DB1300E5255E /* GuideViewController.xib */; };
+		5C3BB49F2033DBF400E5255E /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3BB49E2033DBF400E5255E /* GuideViewController.swift */; };
+		5C46F06C20F06B79008CAC7B /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46F06B20F06B79008CAC7B /* Remote.swift */; };
+		5C46F06E20F082A6008CAC7B /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C46F06D20F082A6008CAC7B /* Channel.swift */; };
+		5C6B546D2010189200D367F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B546C2010189200D367F2 /* AppDelegate.swift */; };
+		5C6B546F2010189200D367F2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B546E2010189200D367F2 /* SettingViewController.swift */; };
+		5C6B54742010189200D367F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6B54722010189200D367F2 /* Main.storyboard */; };
+		5C6B5483201025AD00D367F2 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6B5482201025AD00D367F2 /* NotificationCenter.framework */; };
+		5C6B5486201025AD00D367F2 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B5485201025AD00D367F2 /* TodayViewController.swift */; };
+		5C6B5489201025AD00D367F2 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6B5487201025AD00D367F2 /* TodayViewController.xib */; };
+		5C6B548D201025AD00D367F2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C6B548B201025AD00D367F2 /* InfoPlist.strings */; };
+		5C6B5491201025AD00D367F2 /* TV Remote Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5C6B5480201025AD00D367F2 /* TV Remote Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5C74FEA520F6C8D200E03BAD /* RemoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C74FEA320F6C8D200E03BAD /* RemoteViewController.swift */; };
+		5C74FEA820F6D47300E03BAD /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C74FEA720F6D47300E03BAD /* CustomButton.swift */; };
+		5CC2C68E2173B842009F1E1C /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CC2C68D2173B842009F1E1C /* NetworkExtension.framework */; };
+		5CF5ACE9211A734E0089141A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5ACE8211A734E0089141A /* Network.swift */; };
+		5CF5ACEB211A77ED0089141A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5ACE8211A734E0089141A /* Network.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5C6B548F201025AD00D367F2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C6B54612010189100D367F2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C6B547F201025AD00D367F2;
+			remoteInfo = "TV Remote Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5C6B5495201025AD00D367F2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5C6B5491201025AD00D367F2 /* TV Remote Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5C27E298206059C600CF56E2 /* KeyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyButton.swift; sourceTree = "<group>"; };
+		5C3BB48F2033D0EC00E5255E /* CustomComboCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComboCell.swift; sourceTree = "<group>"; };
+		5C3BB4952033D62700E5255E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		5C3BB49C2033DB1300E5255E /* GuideViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuideViewController.xib; sourceTree = "<group>"; };
+		5C3BB49E2033DBF400E5255E /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
+		5C46F06B20F06B79008CAC7B /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
+		5C46F06D20F082A6008CAC7B /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		5C6B54692010189200D367F2 /* TV Remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TV Remote.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C6B546C2010189200D367F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5C6B546E2010189200D367F2 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		5C6B54702010189200D367F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5C6B54732010189200D367F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5C6B54752010189200D367F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C6B5480201025AD00D367F2 /* TV Remote Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "TV Remote Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C6B5482201025AD00D367F2 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		5C6B5485201025AD00D367F2 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		5C6B5488201025AD00D367F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
+		5C6B548A201025AD00D367F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C6B548C201025AD00D367F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5C74FEA320F6C8D200E03BAD /* RemoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteViewController.swift; sourceTree = "<group>"; };
+		5C74FEA720F6D47300E03BAD /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		5CC2C68D2173B842009F1E1C /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		5CD81043201161F800B439F9 /* TV Remote Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TV Remote Extension.entitlements"; sourceTree = "<group>"; };
+		5CD810442011620500B439F9 /* TV Remote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "TV Remote.entitlements"; sourceTree = "<group>"; };
+		5CE157AC202285A600F8517A /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		5CF5ACE8211A734E0089141A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5C6B54662010189200D367F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C6B547D201025AD00D367F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C6B5483201025AD00D367F2 /* NotificationCenter.framework in Frameworks */,
+				5CC2C68E2173B842009F1E1C /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5C27E29A20605A6A00CF56E2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5C6B546E2010189200D367F2 /* SettingViewController.swift */,
+				5C74FEA320F6C8D200E03BAD /* RemoteViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5C27E29B20605A7400CF56E2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C6B54722010189200D367F2 /* Main.storyboard */,
+				5C74FEA720F6D47300E03BAD /* CustomButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5C27E29C20605A8B00CF56E2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C46F06B20F06B79008CAC7B /* Remote.swift */,
+				5C46F06D20F082A6008CAC7B /* Channel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5C3BB48B2033BCA000E5255E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5C6B5485201025AD00D367F2 /* TodayViewController.swift */,
+				5C3BB49E2033DBF400E5255E /* GuideViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		5C3BB48C2033BCA600E5255E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5C27E298206059C600CF56E2 /* KeyButton.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		5C3BB48D2033BCAE00E5255E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5C6B5487201025AD00D367F2 /* TodayViewController.xib */,
+				5C3BB49C2033DB1300E5255E /* GuideViewController.xib */,
+				5CE157AC202285A600F8517A /* CustomButton.swift */,
+				5C3BB48F2033D0EC00E5255E /* CustomComboCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		5C3BB4A02033DDB600E5255E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				5C6B548A201025AD00D367F2 /* Info.plist */,
+				5C6B548B201025AD00D367F2 /* InfoPlist.strings */,
+				5CD81043201161F800B439F9 /* TV Remote Extension.entitlements */,
+				5C3BB4952033D62700E5255E /* Media.xcassets */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		5C6B54602010189100D367F2 = {
+			isa = PBXGroup;
+			children = (
+				5C6B546B2010189200D367F2 /* TV Remote */,
+				5C6B5484201025AD00D367F2 /* TV Remote Extension */,
+				5C6B5481201025AD00D367F2 /* Frameworks */,
+				5C6B546A2010189200D367F2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5C6B546A2010189200D367F2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C6B54692010189200D367F2 /* TV Remote.app */,
+				5C6B5480201025AD00D367F2 /* TV Remote Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5C6B546B2010189200D367F2 /* TV Remote */ = {
+			isa = PBXGroup;
+			children = (
+				5CF5ACEA211A737C0089141A /* Services */,
+				5C27E29C20605A8B00CF56E2 /* Models */,
+				5C27E29B20605A7400CF56E2 /* Views */,
+				5C27E29A20605A6A00CF56E2 /* Controllers */,
+				5C6B546C2010189200D367F2 /* AppDelegate.swift */,
+				5C6B54702010189200D367F2 /* Assets.xcassets */,
+				5C6B54752010189200D367F2 /* Info.plist */,
+				5CD810442011620500B439F9 /* TV Remote.entitlements */,
+			);
+			path = "TV Remote";
+			sourceTree = "<group>";
+		};
+		5C6B5481201025AD00D367F2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5CC2C68D2173B842009F1E1C /* NetworkExtension.framework */,
+				5C6B5482201025AD00D367F2 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5C6B5484201025AD00D367F2 /* TV Remote Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5C3BB48C2033BCA600E5255E /* Models */,
+				5C3BB48D2033BCAE00E5255E /* Views */,
+				5C3BB48B2033BCA000E5255E /* Controllers */,
+				5C3BB4A02033DDB600E5255E /* Utility */,
+			);
+			path = "TV Remote Extension";
+			sourceTree = "<group>";
+		};
+		5CF5ACEA211A737C0089141A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5CF5ACE8211A734E0089141A /* Network.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5C6B54682010189200D367F2 /* TV Remote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C6B54792010189200D367F2 /* Build configuration list for PBXNativeTarget "TV Remote" */;
+			buildPhases = (
+				5C6B54652010189200D367F2 /* Sources */,
+				5C6B54662010189200D367F2 /* Frameworks */,
+				5C6B54672010189200D367F2 /* Resources */,
+				5C6B5495201025AD00D367F2 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C6B5490201025AD00D367F2 /* PBXTargetDependency */,
+			);
+			name = "TV Remote";
+			productName = "TV Remote";
+			productReference = 5C6B54692010189200D367F2 /* TV Remote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5C6B547F201025AD00D367F2 /* TV Remote Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C6B5492201025AD00D367F2 /* Build configuration list for PBXNativeTarget "TV Remote Extension" */;
+			buildPhases = (
+				5C6B547C201025AD00D367F2 /* Sources */,
+				5C6B547D201025AD00D367F2 /* Frameworks */,
+				5C6B547E201025AD00D367F2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TV Remote Extension";
+			productName = "TV Remote Extension";
+			productReference = 5C6B5480201025AD00D367F2 /* TV Remote Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5C6B54612010189100D367F2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Bjarne Tvedten";
+				TargetAttributes = {
+					5C6B54682010189200D367F2 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+							com.apple.Maps.Mac = {
+								enabled = 0;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					5C6B547F201025AD00D367F2 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+							com.apple.NetworkExtensions = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 5C6B54642010189100D367F2 /* Build configuration list for PBXProject "TV Remote" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5C6B54602010189100D367F2;
+			productRefGroup = 5C6B546A2010189200D367F2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5C6B54682010189200D367F2 /* TV Remote */,
+				5C6B547F201025AD00D367F2 /* TV Remote Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5C6B54672010189200D367F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C3BB4982033D70800E5255E /* Assets.xcassets in Resources */,
+				5C6B54742010189200D367F2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C6B547E201025AD00D367F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C3BB49D2033DB1300E5255E /* GuideViewController.xib in Resources */,
+				5C6B5489201025AD00D367F2 /* TodayViewController.xib in Resources */,
+				5C3BB4962033D62700E5255E /* Media.xcassets in Resources */,
+				5C6B548D201025AD00D367F2 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5C6B54652010189200D367F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C6B546F2010189200D367F2 /* SettingViewController.swift in Sources */,
+				5C74FEA520F6C8D200E03BAD /* RemoteViewController.swift in Sources */,
+				5C74FEA820F6D47300E03BAD /* CustomButton.swift in Sources */,
+				5C46F06E20F082A6008CAC7B /* Channel.swift in Sources */,
+				5C6B546D2010189200D367F2 /* AppDelegate.swift in Sources */,
+				5C46F06C20F06B79008CAC7B /* Remote.swift in Sources */,
+				5CF5ACE9211A734E0089141A /* Network.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C6B547C201025AD00D367F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C3BB4922033D3CE00E5255E /* CustomComboCell.swift in Sources */,
+				5C3BB49F2033DBF400E5255E /* GuideViewController.swift in Sources */,
+				5C6B5486201025AD00D367F2 /* TodayViewController.swift in Sources */,
+				5C3BB4992033D72800E5255E /* CustomButton.swift in Sources */,
+				5C27E299206059C600CF56E2 /* KeyButton.swift in Sources */,
+				5CF5ACEB211A77ED0089141A /* Network.swift in Sources */,
+				5C273CCE20FE8D73001BF9E4 /* Remote.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5C6B5490201025AD00D367F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C6B547F201025AD00D367F2 /* TV Remote Extension */;
+			targetProxy = 5C6B548F201025AD00D367F2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5C6B54722010189200D367F2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C6B54732010189200D367F2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5C6B5487201025AD00D367F2 /* TodayViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C6B5488201025AD00D367F2 /* Base */,
+			);
+			name = TodayViewController.xib;
+			sourceTree = "<group>";
+		};
+		5C6B548B201025AD00D367F2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C6B548C201025AD00D367F2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5C6B54772010189200D367F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5C6B54782010189200D367F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		5C6B547A2010189200D367F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "TV Remote/TV Remote.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = GCRJ652248;
+				INFOPLIST_FILE = "TV Remote/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "no.digitalmood.TV-Remote.macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		5C6B547B2010189200D367F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "TV Remote/TV Remote.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = GCRJ652248;
+				INFOPLIST_FILE = "TV Remote/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "no.digitalmood.TV-Remote.macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		5C6B5493201025AD00D367F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "TV Remote Extension/TV Remote Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = GCRJ652248;
+				INFOPLIST_FILE = "TV Remote Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "no.digitalmood.TV-Remote.macOS.TV-Remote-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		5C6B5494201025AD00D367F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "TV Remote Extension/TV Remote Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = GCRJ652248;
+				INFOPLIST_FILE = "TV Remote Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "no.digitalmood.TV-Remote.macOS.TV-Remote-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5C6B54642010189100D367F2 /* Build configuration list for PBXProject "TV Remote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C6B54772010189200D367F2 /* Debug */,
+				5C6B54782010189200D367F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C6B54792010189200D367F2 /* Build configuration list for PBXNativeTarget "TV Remote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C6B547A2010189200D367F2 /* Debug */,
+				5C6B547B2010189200D367F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C6B5492201025AD00D367F2 /* Build configuration list for PBXNativeTarget "TV Remote Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C6B5493201025AD00D367F2 /* Debug */,
+				5C6B5494201025AD00D367F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5C6B54612010189100D367F2 /* Project object */;
+}
